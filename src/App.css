@@ -1,38 +1,120 @@
-.App {
-  text-align: center;
+body {
+  font-family: "Montserrat", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.font-montserrat-thin {
+  font-family: "Montserrat Thin", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.font-montserrat-extra-light {
+  font-family: "Montserrat Extra Light", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.font-montserrat-light {
+  font-family: "Montserrat Light", sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.font-montserrat-medium {
+  font-family: "Montserrat Medium", sans-serif;
 }
+
+.font-montserrat-semi-bold {
+  font-family: "Montserrat Semi Bold", sans-serif;
+}
+
+.font-montserrat-bold {
+  font-family: "Montserrat Bold", sans-serif;
+}
+
+.font-montserrat-extra-bold {
+  font-family: "Montserrat Extra Bold", sans-serif;
+}
+
+.font-montserrat-black {
+  font-family: "Montserrat Black", sans-serif;
+}
+
+@font-face {
+  font-family: Montserrat Thin;
+  font-style: normal;
+  font-weight: 100;
+  src: local("Montserrat Thin"),
+  url("./assets/fonts/Montserrat-Thin.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Extra Light;
+  font-style: normal;
+  font-weight: 200;
+  src: local("Montserrat Extra Light"),
+  url("./assets/fonts/Montserrat-ExtraLight.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Light;
+  font-style: normal;
+  font-weight: 300;
+  src: local("Montserrat Light"),
+  url("./assets/fonts/Montserrat-Light.ttf") format("ttf");
+}
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Montserrat"),
+  url("./assets/fonts/Montserrat-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Medium;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Montserrat Medium"),
+  url("./assets/fonts/Montserrat-Medium.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Semi Bold;
+  font-style: normal;
+  font-weight: 600;
+  src: local("Montserrat Semi Bold"),
+  url("./assets/fonts/Montserrat-SemiBold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Bold;
+  font-style: normal;
+  font-weight: 700;
+  src: local("Montserrat Bold"),
+  url("./assets/fonts/Montserrat-Bold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Extra Bold;
+  font-style: normal;
+  font-weight: 800;
+  src: local("Montserrat Extra Bold"),
+  url("./assets/fonts/Montserrat-ExtraBold.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Montserrat Black;
+  font-style: normal;
+  font-weight: 900;
+  src: local("Montserrat Black"),
+  url("./assets/fonts/Montserrat-Black.ttf") format("ttf");
+}
+
+/*thin - 100*/
+/*ExtraLight - 200*/
+/*light - 300*/
+/*regular - 400*/
+/*medium - 500*/
+/*semiBold - 600*/
+/*bold - 700*/
+/*extraBold - 800*/
+/*black - 900*/

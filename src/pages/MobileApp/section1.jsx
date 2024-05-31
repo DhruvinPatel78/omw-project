@@ -1,0 +1,76 @@
+import Container from "../../components/container";
+import CashPrize from "../../images/cashPrizes.png";
+import LuxuryPrize from "../../images/luxuryPrize.png";
+import TuitionPrize from "../../images/tuitionPrize.png";
+import LuxuryReward from "../../images/luxuryReward.png";
+import TravelReward from "../../images/travelReward.png";
+const Selection1 = () => {
+  const prizeList = [
+    {
+      title: "Cash Prizes",
+      img: CashPrize,
+      id: 1,
+    },
+    {
+      title: "Luxury Prizes",
+      img: LuxuryPrize,
+      id: 2,
+    },
+    {
+      title: "Tuition+ Prizes",
+      img: TuitionPrize,
+      id: 3,
+    },
+    {
+      title: "Luxury Rewards",
+      img: LuxuryReward,
+      id: 4,
+    },
+    {
+      title: "Travel Rewards",
+      img: TravelReward,
+      id: 5,
+    },
+  ];
+  return (
+    <Container className={"flex flex-col gap-20 py-14 w-full"}>
+      <div className={"flex flex-col justify-center items-center gap-4 h-full"}>
+        <span
+          className={"font-bold text-base sm:text-lg md:text-xl lg:text-[28px]"}
+        >
+          Archie Voice AI. Drive Safe. Get Paid.
+        </span>
+        <span
+          className={
+            "font-extrabold text-primary text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-[890px] text-center"
+          }
+        >
+          OnMyWay AI Distracted Driving Mobile App
+        </span>
+      </div>
+      <div
+        className={
+          "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 place-items-center"
+        }
+      >
+        {prizeList?.map((item, index) => (
+          <div
+            className={
+              "w-[210px] h-[300px] rounded-md flex items-end bg-clip-padding border-2 border-secondary bg-center bg-cover"
+            }
+            style={{
+              backgroundImage: `url(${item.img})`,
+              borderRadius: "10px",
+            }}
+            key={`prize-${index}`}
+          >
+            <div className={"bg-cardFooter p-5 w-full rounded-md text-center"}>
+              <span className={"font-bold text-xl"}>{item.title}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  );
+};
+export default Selection1;
