@@ -48,7 +48,7 @@ const Section3 = () => {
             const lastItem = dummyList[dummyList?.length - 1];
             return (
               <div
-                className={`flex flex-row gap-8 py-6 ${
+                className={`flex flex-col md:flex-row gap-8 py-6 ${
                   item.id === lastItem.id ? "border-0" : "border-b"
                 } border-secondary`}
                 key={`item-${index}`}

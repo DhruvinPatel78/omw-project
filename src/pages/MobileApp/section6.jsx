@@ -1,12 +1,79 @@
 import Section6BG from "../../images/section6BG.png";
 import Container from "../../components/container";
-
+import HotelGiftCard from "../../images/hotel_gift_card.png";
+import Iphone from "../../images/section6Iphone.png";
+import Airfare from "../../images/RoundtripAirfareHotel.png";
+import NightCruise from "../../images/NightCruise.png";
+import LuxuryResort from "../../images/luxuryresort.png";
+import StayGetaway from "../../images/staygetaway.png";
+import Rent from "../../images/rentRoom.png";
 const Section6 = () => {
+  const theoryList = [
+    {
+      id: 1,
+      img: HotelGiftCard,
+      title: "$100 Hotel Gift Card",
+      description: "Over 400,000 hotels and Resorts worldwide.",
+      subTitle: "$500 OnMyWay Dollars",
+      subDescription: "24 Months To Travel",
+      isCenter: false,
+    },
+    {
+      id: 2,
+      img: Airfare,
+      title: "Roundtrip Airfare & Hotel!",
+      description: "Over 20 Destinations In The USA, 2 People",
+      subTitle: "$5000 OnMyWay Dollars",
+      subDescription: "24 Months To Travel",
+      isCenter: false,
+    },
+    {
+      id: 3,
+      img: NightCruise,
+      title: "5 Day / 4 Night Cruise",
+      description: "Carnival Cruise Lines, Royal Caribbean, No...",
+      subTitle: "$4500 OnMyWay Dollars",
+      subDescription: "24 Months To Travel",
+      isCenter: false,
+    },
+    {
+      id: 4,
+      img: Iphone,
+      isCenter: true,
+    },
+    {
+      id: 5,
+      img: LuxuryResort,
+      title: "7 nights luxury resort getaway 3500+ locations",
+      description: null,
+      subTitle: "$10,000 OnMyWay Dollars",
+      subDescription: "12 Months To Resort",
+      isCenter: false,
+    },
+    {
+      id: 6,
+      img: StayGetaway,
+      title: "4 night hotel stay getaway",
+      description: null,
+      subTitle: "$3125 OnMyWay Dollars",
+      subDescription: "24 Months To Resort",
+      isCenter: false,
+    },
+    {
+      id: 7,
+      img: Rent,
+      title: "$500 Hotel Gift Card",
+      description: "Over 400,000 hotels and Resorts worldwide.",
+      subTitle: "$2500 OnMyWay Dollars",
+      subDescription: "24 Months To Travel",
+      isCenter: false,
+    },
+  ];
   return (
     <div className={"w-full flex flex-col gap-4"}>
       <div
         className={
-          "max-w-1200 mx-auto p-4 w-full flex justify-center items-center flex-row text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold"
+          "max-w-1200 mx-auto p-4 w-full text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold"
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">
@@ -30,7 +97,84 @@ const Section6 = () => {
               boxShadow: "0px 4px 30px 0px rgba(65, 209, 255, 0.30)",
             }}
           >
-            <div>hii</div>
+            <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
+              {theoryList?.map((item, index) => {
+                return item.isCenter ? (
+                  <div
+                    className="row-span-full w-full h-full hidden md:flex justify-center items-center"
+                    key={`card_${item.id + index}`}
+                  >
+                    <img src={item?.img} alt="Iphone" />
+                  </div>
+                ) : (
+                  <div
+                    className="row-span-auto w-full"
+                    key={`card_${item.id + index}`}
+                  >
+                    <div
+                      className={
+                        "w-[240px] h-[240px] bg-no-repeat bg-contain bg-top flex rounded-md"
+                      }
+                      style={{ backgroundImage: `url(${item?.img})` }}
+                    >
+                      <div
+                        className={
+                          "bg-toostieCardFooter p-4 w-full rounded-md flex items-start justify-end flex-col gap-[5px]"
+                        }
+                      >
+                        <span
+                          className={
+                            "text-[#182455] text-[15px] font-bold leading-normal"
+                          }
+                        >
+                          {item?.title}
+                        </span>
+                        {item.description && (
+                          <span
+                            className={
+                              "text-[#182455] text-[9px] leading-normal font-normal"
+                            }
+                          >
+                            {item.description}
+                          </span>
+                        )}
+
+                        <div
+                          className={"border-b border-[#7e7ebca6] w-full"}
+                        ></div>
+                        <div
+                          className={
+                            "flex flex-row justify-between items-center w-full"
+                          }
+                        >
+                          <div className={"flex flex-col"}>
+                            <span
+                              className={
+                                "text-[#00CB17] text-[10px] font-medium"
+                              }
+                            >
+                              {item?.subTitle}
+                            </span>
+                            <span
+                              className={
+                                "text-[#182455] text-[9px] font-normal"
+                              }
+                            >
+                              {item?.subDescription}
+                            </span>
+                          </div>
+                          <button
+                            className={"bg-primary p-2 rounded-full w-[50px]"}
+                          >
+                            get
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
             <div
               className={
                 "text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white"
