@@ -34,10 +34,10 @@ const Section3 = () => {
   ];
   return (
     <Container className={"w-full flex justify-center items-center py-10"}>
-      <div className={"w-full flex flex-col gap-10"}>
+      <div className={"w-full flex flex-col sm:gap-10 gap-6"}>
         <div
           className={
-            "font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-70 flex flex-col"
+            "font-extrabold text-2xl sm:text-3xl md:text-6xl lg:text-70 flex flex-wrap"
           }
         >
           <span>How OnMyWay Works…</span>
@@ -48,7 +48,7 @@ const Section3 = () => {
             const lastItem = dummyList[dummyList?.length - 1];
             return (
               <div
-                className={`flex flex-col md:flex-row gap-8 py-6 ${
+                className={`flex flex-col md:flex-row sm:gap-8 gap-1 py-6 ${
                   item.id === lastItem.id ? "border-0" : "border-b"
                 } border-secondary`}
                 key={`item-${index}`}

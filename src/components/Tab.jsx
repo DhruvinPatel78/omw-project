@@ -1,13 +1,13 @@
 const TabPage = ({ tabList, selectedTab, setSelectedTab }) => {
   return (
-    <div className={"flex flex-row justify-center"}>
+    <div className={"flex flex-row justify-center sm:self-auto self-center"}>
       {tabList?.map((item, index) => {
         const lastIndex = tabList?.map((item, index) => index)[
           tabList.length - 1
         ];
         return (
           <button
-            className={`p-2 border border-secondary border-r-0 border-l-0 px-8
+            className={`p-2 border border-secondary border-r-0 border-l-0 sm:px-8 px-5
                ${
                  index === 0
                    ? "rounded-s-full border-l-[1px]"

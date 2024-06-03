@@ -21,7 +21,7 @@ const Section5 = () => {
       </div>
       <div
         className={
-          "w-full lg:w-3/5 h-full lg:h-screen flex flex-col gap-7 justify-center"
+          "w-full lg:w-3/5 h-full lg:h-screen flex flex-col gap-7 justify-center md:text-left text-center"
         }
       >
         <div

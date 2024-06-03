@@ -33,7 +33,7 @@ const Selection1 = () => {
     },
   ];
   return (
-    <Container className={"flex flex-col gap-20 py-14 w-full"}>
+    <Container className={"flex flex-col sm:gap-20 gap-9 py-14 w-full"}>
       <div className={"flex flex-col justify-center items-center gap-4 h-full"}>
         <span
           className={"font-bold text-base sm:text-lg md:text-xl lg:text-[28px]"}
@@ -50,13 +50,13 @@ const Selection1 = () => {
       </div>
       <div
         className={
-          "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 place-items-center"
+          "sm:grid flex grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 place-items-center sm:flex-nowrap flex-wrap sm:justify-normal justify-center"
         }
       >
         {prizeList?.map((item, index) => (
           <div
             className={
-              "w-[210px] h-[300px] rounded-md flex items-end bg-clip-padding border-2 border-secondary bg-center bg-cover"
+              "sm:w-[210px] w-[115px] sm:h-[300px] h-[160px] rounded-md flex items-end bg-clip-padding border-2 border-secondary bg-center bg-cover"
             }
             style={{
               backgroundImage: `url(${item.img})`,
