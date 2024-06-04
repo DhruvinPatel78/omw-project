@@ -1,12 +1,10 @@
 import Container from "../../components/container";
-import Iphone from "../../images/iPhone.png";
+import Iphone from "../../images/MobileAPP/iPhone.png";
 const Section5 = () => {
   return (
-    // <Container className={"w-full flex flex-row gap-10 justify-center"}>
     <Container
       className={
-        "w-full flex flex-col lg:flex-row gap-10 justify-center "
-        // + "bg-red-600 sm:bg-blue-600 md:bg-green-600 lg:bg-pink-700"
+        "flex flex-col lg:flex-row gap-10 justify-center "
       }
     >
       <div

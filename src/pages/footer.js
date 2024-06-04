@@ -116,7 +116,7 @@ const Footer = () => {
         </div>
       </Container>
       <div className={"border-b border-secondary"}></div>
-      <Container className={"text-center p-6 "}>
+      <Container className={"text-center p-6 px-4"}>
         <span className={"text-xs font-medium text-[#B0B0C1]"}>
           © OnMyWay 2024. All Rights Reserved{" "}
           <span className={"text-[#EFF2FF]"}>

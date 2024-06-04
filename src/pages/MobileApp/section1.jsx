@@ -1,9 +1,9 @@
 import Container from "../../components/container";
-import CashPrize from "../../images/cashPrizes.png";
-import LuxuryPrize from "../../images/luxuryPrize.png";
-import TuitionPrize from "../../images/tuitionPrize.png";
-import LuxuryReward from "../../images/luxuryReward.png";
-import TravelReward from "../../images/travelReward.png";
+import CashPrize from "../../images/MobileAPP/cashPrizes.png";
+import LuxuryPrize from "../../images/MobileAPP/luxuryPrize.png";
+import TuitionPrize from "../../images/MobileAPP/tuitionPrize.png";
+import LuxuryReward from "../../images/MobileAPP/luxuryReward.png";
+import TravelReward from "../../images/MobileAPP/travelReward.png";
 const Selection1 = () => {
   const prizeList = [
     {
@@ -33,7 +33,7 @@ const Selection1 = () => {
     },
   ];
   return (
-    <Container className={"flex flex-col sm:gap-20 gap-9 py-14 w-full"}>
+    <Container className={"flex flex-col sm:gap-20 gap-9 py-14"}>
       <div className={"flex flex-col justify-center items-center gap-4 h-full"}>
         <span
           className={"font-bold text-base sm:text-lg md:text-xl lg:text-[28px]"}

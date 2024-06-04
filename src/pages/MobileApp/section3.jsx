@@ -1,51 +1,20 @@
 import Container from "../../components/container";
 
-const Section3 = () => {
-  const dummyList = [
-    {
-      id: Math.random(),
-      title: "Download the App",
-      description:
-        "Simply download the OnMyWay app to start earning rewards for every mile you and your friend's drive.",
-    },
-    {
-      id: Math.random(),
-      title: "Redeem Rewards",
-      description:
-        "Use your OnMyWay Dollars for a over $100 Million in prizes and rewards, including hotel gift cards, travel, tuition, gas, instant win contests, and much more.",
-    },
-    {
-      id: Math.random(),
-      title: "Hands-Free",
-      description:
-        "Archie AI ensures your eyes stay on the road and your hands stay on the wheel while managing all your tasks through voice commands.",
-    },
-    {
-      id: Math.random(),
-      title: "Your Privacy",
-      description: "We never sell or share your data.",
-    },
-    {
-      id: Math.random(),
-      title: "No Limits",
-      description:
-        "Enjoy unlimited miles, unlimited referrals, and unlimited lives saved.",
-    },
-  ];
+const Section3 = ({ title, subTitle, list }) => {
   return (
-    <Container className={"w-full flex justify-center items-center py-10"}>
+    <Container className={"flex justify-center items-center py-10"}>
       <div className={"w-full flex flex-col sm:gap-10 gap-6"}>
         <div
           className={
             "font-extrabold text-2xl sm:text-3xl md:text-6xl lg:text-70 flex flex-wrap"
           }
         >
-          <span>How OnMyWay Works…</span>
-          <span className={"text-primary"}>It’s Simple.</span>
+          <span>{title}</span>
+          <span className={"text-primary"}>{subTitle}</span>
         </div>
         <div className={"flex flex-col"}>
-          {dummyList?.map((item, index) => {
-            const lastItem = dummyList[dummyList?.length - 1];
+          {list?.map((item, index) => {
+            const lastItem = list[list?.length - 1];
             return (
               <div
                 className={`flex flex-col md:flex-row sm:gap-8 gap-1 py-6 ${
@@ -55,14 +24,14 @@ const Section3 = () => {
               >
                 <span
                   className={
-                    "text-primary font-bold text-xl sm:text-2xl md:text-3xl lg:text-[32px] min-w-[200px] sm:min-w-[200px] md:min-w-[290px] lg:min-w-[323px]  whitespace-nowrap"
+                    "text-primary font-bold text-lg sm:text-xl md:text-2xl lg:text-[32px] min-w-[200px] sm:min-w-[200px] md:min-w-[290px] lg:min-w-[323px]"
                   }
                 >
                   {item.title}:
                 </span>
                 <span
                   className={
-                    "font-semibold text-xl sm:text-2xl md:text-[26px] lg:text-[28px]"
+                    "font-semibold text-sm sm:text-base md:text-xl lg:text-[28px]"
                   }
                 >
                   {item.description}

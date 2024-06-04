@@ -1,5 +1,6 @@
 import Container from "../../components/container";
-import Section2BG from "../../images/section2BG.png";
+import Section2BG from "../../images/MobileAPP/section2BG.png";
+import CardWithBorder from "../../components/CardWithBorder";
 const Section2 = () => {
   return (
     <div
@@ -8,15 +9,11 @@ const Section2 = () => {
       }
       style={{ backgroundImage: `url(${Section2BG})` }}
     >
-      <Container className="w-full flex items-center justify-center bg-[#0a0e14cc]">
-        <div
-          className="w-full border-4 border-transparent py-6 px-3 flex flex-col gap-3 justify-center items-center"
-          style={{
-            borderImage:
-              "linear-gradient(129deg, #0A63FD -24.13%, #01CFFC 1.43%, #0087FF 30.16%, #0069FF 58.59%, #01CFFC 88.34%, #0A84FF 111.41%, #0467F3 128.93%)",
-            borderImageSlice: 2,
-            boxShadow: "0px 4px 30px 0px rgba(65, 209, 255, 0.30)",
-          }}
+      <Container className="flex items-center justify-center bg-[#0a0e14cc]">
+        <CardWithBorder
+          className={
+            "sm:py-10 py-6 px-4 flex flex-col gap-3 justify-center items-center"
+          }
         >
           <div className={"flex flex-col gap-1 justify-center items-center"}>
             <div
@@ -74,7 +71,7 @@ const Section2 = () => {
               Available Free - iPhone + Android
             </span>
           </div>
-        </div>
+        </CardWithBorder>
       </Container>
     </div>
   );

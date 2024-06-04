@@ -1,6 +1,7 @@
 import Container from "../../components/container";
-import Section7BG from "../../images/section7BG.png";
-import Iphone from "../../images/section7Iphone.png";
+import Section7BG from "../../images/MobileAPP/section7BG.png";
+import Iphone from "../../images/MobileAPP/section7Iphone.png";
+import CardWithBorder from "../../components/CardWithBorder";
 const Section7 = () => {
   return (
     <div className={"w-full flex flex-col gap-4 py-16"}>
@@ -14,15 +15,9 @@ const Section7 = () => {
         </span>
         {"  "} Are You?
       </div>
-      <Container className="w-full flex items-center justify-center">
-        <div
-          className="w-full border-4 border-transparent flex flex-col gap-8 justify-center items-center"
-          style={{
-            borderImage:
-              "linear-gradient(129deg, #0A63FD -24.13%, #01CFFC 1.43%, #0087FF 30.16%, #0069FF 58.59%, #01CFFC 88.34%, #0A84FF 111.41%, #0467F3 128.93%)",
-            borderImageSlice: 2,
-            boxShadow: "0px 4px 30px 0px rgba(65, 209, 255, 0.30)",
-          }}
+      <Container className="flex items-center justify-center">
+        <CardWithBorder
+          className={"flex flex-col gap-8 justify-center items-center"}
         >
           <div
             className={
@@ -34,7 +29,7 @@ const Section7 = () => {
           >
             <img src={Iphone} alt={"Iphone"} />
           </div>
-        </div>
+        </CardWithBorder>
       </Container>
     </div>
   );

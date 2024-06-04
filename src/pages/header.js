@@ -17,14 +17,22 @@ const Header = ({ setSelectedTab, selectedTab }) => {
     },
   ];
   return (
-    <Container className={"w-full flex sm:flex-row flex-col justify-center items-end relative sm:gap-0 gap-4"}>
+    <Container
+      className={
+        "flex sm:flex-row flex-col justify-center items-end relative md:gap-0 gap-4"
+      }
+    >
       <div className={"sm:block flex justify-center sm:w-[auto] w-full"}>
-        <img src={logo} className="logo sm:absolute relative sm:left-4 left-0 sm:bottom-4 bottom-0" alt="omw-project"/>
+        <img
+          src={logo}
+          className="logo sm:absolute relative sm:left-4 left-0 sm:bottom-4 bottom-0"
+          alt="omw-project"
+        />
       </div>
 
       <Tab
-          tabList={tabList}
-          selectedTab={selectedTab}
+        tabList={tabList}
+        selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
     </Container>

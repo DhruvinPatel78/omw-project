@@ -1,5 +1,6 @@
 import Container from "../../components/container";
-import Section4BG from "../../images/section4BG.png";
+import Section4BG from "../../images/MobileAPP/section4BG.png";
+import CardWithBorder from "../../components/CardWithBorder";
 const Section4 = () => {
   return (
     <div
@@ -8,15 +9,11 @@ const Section4 = () => {
       }
       style={{ backgroundImage: `url(${Section4BG})` }}
     >
-      <Container className="w-full flex items-center justify-center bg-[#0a0e14cc]">
-        <div
-          className="w-full border-4 border-transparent py-6 px-3 flex flex-col gap-3 justify-center items-center"
-          style={{
-            borderImage:
-              "linear-gradient(82deg, rgba(10,99,253,1) 0%, rgba(1,207,252,1) 17%, rgba(0,135,255,1) 35%, rgba(0,105,255,1) 54%, rgba(1,207,252,1) 73%, rgba(10,132,255,1) 89%, rgba(4,103,243,1) 100%)",
-            borderImageSlice: 1,
-            boxShadow: "rgba(1,207,252, 0.35) 0px 5px 15px",
-          }}
+      <Container className="flex items-center justify-center bg-[#0a0e14cc]">
+        <CardWithBorder
+          className={
+            "py-14 px-4 flex flex-col gap-3 justify-center items-center"
+          }
         >
           <span className={"font-bold sm:text-xl md:text-2xl lg:text-[26px]"}>
             So Far…
@@ -36,7 +33,7 @@ const Section4 = () => {
           <span className={"font-bold sm:text-xl md:text-2xl lg:text-[26px]"}>
             Millions Of Active Users And Growing
           </span>
-        </div>
+        </CardWithBorder>
       </Container>
     </div>
   );

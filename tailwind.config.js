@@ -31,15 +31,6 @@ module.exports = {
         ],
       },
     },
-    // fontSize: {
-    //   70: [
-    //     "4.375rem",
-    //     {
-    //       lineHeight: "100%",
-    //       fontWeight: "800",
-    //     },
-    //   ],
-    // },
   },
   plugins: [],
 };
