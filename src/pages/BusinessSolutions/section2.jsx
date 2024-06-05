@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Section4 from "../MobileApp/section4";
 
 const Section2 = () => {

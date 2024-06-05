@@ -1,5 +1,5 @@
 import Section6BG from "../../images/MobileAPP/section6BG.png";
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import HotelGiftCard from "../../images/MobileAPP/hotel_gift_card.png";
 import Iphone from "../../images/MobileAPP/section6Iphone.png";
 import Airfare from "../../images/MobileAPP/RoundtripAirfareHotel.png";
@@ -91,7 +91,7 @@ const Section6 = () => {
         <Container className="flex items-center justify-center bg-[#0a0e14cc]">
           <CardWithBorder
             className={
-              "sm:p-16 p-7 flex flex-col gap-8 justify-center items-center"
+              "sm:p-16 p-7 px-4 flex flex-col gap-8 justify-center items-center"
             }
           >
             <div
@@ -100,7 +100,7 @@ const Section6 = () => {
             >
               <img src={Iphone} alt="Iphone" />
             </div>
-            <div className="grid grid-rows-3 grid-flow-col gap-4 w-full">
+            <div className="grid grid-rows-3 grid-flow-col sm:gap-4 gap-2 w-full">
               {theoryList?.map((item, index) => {
                 return item.isCenter ? (
                   <div

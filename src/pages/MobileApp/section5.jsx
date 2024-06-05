@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Iphone from "../../images/MobileAPP/iPhone.png";
 const Section5 = () => {
   return (

@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Iphone from "../../images/BusinsessSolution/bIphone.png";
 const voiceList = [
   {
@@ -37,7 +37,7 @@ const Section4 = () => {
     <Container className={"flex flex-col gap-4"}>
       <span
         className={
-          "text-3xl sm:text-4lx md:text-5xl lg:text-6xl font-extrabold text-primary"
+          "text-3xl sm:text-4lx md:text-5xl lg:text-6xl font-extrabold text-primary text-center"
         }
       >
         Archie Voice AI,{" "}

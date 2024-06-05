@@ -1,4 +1,4 @@
-import Container from "../components/container";
+import Container from "../components/Container";
 import Facebook from "../images/facebook.svg";
 import Instagram from "../images/instragram.svg";
 import Twitter from "../images/x.svg";
@@ -117,7 +117,7 @@ const Footer = () => {
       </Container>
       <div className={"border-b border-secondary"}></div>
       <Container className={"text-center p-6 px-4"}>
-        <span className={"text-xs font-medium text-[#B0B0C1]"}>
+        <span className={" flex sm:flex-row flex-col justify-center text-xs font-medium text-[#B0B0C1]"}>
           © OnMyWay 2024. All Rights Reserved{" "}
           <span className={"text-[#EFF2FF]"}>
             | Terms of Use | Privacy Policy

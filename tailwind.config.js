@@ -20,6 +20,7 @@ module.exports = {
           "linear-gradient(130deg, #EFF2FF 33.94%, #C5D1FF 48.58%, #EFF2FF 64.53%, #EFF2FF 79.95%, #C5D1FF 92.83%)",
         toostieCardFooter:
           "linear-gradient(180deg, rgba(222, 228, 254, 0.00) 16.61%, #DEE4FE 80.43%)",
+        sectionBG:"url('/src/images/MobileAPP/section6BG.png')"
       },
       fontSize: {
         70: [
@@ -30,6 +31,9 @@ module.exports = {
           },
         ],
       },
+      // fontFamily: {
+      //   homeMade: ['Homemade Apple,cursive']
+      // }
     },
   },
   plugins: [],

@@ -13,7 +13,7 @@ const TabPage = ({ tabList, selectedTab, setSelectedTab }) => {
                    ? "rounded-s-full border-l-[1px]"
                    : index === lastIndex && "rounded-e-full border-r-[1px]"
                } 
-               font-semibold text-sm bg-[#1B2027] ${
+               font-semibold sm:text-sm text-xs bg-[#1B2027] ${
                  index === selectedTab
                    ? "text-primary transition-transform"
                    : ""

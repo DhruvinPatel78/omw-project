@@ -4,6 +4,8 @@ import Section3 from "../MobileApp/section3";
 import Section4 from "./section4";
 import Section5 from "./section5";
 import Section6 from "./section6";
+import Section7 from "./section7";
+import Section8 from "./section8";
 
 const BusinessSolutions = () => {
   const dummyList = [
@@ -65,6 +67,8 @@ const BusinessSolutions = () => {
         <div className={"border-b border-secondary border-dashed "} />
       </div>
       <Section6 />
+      <Section7 />
+      <Section8 />
     </div>
   );
 };

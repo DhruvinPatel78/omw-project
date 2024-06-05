@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Section4BG from "../../images/MobileAPP/section4BG.png";
 import CardWithBorder from "../../components/CardWithBorder";
 const Section4 = () => {
@@ -20,7 +20,7 @@ const Section4 = () => {
           </span>
           <div
             className={
-              "flex flex-row gap-[5px] font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+              "font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-center"
             }
           >
             <span className="bg-cardBorder bg-clip-text text-transparent">

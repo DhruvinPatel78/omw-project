@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Section2BG from "../../images/MobileAPP/section2BG.png";
 import CardWithBorder from "../../components/CardWithBorder";
 const Section2 = () => {

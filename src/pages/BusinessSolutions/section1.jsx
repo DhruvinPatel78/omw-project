@@ -1,5 +1,4 @@
-import Section6BG from "../../images/MobileAPP/section6BG.png";
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import B1Iphone from "../../images/BusinsessSolution/b1.png";
 import B2Iphone from "../../images/BusinsessSolution/b2.png";
 import B3Iphone from "../../images/BusinsessSolution/b3.png";
@@ -9,7 +8,7 @@ const Section1 = () => {
     <div className={"w-full flex flex-col gap-4 sm:py-12 py-8"}>
       <Container
         className={
-          "text-center text-2xl sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[100%]"
+          "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[100%]"
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">
@@ -18,10 +17,7 @@ const Section1 = () => {
         and Get Your Employees Home Safe Tonight with OnMyWay
       </Container>
       <div
-        className={
-          "h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover"
-        }
-        style={{ backgroundImage: `url(${Section6BG})` }}
+        className={`h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover bg-none sm:bg-sectionBG`}
       >
         <Container
           className={

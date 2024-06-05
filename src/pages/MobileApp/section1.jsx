@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import CashPrize from "../../images/MobileAPP/cashPrizes.png";
 import LuxuryPrize from "../../images/MobileAPP/luxuryPrize.png";
 import TuitionPrize from "../../images/MobileAPP/tuitionPrize.png";

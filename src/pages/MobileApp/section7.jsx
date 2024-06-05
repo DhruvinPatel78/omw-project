@@ -1,4 +1,4 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
 import Section7BG from "../../images/MobileAPP/section7BG.png";
 import Iphone from "../../images/MobileAPP/section7Iphone.png";
 import CardWithBorder from "../../components/CardWithBorder";

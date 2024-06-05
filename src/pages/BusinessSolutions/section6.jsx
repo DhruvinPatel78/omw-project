@@ -1,4 +1,5 @@
-import Container from "../../components/container";
+import Container from "../../components/Container";
+import CardWithBorder from "../../components/CardWithBorder";
 
 const Section6 = () => {
   return (
@@ -6,7 +7,7 @@ const Section6 = () => {
       <Container className={"flex flex-col gap-4"}>
         <div
           className={
-            "text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%] "
+            "text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%]"
           }
         >
           <span className="bg-millionText bg-clip-text text-transparent">
@@ -22,6 +23,58 @@ const Section6 = () => {
           OnMyWay can be integrated into your company's operations in just days.
         </span>
       </Container>
+      <div
+        className={`h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover bg-none sm:bg-sectionBG`}
+      >
+        <Container className="flex items-center justify-center bg-[#0A0E14CC]">
+          <CardWithBorder
+            className={
+              "sm:py-10 py-6 px-4 flex flex-col gap-[19px] justify-center items-center"
+            }
+          >
+            <span
+              className={
+                "text-sm sm:text-base md:text-lg lg:text-xl max-w-[810px] font-semibold text-center"
+              }
+            >
+              We provide and manage a zero-tolerance distracted driving policy
+              and offer over{" "}
+              <span className={"text-primary"}>
+                $100 million in prizes and rewards to encourage safe driving.
+              </span>
+            </span>
+            <div className={"flex flex-col"}>
+              <span
+                className={
+                  "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold"
+                }
+              >
+                For as low as
+              </span>
+              <span className="bg-cardBorder bg-clip-text text-transparent text-7xl sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">
+                $10
+              </span>
+              <span
+                className={
+                  "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold mt-2"
+                }
+              >
+                per employee, per month
+              </span>
+            </div>
+            <span
+              className={
+                "text-sm sm:text-base md:text-lg lg:text-xl max-w-[740px] font-semibold text-center"
+              }
+            >
+              Every employee receives personalized account with Archie Voice AI,{" "}
+              <span className={"text-primary"}>
+                enhancing safety and productivity
+              </span>
+            </span>
+          </CardWithBorder>
+        </Container>
+      </div>
     </div>
   );
 };
