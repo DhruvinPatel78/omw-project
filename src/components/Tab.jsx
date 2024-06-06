@@ -7,7 +7,7 @@ const TabPage = ({ tabList, selectedTab, setSelectedTab }) => {
         ];
         return (
           <button
-            className={`p-2 border border-secondary border-r-0 border-l-0 sm:px-8 px-5
+            className={`sm:pb-[15px] sm:pt-[13px] py-[9px] border border-secondary border-r-0 border-l-0 sm:px-[50px] px-[17px]
                ${
                  index === 0
                    ? "rounded-s-full border-l-[1px]"

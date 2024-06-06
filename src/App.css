@@ -38,6 +38,10 @@ body {
   font-family: "Montserrat Black", sans-serif;
 }
 
+.font-homemade-apple {
+  font-family: "Homemade Apple", cursive;
+}
+
 @font-face {
   font-family: Montserrat Thin;
   font-style: normal;
@@ -107,6 +111,14 @@ body {
   font-weight: 900;
   src: local("Montserrat Black"),
   url("./assets/fonts/Montserrat-Black.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Homemade Apple;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Homemade Apple"),
+  url("./assets/fonts/HomemadeApple.ttf") format("ttf");
 }
 
 /*thin - 100*/

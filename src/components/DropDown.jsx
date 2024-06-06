@@ -17,7 +17,7 @@ const DropDown = ({
         <span className={"text-primary"}>{required && "*"}</span>
       </label>
       <select
-        className={`w-full bg-transparent rounded-[14px] py-3.5 px-4 outline-0 text-sm sm:text-base md:text-lg lg:text-xl  ${
+        className={`w-full bg-transparent sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-sm sm:text-base md:text-lg lg:text-xl ${
           border ? "border-2 border-primary" : "border-0"
         } ${className} appearance-none pr-8 bg-no-repeat`}
         placeholder={placeholder}

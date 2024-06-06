@@ -5,7 +5,7 @@ import MobileApp from "./pages/MobileApp";
 import Footer from "./pages/footer";
 import BusinessSolutions from "./pages/BusinessSolutions";
 function App() {
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(1);
   return (
     <div className="w-full overflow-hidden">
       <div className={"flex flex-row gap-2"}>
@@ -13,7 +13,7 @@ function App() {
         {selectedTab === 1 && (
           <button
             className={
-              "hidden md:flex absolute right-0 bg-primary px-6 py-[1.3rem] uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px]"
+              "hidden md:flex absolute right-0 bg-primary px-[1.28rem] py-[1.7rem] uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px]"
             }
           >
             Contact Sales

@@ -8,7 +8,7 @@ const Section1 = () => {
     <div className={"w-full flex flex-col gap-4 sm:py-12 py-8"}>
       <Container
         className={
-          "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[100%]"
+          "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[140%]"
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">

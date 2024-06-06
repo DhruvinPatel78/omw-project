@@ -12,13 +12,13 @@ const Section2 = () => {
       <Container className="flex items-center justify-center bg-[#0a0e14cc]">
         <CardWithBorder
           className={
-            "sm:py-10 py-6 px-4 flex flex-col gap-3 justify-center items-center"
+            "sm:py-[52px] py-[24px] px-4 flex flex-col sm:gap-[32px] gap-[20px] justify-center items-center"
           }
         >
-          <div className={"flex flex-col gap-1 justify-center items-center"}>
+          <div className={"flex flex-col sm:gap-[15px] gap-[4px] justify-center items-center"}>
             <div
               className={
-                "flex flex-row gap-[14px] font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl"
+                "flex flex-row sm:gap-[14px] gap-[4px] font-extrabold text-[38px] sm:text-6xl md:text-7xl lg:text-[100px] !leading-[100%]"
               }
             >
               <span className="bg-cardBorder bg-clip-text text-transparent">
@@ -30,7 +30,7 @@ const Section2 = () => {
             </div>
             <span
               className={
-                "font-bold text-sm sm:text-xl md:text-2xl lg:text-[26px]"
+                "font-bold text-xs sm:text-xl md:text-2xl lg:text-[26px]"
               }
             >
               Prizes and Rewards

@@ -17,7 +17,7 @@ const TextField = ({
       <input
         type={type}
         placeholder={placeholder}
-        className={`bg-transparent rounded-[14px] py-3.5 px-4 outline-0 text-sm sm:text-base md:text-lg lg:text-xl ${
+        className={`bg-transparent sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-sm sm:text-base md:text-lg lg:text-xl ${
           border ? "border-2 border-primary" : "border-0"
         } ${className}`}
         required={required}
