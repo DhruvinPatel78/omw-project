@@ -4,17 +4,19 @@ import TextField from "../../components/TextField";
 import DropDown from "../../components/DropDown";
 const Section7 = () => {
   return (
-    <Container className={"flex flex-col lg:flex-row gap-6 py-8"}>
+    <Container
+      className={"flex flex-col lg:flex-row gap-6 sm:py-[80px] py-[30px]"}
+    >
       <div
         className={
-          "w-full lg:w-2/5 h-full lg:h-[calc(100vh-150px)] bg-no-repeat bg-center flex items-end justify-center bg-contain min-h-[500px]"
+          "w-full lg:w-2/5 h-full bg-no-repeat bg-center flex items-end justify-center bg-contain min-h-[500px]"
         }
         style={{ backgroundImage: `url(${Iphone})` }}
       ></div>
       <div className={"flex flex-col gap-6 justify-center"}>
         <span
           className={
-            "font-extrabold text-2xl sm:text-3xl md:text-6xl lg:text-70 flex flex-col text-primary"
+            "font-extrabold text-[26px] sm:text-3xl md:text-6xl lg:text-70 flex flex-col text-primary"
           }
         >
           <span className="bg-millionText bg-clip-text text-transparent">
@@ -24,7 +26,7 @@ const Section7 = () => {
         </span>
         <div
           className={
-            "grid grid-cols-1 sm:grid-cols-2 gap-4  place-items-center justify-center"
+            "grid grid-cols-1 sm:grid-cols-2 sm:gap-[30px] gap-[20px]  place-items-center justify-center"
           }
         >
           <TextField label={"Your Name"} placeholder={"Enter your name"} />

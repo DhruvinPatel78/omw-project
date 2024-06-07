@@ -6,12 +6,12 @@ const Section10 = () => {
   return (
     <Container
       className={
-        "py-8 flex flex-col sm:gap-[60px] gap-[23px] justify-center items-center"
+        "sm:py-8 py-4 flex flex-col sm:gap-[50px] gap-[23px] justify-center items-center"
       }
     >
       <div
         className={
-          "flex flex-col sm:gap-[32px] gap-[10px] justify-center items-center"
+          "flex flex-col sm:gap-[20px] gap-[10px] justify-center items-center"
         }
       >
         <span
@@ -32,7 +32,7 @@ const Section10 = () => {
       </div>
       <div
         className={
-          "w-full p-[54px] px-4 sm:px-[54px] bg-[#242A2F] rounded-[18px] border-[1.5px] border-[#ffffff33] flex flex-col sm:gap-[45px] gap-[19px] justify-center items-center "
+          "w-full p-[54px] px-4 sm:px-[54px] sm:py-[45px] py-4  bg-[#242A2F] rounded-[18px] border-[1.5px] border-[#ffffff33] flex flex-col sm:gap-[45px] gap-[19px] justify-center items-center "
         }
       >
         <div

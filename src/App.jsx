@@ -5,7 +5,7 @@ import MobileApp from "./pages/MobileApp";
 import Footer from "./pages/footer";
 import BusinessSolutions from "./pages/BusinessSolutions";
 function App() {
-  const [selectedTab, setSelectedTab] = useState(1);
+  const [selectedTab, setSelectedTab] = useState(0);
   return (
     <div className="w-full overflow-hidden">
       <div className={"flex flex-row gap-2"}>

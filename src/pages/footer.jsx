@@ -12,26 +12,31 @@ const Footer = () => {
       id: 1,
       icon: Facebook,
       title: "Facebook",
+      href: "https://www.facebook.com/OnMyWayDrives/",
     },
     {
       id: 2,
       icon: Twitter,
       title: "Twitter",
+      href: "https://twitter.com/OnMyWayDrives",
     },
     {
       id: 3,
       icon: LinkedIn,
       title: "LinkedIn",
+      href: "https://www.linkedin.com/company/onmywaycash/about/",
     },
     {
       id: 4,
       icon: Instagram,
       title: "Instagram",
+      href: "https://www.instagram.com/onmywaydrives/",
     },
     {
       id: 5,
       icon: Youtube,
       title: "Youtube",
+      href: "https://www.youtube.com/channel/UCTj-r7jknd9cYBliuJgBOIg?app=desktop",
     },
   ];
   const resourceList = [
@@ -69,9 +74,14 @@ const Footer = () => {
               {list?.map((item, index) => (
                 <div className={"flex flex-row gap-4 items-center"} key={index}>
                   <img src={item.icon} alt={item.title} />
-                  <span className={"sm:text-sm text-xs font-medium"}>
+                  <a
+                    href={item.href}
+                    className={
+                      "sm:text-sm text-xs font-medium border-b border-transparent hover:border-b hover:border-white"
+                    }
+                  >
                     {item.title}
-                  </span>
+                  </a>
                 </div>
               ))}
             </div>
@@ -134,7 +144,17 @@ const Footer = () => {
         >
           © OnMyWay 2024. All Rights Reserved{" "}
           <span className={"text-[#EFF2FF]"}>
-            | Terms of Use | Privacy Policy
+            {" "}
+            |{" "}
+            <a
+              href={"https://onmyway.com/terms.html"}
+              className={
+                "border-b border-transparent hover:border-b hover:border-white"
+              }
+            >
+              Terms of Use
+            </a>{" "}
+            | Privacy Policy
           </span>
         </span>
       </Container>

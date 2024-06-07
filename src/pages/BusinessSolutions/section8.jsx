@@ -6,7 +6,7 @@ const Section8 = () => {
     <div className={"w-full flex flex-col gap-4 py-8"}>
       <Container
         className={
-          "text-center text-2xl sm:text-3xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%] "
+          "text-center text-[26px] sm:text-3xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%] "
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">
@@ -28,19 +28,19 @@ const Section8 = () => {
           >
             <div
               className={
-                "w-full flex flex-col gap-4 justify-center items-center"
+                "w-full flex flex-col sm:gap-[37px] gap-[10px] justify-center items-center"
               }
             >
               <span
                 className={
-                  "text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold"
+                  "text-[10px] sm:text-xl md:text-2xl lg:text-[34px] font-bold"
                 }
               >
                 Number of Employees Protected
               </span>
               <div
                 className={
-                  "flex md:flex-row flex-col items-center md:gap-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black"
+                  "flex md:flex-row flex-col items-center md:gap-4 text-[28px] sm:text-5xl md:text-6xl lg:text-[73px] font-black"
                 }
               >
                 <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap">
@@ -52,7 +52,7 @@ const Section8 = () => {
               </div>
               <span
                 className={
-                  "font-bold text-xs sm:text-lg md:text-xl lg:text-[22px]"
+                  "font-bold text-[10px] sm:text-lg md:text-xl lg:text-[22px]"
                 }
               >
                 Employees Can Be Located Anywhere
@@ -65,22 +65,22 @@ const Section8 = () => {
             />
             <div
               className={
-                "w-full flex flex-col gap-4 justify-center items-center"
+                "w-full flex flex-col sm:gap-[37px] gap-[10px]justify-center items-center"
               }
             >
               <span
                 className={
-                  "text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold"
+                  "text-[12px] sm:text-xl md:text-2xl lg:text-[34px] font-bold"
                 }
               >
                 Monthly Pricing
               </span>
-              <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-5xl sm:text-6xl md:text-9xl lg:text-[114px] font-black">
+              <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-[42px] sm:text-6xl md:text-9xl lg:text-[140px] font-black">
                 $300,000
               </span>
               <span
                 className={
-                  "font-bold text-xs sm:text-lg md:text-xl lg:text-[22px]"
+                  "font-bold text-[10px] sm:text-lg md:text-xl lg:text-[22px]"
                 }
               >
                 12 Month Term

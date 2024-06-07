@@ -293,7 +293,7 @@ const Section9 = () => {
           />
           <div
             className={
-              "grid md:grid-cols-2 grid-cols-1 md:gap-[36px] gap-[18px]"
+              "grid grid-cols-2 md:gap-[36px] gap-[18px]"
             }
           >
             <TextField
@@ -315,7 +315,7 @@ const Section9 = () => {
               placeholder={"Signature"}
               required={true}
               border={false}
-              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] text-xl leading-[2.8rem] focus:outline-none font-homemade-apple`}
+              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple`}
             />
             <TextField
               label={"Date"}
@@ -327,7 +327,7 @@ const Section9 = () => {
           </div>
           <div
             className={
-              "w-full flex md:flex-row flex-col gap-2 justify-center items-center font-semibold text-sm sm:text-base md:text-lg lg:text-xl"
+              "w-full flex md:flex-row flex-col gap-2 justify-center items-center font-semibold text-[10px] sm:text-base md:text-lg lg:text-xl"
             }
           >
             <div>By signing above, I agree to our</div>
@@ -339,7 +339,7 @@ const Section9 = () => {
           </div>
           <button
             className={
-              "w-full uppercase bg-primary p-3 text-xs md:text-sm  lg:text-lg rounded-md"
+              "w-full uppercase bg-primary p-3 text-xs md:text-sm  lg:text-[22px] rounded-md"
             }
           >
             submit signature and payment

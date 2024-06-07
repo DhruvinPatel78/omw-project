@@ -3,11 +3,11 @@ import CardWithBorder from "../../components/CardWithBorder";
 
 const Section6 = () => {
   return (
-    <div className={"w-full flex flex-col gap-4 py-8"}>
-      <Container className={"flex flex-col gap-4"}>
+    <div className={"w-full flex flex-col sm:gap-[60px] gap-[20px] py-8"}>
+      <Container className={"flex flex-col sm:gap-[32px] gap-[8px]"}>
         <div
           className={
-            "text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%]"
+            "text-center text-[26px] sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold !leading-[100%]"
           }
         >
           <span className="bg-millionText bg-clip-text text-transparent">
@@ -29,12 +29,12 @@ const Section6 = () => {
         <Container className="flex items-center justify-center bg-[#0A0E14CC]">
           <CardWithBorder
             className={
-              "sm:py-10 py-6 px-4 flex flex-col gap-[19px] justify-center items-center"
+              "sm:py-[42px] py-[18px] px-4 flex flex-col gap-[19px] justify-center items-center"
             }
           >
             <span
               className={
-                "text-sm sm:text-base md:text-lg lg:text-xl max-w-[810px] font-semibold text-center"
+                "text-[10px] sm:text-base md:text-lg lg:text-[20px] max-w-[810px] font-semibold text-center"
               }
             >
               We provide and manage a zero-tolerance distracted driving policy
@@ -51,7 +51,7 @@ const Section6 = () => {
               >
                 For as low as
               </span>
-              <span className="bg-cardBorder bg-clip-text text-transparent text-7xl sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">
+              <span className="bg-cardBorder bg-clip-text text-transparent text-[80px] sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">
                 $10
               </span>
               <span
@@ -64,7 +64,7 @@ const Section6 = () => {
             </div>
             <span
               className={
-                "text-sm sm:text-base md:text-lg lg:text-xl max-w-[740px] font-semibold text-center"
+                "text-[10px] sm:text-base md:text-lg lg:text-xl max-w-[740px] font-semibold text-center"
               }
             >
               Every employee receives personalized account with Archie Voice AI,{" "}
