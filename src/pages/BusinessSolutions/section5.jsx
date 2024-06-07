@@ -3,7 +3,7 @@ import Section2 from "../MobileApp/section2";
 
 const Section5 = () => {
   return (
-    <div className={"w-full flex flex-col gap-4 py-8"}>
+    <div className={"w-full flex flex-col gap-4 py-4"}>
       <Container
         className={
           "text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary font-extrabold !leading-[100%] "

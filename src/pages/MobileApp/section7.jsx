@@ -4,10 +4,10 @@ import Iphone from "../../images/MobileAPP/section7Iphone.png";
 import CardWithBorder from "../../components/CardWithBorder";
 const Section7 = () => {
   return (
-    <div className={"w-full flex flex-col gap-4 py-16"}>
+    <div className={"w-full flex flex-col gap-4 sm:py-16 py-8"}>
       <div
         className={
-          "max-w-1200 mx-auto p-4 w-full text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold"
+          "max-w-1200 mx-auto p-4 w-full text-center text-[28px] sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold"
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">

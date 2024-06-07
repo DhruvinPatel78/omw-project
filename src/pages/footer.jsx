@@ -58,35 +58,37 @@ const Footer = () => {
         <div className={"border-b border-secondary"}></div>
         <div
           className={
-            "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center py-10 justify-center"
+            "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[30px] place-items-center py-10 justify-center"
           }
         >
-          <div className={"w-full h-full flex flex-col gap-4"}>
-            <span className={"text-lg font-bold uppercase"}>
+          <div className={"w-full h-full flex flex-col gap-[20px]"}>
+            <span className={"sm:text-lg text-sm font-bold uppercase"}>
               STAY CONNECTED
             </span>
             <div className={"flex flex-col gap-2"}>
               {list?.map((item, index) => (
                 <div className={"flex flex-row gap-4 items-center"} key={index}>
                   <img src={item.icon} alt={item.title} />
-                  <span className={"text-sm font-medium"}>{item.title}</span>
+                  <span className={"sm:text-sm text-xs font-medium"}>
+                    {item.title}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-          <div className={"w-full h-full flex flex-col gap-4"}>
-            <span className={"text-lg font-bold uppercase"}>
+          <div className={"w-full h-full flex flex-col gap-[20px]"}>
+            <span className={"sm:text-lg text-sm font-bold uppercase"}>
               Business Solutions
             </span>
             <div className={"flex flex-row gap-4 items-center"}>
               <div className={"w-[10px] h-[10px] rounded-full bg-primary"} />
-              <span className={"text-sm font-medium"}>
+              <span className={"sm:text-sm text-xs font-medium"}>
                 Businesses / Organizations / Schools
               </span>
             </div>
           </div>
-          <div className={"w-full h-full flex flex-col gap-4"}>
-            <span className={"text-lg font-bold uppercase"}>
+          <div className={"w-full h-full flex flex-col gap-[20px]"}>
+            <span className={"sm:text-lg text-sm font-bold uppercase"}>
               Business Solutions
             </span>
             <div className={"flex flex-col gap-2"}>
@@ -95,29 +97,41 @@ const Footer = () => {
                   <div
                     className={"w-[10px] h-[10px] rounded-full bg-primary"}
                   />
-                  <span className={"text-sm font-medium"}>{item.title}</span>
+                  <span className={"sm:text-sm text-xs font-medium"}>
+                    {item.title}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-          <div className={"w-full h-full flex flex-col gap-4  items-start"}>
+          <div className={"w-full h-full flex flex-col gap-[20px] items-start"}>
             <img src={Logo} alt="Logo" className={"h-[30px]"} />
-            <div className={"flex flex-col gap-[10px]"}>
-              <span className={"font-bold text-sm"}>OnMyWay Headquarters</span>
-              <span className={"sm:w-[150px] w-full text-sm font-medium"}>
+            <div className={"flex flex-col sm:gap-[10px] gap-[7px]"}>
+              <span className={"font-bold sm:text-sm text-xs"}>
+                OnMyWay Headquarters
+              </span>
+              <span
+                className={"sm:w-[150px] w-full sm:text-sm text-xs font-medium"}
+              >
                 174 Meeting Street Suite 300-1061 Charleston, SC 29401
               </span>
             </div>
             <div className={"flex flex-row gap-4 items-center"}>
               <div className={"w-[10px] h-[10px] rounded-full bg-primary"} />
-              <span className={"text-sm font-medium"}>Contact OnMyWay</span>
+              <span className={"sm:text-sm text-xs font-medium"}>
+                Contact OnMyWay
+              </span>
             </div>
           </div>
         </div>
       </Container>
       <div className={"border-b border-secondary"}></div>
       <Container className={"text-center p-6 px-4"}>
-        <span className={" flex sm:flex-row flex-col justify-center text-xs font-medium text-[#B0B0C1]"}>
+        <span
+          className={
+            " flex sm:flex-row flex-col justify-center sm:text-xs text-[10px] font-medium text-[#B0B0C1]"
+          }
+        >
           © OnMyWay 2024. All Rights Reserved{" "}
           <span className={"text-[#EFF2FF]"}>
             | Terms of Use | Privacy Policy

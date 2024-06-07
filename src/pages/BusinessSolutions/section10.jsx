@@ -43,31 +43,31 @@ const Section10 = () => {
           <TextField
             label={"Your Name"}
             placeholder={"Enter your name"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
           />
           <TextField
             label={"Company Name"}
             placeholder={"Enter Your Common Name"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
           />
           <TextField
             label={"Company Email"}
             placeholder={"Enter Your Company Email"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
           />
           <TextField
             label={"Phone Number"}
             placeholder={"Enter Your Company Email"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
           />
           <DropDown
             label={"Contact Preference"}
             placeholder={"Select Your Contact Preference"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
             options={[
               { value: "Phone Call", label: "Phone Call" },
@@ -77,7 +77,7 @@ const Section10 = () => {
           <DropDown
             label={"Employees"}
             placeholder={"Number Of Employees"}
-            className={"bg-[#0B0E16]"}
+            className={"!bg-[#0B0E16]"}
             border={false}
             options={[
               { value: "Phone Call", label: "Phone Call" },

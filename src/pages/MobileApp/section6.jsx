@@ -71,10 +71,10 @@ const Section6 = () => {
     },
   ];
   return (
-    <div className={"w-full flex flex-col gap-4"}>
+    <div className={"w-full flex flex-col sm:gap-[50px] gap-[24px]"}>
       <Container
         className={
-          "text-center text-4xl sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold"
+          "text-center text-[28px] sm:text-5xl md:text-6xl lg:text-70 text-primary font-extrabold py-0"
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">
@@ -91,7 +91,7 @@ const Section6 = () => {
         <Container className="flex items-center justify-center bg-[#0a0e14cc]">
           <CardWithBorder
             className={
-              "sm:p-16 p-7 px-4 flex flex-col gap-8 justify-center items-center"
+              "sm:p-16 p-7 px-4 flex flex-col sm:gap-8 gap-4 justify-center items-center"
             }
           >
             <div
@@ -182,7 +182,7 @@ const Section6 = () => {
             </div>
             <div
               className={
-                "text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white sm:text-left text-center"
+                "text-[16px] sm:text-2xl md:text-3xl lg:text-[37px] font-bold text-white sm:text-left text-center"
               }
             >
               <span className={"text-primary"}>Rewards, Not Punishment</span> -

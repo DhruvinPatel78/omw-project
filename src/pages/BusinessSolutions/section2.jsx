@@ -3,10 +3,10 @@ import Section4 from "../MobileApp/section4";
 
 const Section2 = () => {
   return (
-    <div className={"w-full flex flex-col gap-4 py-8"}>
+    <div className={"w-full flex flex-col gap-4 sm:py-[50px] py-[30px]]"}>
       <Container
         className={
-          "text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-primary font-extrabold !leading-[100%] flex flex-col gap-2"
+          "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[48px] text-primary font-extrabold !leading-[100%] flex flex-col sm:gap-[18px] gap-[9px]"
         }
       >
         Distracted Driving Is
@@ -14,7 +14,7 @@ const Section2 = () => {
           The #1 Cause Of Employee Deaths Globally
         </span>
         <span
-          className={"text-base sm:text-lg md:text-xl lg:text-2xl font-normal"}
+          className={"text-xs sm:text-lg md:text-xl lg:text-[24px] font-normal"}
         >
           According To OSHA
         </span>

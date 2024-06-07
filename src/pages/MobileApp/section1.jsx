@@ -33,7 +33,7 @@ const Selection1 = () => {
     },
   ];
   return (
-    <Container className={"flex flex-col sm:gap-20 gap-[30px] sm:py-[80px] py-[30px]"}>
+    <Container className={"flex flex-col sm:gap-20 gap-[30px] sm:py-[70px] py-[30px]"}>
       <div className={"flex flex-col justify-center items-center sm:gap-[24px] gap-[10px] h-full"}>
         <span
           className={"font-bold text-xs sm:text-base md:text-xl lg:text-[28px]"}

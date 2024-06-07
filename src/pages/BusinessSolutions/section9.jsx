@@ -38,7 +38,7 @@ const Section9 = () => {
               />
               <label
                 htmlFor="bankPay"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:bg-gray-700 peer-checked:border-primary peer-checked:border-2"
+                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
               >
                 <div
                   className={
@@ -84,7 +84,7 @@ const Section9 = () => {
               />
               <label
                 htmlFor="paymentCard"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:bg-gray-700 peer-checked:border-primary peer-checked:border-2"
+                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
               >
                 <div
                   className={
@@ -94,7 +94,7 @@ const Section9 = () => {
                   <div className={"flex justify-end w-full"}>
                     <img
                       src={
-                        paymentOptSelect === "bankPay"
+                        paymentOptSelect === "paymentCard"
                           ? radioCheck
                           : radioUncheck
                       }
@@ -145,14 +145,14 @@ const Section9 = () => {
               placeholder={"Enter Your Name"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
             <TextField
               label={"Last Name"}
               placeholder={"Enter Your Name"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
           </div>
           <span
@@ -172,14 +172,14 @@ const Section9 = () => {
               placeholder={"4111 1111 1111 1111"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
             <TextField
               label={"Expiration Date"}
               placeholder={"select Date"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
               type={"date"}
             />{" "}
             <TextField
@@ -187,7 +187,7 @@ const Section9 = () => {
               placeholder={"3 or 4 Digit Code"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
           </div>
           <div
@@ -206,7 +206,7 @@ const Section9 = () => {
               />
               <label
                 htmlFor="monthlyPay"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:bg-gray-700 peer-checked:border-primary peer-checked:border-2"
+                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
               >
                 <div className={"w-full"}>
                   <div className={"w-full flex justify-end"}>
@@ -245,7 +245,7 @@ const Section9 = () => {
               />
               <label
                 htmlFor="fullPayment"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:bg-gray-700 peer-checked:border-primary peer-checked:border-2"
+                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
               >
                 <div className={"w-full"}>
                   <div className={"w-full flex justify-end"}>
@@ -289,7 +289,7 @@ const Section9 = () => {
             placeholder={"Enter your Company"}
             required={true}
             border={false}
-            className={"bg-[#18212E]"}
+            className={"!bg-[#18212E]"}
           />
           <div
             className={
@@ -301,28 +301,28 @@ const Section9 = () => {
               placeholder={"Enter your First Name"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
             <TextField
               label={"Signer Last Name"}
               placeholder={"Enter your Last Name"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
             <TextField
               label={"Signature"}
               placeholder={"Signature"}
               required={true}
               border={false}
-              className={`appearance-none block  bg-[#18212E] text-center text-primary placeholder:text-primary text-xl leading-[2.8rem] focus:outline-none font-homemade-apple`}
+              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] text-xl leading-[2.8rem] focus:outline-none font-homemade-apple`}
             />
             <TextField
               label={"Date"}
               placeholder={"Select Date"}
               required={true}
               border={false}
-              className={"bg-[#18212E]"}
+              className={"!bg-[#18212E]"}
             />
           </div>
           <div
@@ -332,14 +332,14 @@ const Section9 = () => {
           >
             <div>By signing above, I agree to our</div>
             <div className={"text-primary"}>
-              <span href={"#"} className={"border-b border-solid border-primary"}>
+              <span className={"border-b border-solid border-primary"}>
                 Terms and Conditions
               </span>
             </div>
           </div>
           <button
             className={
-              "w-full uppercase bg-primary p-3 text-xs md:text-sm md:text-base lg:text-lg rounded-md"
+              "w-full uppercase bg-primary p-3 text-xs md:text-sm  lg:text-lg rounded-md"
             }
           >
             submit signature and payment

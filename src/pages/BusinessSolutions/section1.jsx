@@ -5,7 +5,7 @@ import B3Iphone from "../../images/BusinsessSolution/b3.png";
 import B4Iphone from "../../images/BusinsessSolution/b4.png";
 const Section1 = () => {
   return (
-    <div className={"w-full flex flex-col gap-4 sm:py-12 py-8"}>
+    <div className={"w-full flex flex-col sm:gap-[40px] gap-[32px] sm:py-[60px] py-[30px]"}>
       <Container
         className={
           "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[140%]"
@@ -32,7 +32,7 @@ const Section1 = () => {
       </div>
       <div
         className={
-          "max-w-1200 mx-auto p-4 w-full text-center text-base sm:text-lg md:text-xl lg:text-2xl font-bold"
+          "max-w-1200 mx-auto p-4 w-full text-center text-xs sm:text-lg md:text-xl lg:text-[22px] font-bold"
         }
       >
         Prevent Distracted Driving Crashes and Boost Productivity Safely. Your

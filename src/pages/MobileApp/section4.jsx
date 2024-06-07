@@ -12,7 +12,7 @@ const Section4 = () => {
       <Container className="flex items-center justify-center bg-[#0a0e14cc]">
         <CardWithBorder
           className={
-            "py-14 px-4 flex flex-col gap-3 justify-center items-center"
+            "sm:py-[90px] py-[20px] px-4 flex flex-col sm:gap-[50px] gap-[18px] justify-center items-center"
           }
         >
           <span className={"font-bold sm:text-xl md:text-2xl lg:text-[26px]"}>
