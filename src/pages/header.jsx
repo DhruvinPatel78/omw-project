@@ -1,7 +1,9 @@
 import logo from "../images/omwLogo.svg";
 import Tab from "../components/Tab";
 import Container from "../components/Container";
+import { useNavigate } from "react-router-dom";
 const Header = ({ setSelectedTab, selectedTab }) => {
+  const navigate = useNavigate();
   const tabList = [
     {
       id: 1,
@@ -29,8 +31,9 @@ const Header = ({ setSelectedTab, selectedTab }) => {
       >
         <img
           src={logo}
-          className="md:absolute relative md:left-4 left-0 md:bottom-[20px] bottom-0"
+          className="md:absolute relative md:left-4 left-0 md:bottom-[20px] bottom-0 cursor-pointer"
           alt="omw-project"
+          onClick={() => navigate("/")}
         />
         {selectedTab === 1 && (
           <button

@@ -291,11 +291,7 @@ const Section9 = () => {
             border={false}
             className={"!bg-[#18212E]"}
           />
-          <div
-            className={
-              "grid grid-cols-2 md:gap-[36px] gap-[18px]"
-            }
-          >
+          <div className={"grid grid-cols-2 md:gap-[36px] gap-[18px]"}>
             <TextField
               label={"Signer First Name"}
               placeholder={"Enter your First Name"}
@@ -315,7 +311,7 @@ const Section9 = () => {
               placeholder={"Signature"}
               required={true}
               border={false}
-              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple`}
+              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple !py-0 !leading-[56px]`}
             />
             <TextField
               label={"Date"}

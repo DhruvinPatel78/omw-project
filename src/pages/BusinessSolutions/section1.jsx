@@ -3,9 +3,15 @@ import B1Iphone from "../../images/BusinsessSolution/b1.png";
 import B2Iphone from "../../images/BusinsessSolution/b2.png";
 import B3Iphone from "../../images/BusinsessSolution/b3.png";
 import B4Iphone from "../../images/BusinsessSolution/b4.png";
+import BGLeft from "../../images/BusinsessSolution/left.png";
+import BGRight from "../../images/BusinsessSolution/right.png";
 const Section1 = () => {
   return (
-    <div className={"w-full flex flex-col sm:gap-[40px] gap-[32px] sm:py-[60px] py-[30px]"}>
+    <div
+      className={
+        "w-full flex flex-col sm:gap-[40px] gap-[32px] sm:py-[60px] py-[30px]"
+      }
+    >
       <Container
         className={
           "text-center text-[26px] sm:text-3xl md:text-4xl lg:text-[45px] text-primary font-extrabold !leading-[140%]"
@@ -17,7 +23,10 @@ const Section1 = () => {
         and Get Your Employees Home Safe Tonight with OnMyWay
       </Container>
       <div
-        className={`h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover bg-none sm:bg-sectionBG`}
+        className={`h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover`}
+        style={{
+          background: `url(${BGLeft}) left no-repeat, url(${BGRight}) right no-repeat`,
+        }}
       >
         <Container
           className={

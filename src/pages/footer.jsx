@@ -43,18 +43,22 @@ const Footer = () => {
     {
       id: 1,
       title: "Press / Media Kit",
+      href: "/mediaKit",
     },
     {
       id: 2,
       title: "Careers",
+      href: "/",
     },
     {
       id: 3,
       title: "OnMyWay Foundation 501(c)3",
+      href: "/",
     },
     {
       id: 4,
       title: "Support",
+      href: "/",
     },
   ];
   return (
@@ -107,9 +111,12 @@ const Footer = () => {
                   <div
                     className={"w-[10px] h-[10px] rounded-full bg-primary"}
                   />
-                  <span className={"sm:text-sm text-xs font-medium"}>
+                  <a
+                    href={item?.href}
+                    className={"sm:text-sm text-xs font-medium"}
+                  >
                     {item.title}
-                  </span>
+                  </a>
                 </div>
               ))}
             </div>
