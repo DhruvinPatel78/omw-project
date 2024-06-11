@@ -311,7 +311,7 @@ const Section9 = () => {
               placeholder={"Signature"}
               required={true}
               border={false}
-              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple !py-0 !leading-[56px]`}
+              className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple !py-0 sm:!leading-[56px] !leading-[32px]`}
             />
             <TextField
               label={"Date"}

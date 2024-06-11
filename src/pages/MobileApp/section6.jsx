@@ -1,75 +1,9 @@
 import Section6BG from "../../images/MobileAPP/section6BG.png";
 import Container from "../../components/Container";
-import HotelGiftCard from "../../images/MobileAPP/hotel_gift_card.png";
 import Iphone from "../../images/MobileAPP/section6Iphone.png";
-import Airfare from "../../images/MobileAPP/RoundtripAirfareHotel.png";
-import NightCruise from "../../images/MobileAPP/NightCruise.png";
-import LuxuryResort from "../../images/MobileAPP/luxuryresort.png";
-import StayGetaway from "../../images/MobileAPP/staygetaway.png";
-import Rent from "../../images/MobileAPP/rentRoom.png";
 import CardWithBorder from "../../components/CardWithBorder";
+import { theoryList } from "../constant";
 const Section6 = () => {
-  const theoryList = [
-    {
-      id: 1,
-      img: HotelGiftCard,
-      title: "$100 Hotel Gift Card",
-      description: "Over 400,000 hotels and Resorts worldwide.",
-      subTitle: "$500 OnMyWay Dollars",
-      subDescription: "24 Months To Travel",
-      isCenter: false,
-    },
-    {
-      id: 2,
-      img: Airfare,
-      title: "Roundtrip Airfare & Hotel!",
-      description: "Over 20 Destinations In The USA, 2 People",
-      subTitle: "$5000 OnMyWay Dollars",
-      subDescription: "24 Months To Travel",
-      isCenter: false,
-    },
-    {
-      id: 3,
-      img: NightCruise,
-      title: "5 Day / 4 Night Cruise",
-      description: "Carnival Cruise Lines, Royal Caribbean, No...",
-      subTitle: "$4500 OnMyWay Dollars",
-      subDescription: "24 Months To Travel",
-      isCenter: false,
-    },
-    {
-      id: 4,
-      img: Iphone,
-      isCenter: true,
-    },
-    {
-      id: 5,
-      img: LuxuryResort,
-      title: "7 nights luxury resort getaway 3500+ locations",
-      description: null,
-      subTitle: "$10,000 OnMyWay Dollars",
-      subDescription: "12 Months To Resort",
-      isCenter: false,
-    },
-    {
-      id: 6,
-      img: StayGetaway,
-      title: "4 night hotel stay getaway",
-      description: null,
-      subTitle: "$3125 OnMyWay Dollars",
-      subDescription: "24 Months To Resort",
-      isCenter: false,
-    },
-    {
-      id: 7,
-      img: Rent,
-      title: "$500 Hotel Gift Card",
-      description: "Over 400,000 hotels and Resorts worldwide.",
-      subTitle: "$2500 OnMyWay Dollars",
-      subDescription: "24 Months To Travel",
-      isCenter: false,
-    },
-  ];
   return (
     <div className={"w-full flex flex-col sm:gap-[50px] gap-[24px]"}>
       <Container

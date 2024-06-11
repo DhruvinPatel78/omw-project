@@ -1,41 +1,10 @@
 import Container from "../../components/Container";
-import logo from "../../images/MediaKit/logo1.svg";
-import logo2 from "../../images/MediaKit/logo2.svg";
-import logo3 from "../../images/MediaKit/logo3.svg";
-import logo4 from "../../images/MediaKit/logo4.svg";
-import logo5 from "../../images/MediaKit/logo5.svg";
-import logo6 from "../../images/MediaKit/logo6.svg";
+import { logoList } from "../constant";
 const Section2 = () => {
-  const logoList = [
-    {
-      id: 1,
-      logo: logo,
-    },
-    {
-      id: 2,
-      logo: logo2,
-    },
-    {
-      id: 3,
-      logo: logo3,
-    },
-    {
-      id: 4,
-      logo: logo4,
-    },
-    {
-      id: 5,
-      logo: logo5,
-    },
-    {
-      id: 6,
-      logo: logo6,
-    },
-  ];
   return (
     <Container
       className={
-        "flex flex-col sm:gap-[80px] gap-[20px] sm:py-[123px] py-[40px] justify-center items-center"
+        "flex flex-col sm:gap-[80px] gap-[20px] sm:py-[100px] py-[30px] justify-center items-center"
       }
     >
       <span

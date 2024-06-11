@@ -1,11 +1,13 @@
 import MobileApp from "../MobileApp";
 import BusinessSolutions from "../BusinessSolutions";
+import ActionHero from "../ActionHero";
 
 const Dashboard = ({ selectedTab, }) => {
   return (
     <>
-      {selectedTab === 0 && <MobileApp />}
-      {selectedTab === 1 && <BusinessSolutions />}
+      {selectedTab === "mobileApp" && <MobileApp />}
+      {selectedTab === "businessSolutions" && <BusinessSolutions />}
+      {selectedTab === "merch" && <ActionHero />}
     </>
   );
 };

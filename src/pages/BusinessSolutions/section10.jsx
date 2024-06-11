@@ -85,7 +85,13 @@ const Section10 = () => {
             ]}
           />
         </div>
-        <button className={"bg-primary sm:p-[19px] p-[10px] sm:rounded-xl rounded-[6px] sm:w-[390px] w-full uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px]"}>Submit</button>
+        <button
+          className={
+            "bg-primary sm:p-[19px] p-[10px] sm:rounded-xl rounded-[6px] sm:w-[390px] w-full uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px]"
+          }
+        >
+          Submit
+        </button>
       </div>
     </Container>
   );

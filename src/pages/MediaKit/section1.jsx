@@ -4,7 +4,7 @@ const Section1 = () => {
   return (
     <Container
       className={
-        "flex flex-col sm:gap-[24px] gap-[15px] sm:py-[123px] py-[40px] justify-center items-center"
+        "flex flex-col sm:gap-[24px] gap-[15px] sm:py-[100px] py-[40px] justify-center items-center"
       }
     >
       <span

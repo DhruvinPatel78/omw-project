@@ -1,40 +1,15 @@
 import Container from "../../components/Container";
-import CashPrize from "../../images/MobileAPP/cashPrizes.png";
-import LuxuryPrize from "../../images/MobileAPP/luxuryPrize.png";
-import TuitionPrize from "../../images/MobileAPP/tuitionPrize.png";
-import LuxuryReward from "../../images/MobileAPP/luxuryReward.png";
-import TravelReward from "../../images/MobileAPP/travelReward.png";
+import { prizeList } from "../constant";
 const Selection1 = () => {
-  const prizeList = [
-    {
-      title: "Cash Prizes",
-      img: CashPrize,
-      id: 1,
-    },
-    {
-      title: "Luxury Prizes",
-      img: LuxuryPrize,
-      id: 2,
-    },
-    {
-      title: "Tuition+ Prizes",
-      img: TuitionPrize,
-      id: 3,
-    },
-    {
-      title: "Luxury Rewards",
-      img: LuxuryReward,
-      id: 4,
-    },
-    {
-      title: "Travel Rewards",
-      img: TravelReward,
-      id: 5,
-    },
-  ];
   return (
-    <Container className={"flex flex-col sm:gap-20 gap-[30px] sm:py-[70px] py-[30px]"}>
-      <div className={"flex flex-col justify-center items-center sm:gap-[24px] gap-[10px] h-full"}>
+    <Container
+      className={"flex flex-col sm:gap-20 gap-[30px] sm:py-[70px] py-[30px]"}
+    >
+      <div
+        className={
+          "flex flex-col justify-center items-center sm:gap-[24px] gap-[10px] h-full"
+        }
+      >
         <span
           className={"font-bold text-xs sm:text-base md:text-xl lg:text-[28px]"}
         >
@@ -64,8 +39,18 @@ const Selection1 = () => {
             }}
             key={`prize-${index}`}
           >
-            <div className={"bg-cardFooter p-5 sm:px-[18px] px-[12px] w-full rounded-md text-center"}>
-              <span className={"font-bold text-xs sm:text-lg md:text-xl lg:text-[22px]"}>{item.title}</span>
+            <div
+              className={
+                "bg-cardFooter p-5 sm:px-[18px] px-[12px] w-full rounded-md text-center"
+              }
+            >
+              <span
+                className={
+                  "font-bold text-xs sm:text-lg md:text-xl lg:text-[22px]"
+                }
+              >
+                {item.title}
+              </span>
             </div>
           </div>
         ))}

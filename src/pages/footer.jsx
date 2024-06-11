@@ -1,66 +1,8 @@
 import Container from "../components/Container";
-import Facebook from "../images/facebook.svg";
-import Instagram from "../images/instragram.svg";
-import Twitter from "../images/x.svg";
-import Youtube from "../images/yutube.svg";
-import LinkedIn from "../images/in.svg";
 import Logo from "../images/omwLogo.svg";
+import { resourceDummyList, socialMediaDummyList } from "./constant";
 
 const Footer = () => {
-  const list = [
-    {
-      id: 1,
-      icon: Facebook,
-      title: "Facebook",
-      href: "https://www.facebook.com/OnMyWayDrives/",
-    },
-    {
-      id: 2,
-      icon: Twitter,
-      title: "Twitter",
-      href: "https://twitter.com/OnMyWayDrives",
-    },
-    {
-      id: 3,
-      icon: LinkedIn,
-      title: "LinkedIn",
-      href: "https://www.linkedin.com/company/onmywaycash/about/",
-    },
-    {
-      id: 4,
-      icon: Instagram,
-      title: "Instagram",
-      href: "https://www.instagram.com/onmywaydrives/",
-    },
-    {
-      id: 5,
-      icon: Youtube,
-      title: "Youtube",
-      href: "https://www.youtube.com/channel/UCTj-r7jknd9cYBliuJgBOIg?app=desktop",
-    },
-  ];
-  const resourceList = [
-    {
-      id: 1,
-      title: "Press / Media Kit",
-      href: "/mediaKit",
-    },
-    {
-      id: 2,
-      title: "Careers",
-      href: "/",
-    },
-    {
-      id: 3,
-      title: "OnMyWay Foundation 501(c)3",
-      href: "/",
-    },
-    {
-      id: 4,
-      title: "Support",
-      href: "/",
-    },
-  ];
   return (
     <div className={"w-full"}>
       <Container>
@@ -75,7 +17,7 @@ const Footer = () => {
               STAY CONNECTED
             </span>
             <div className={"flex flex-col gap-2"}>
-              {list?.map((item, index) => (
+              {socialMediaDummyList?.map((item, index) => (
                 <div className={"flex flex-row gap-4 items-center"} key={index}>
                   <img src={item.icon} alt={item.title} />
                   <a
@@ -106,7 +48,7 @@ const Footer = () => {
               Business Solutions
             </span>
             <div className={"flex flex-col gap-2"}>
-              {resourceList?.map((item, index) => (
+              {resourceDummyList?.map((item, index) => (
                 <div className={"flex flex-row gap-4 items-center"} key={index}>
                   <div
                     className={"w-[10px] h-[10px] rounded-full bg-primary"}
