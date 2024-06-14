@@ -17,9 +17,11 @@ const ActionHero = () => {
           <img
             src={ActionHeroImg}
             className={"w-[160px] h-10 sm:w-[241px] sm:h-[60px]"}
+            alt={""}
           />
         </div>
       </div>
+        <div className={"bg-[#484450] w-full h-[1px] opacity-[0.7]"}></div>
       <Section1 />
     </div>
   );
