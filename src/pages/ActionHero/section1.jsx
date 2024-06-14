@@ -2,7 +2,9 @@ import Logo from "../../images/ActionHero/actionHeroTop.svg";
 import ActionHeroLogos from "../../images/ActionHero/actionHeroLogos.png";
 const Section1 = () => {
   return (
-    <div className={"bg-[#030303] flex flex-col items-center"}>
+    <div
+      className={"bg-[#030303] flex flex-col items-center overflow-x-hidden"}
+    >
       <div
         className={"h-screen flex flex-col gap-[32px] items-center w-full"}
         style={{

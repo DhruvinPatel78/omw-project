@@ -3,7 +3,7 @@ import Tab from "../components/Tab";
 import Container from "../components/Container";
 import { useNavigate } from "react-router-dom";
 import { tabDummyList } from "./constant";
-const Header = ({ setSelectedTab, selectedTab }) => {
+const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
   const navigate = useNavigate();
   return (
     <Container
@@ -28,6 +28,7 @@ const Header = ({ setSelectedTab, selectedTab }) => {
             className={
               "md:hidden flex bg-primary p-4 uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] absolute right-0 top-0"
             }
+            onClick={onContactClick}
           >
             Contact Sales
           </button>
