@@ -4,27 +4,27 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 
-const Layout = ({ selectedTab, setSelectedTab, children }) => {
+const Layout = ({ selectedTab, toggleTab, children }) => {
   const location = useLocation();
   const [show, setShow] = useState(false);
   useEffect(() => {
     if (location.pathname.split("=")[1]) {
-      setSelectedTab(location.pathname.split("=")[1]);
+      toggleTab(location.pathname.split("=")[1]);
     } else {
       if (location.state) {
-        setSelectedTab(location.state?.path);
+        toggleTab(location.state?.path);
       }
     }
   }, [location]);
-  console.log("location", location);
-  console.log("selectedTab", selectedTab, show);
+
+
   return (
     <div className="w-full overflow-hidden">
       <Modal show={show} toggle={() => setShow((prev) => !prev)} />
       <div className={"flex flex-row gap-2"}>
         <Header
           selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
+          setSelectedTab={toggleTab}
           onContactClick={() => setShow(true)}
         />
         {selectedTab === "businessSolutions" && (

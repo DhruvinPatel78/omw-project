@@ -31,7 +31,7 @@ const Section4 = () => {
         </div>
         <div className={"flex flex-row sm:gap-[49px] gap-[23px]"}>
           {socialMediaDummyList?.map((media) => (
-            <img src={media.icon} alt={media.name} />
+            <img src={media.icon} alt={media.name} key={`${media.title}-${media.id}`} />
           ))}
         </div>
       </CardWithBorder>
