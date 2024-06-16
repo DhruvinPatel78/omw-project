@@ -6,6 +6,23 @@ import DownArrow from "../../images/downArrow.png";
 import { IoIosArrowForward } from "react-icons/io";
 const Section1 = () => {
   const [show, setShow] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    preference: "phone_call",
+    employees: "1",
+  });
+
+  const onChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  const formSubmit = () => {
+    console.log(formData);
+    setShow(false);
+  };
   return (
     <div
       className={
@@ -170,7 +187,6 @@ const Section1 = () => {
           className={
             "fixed w-screen h-screen z-10 top-0 left-0 overflow-y-scroll bg-[#00000099] flex justify-center items-center backdrop-blur-[3px]"
           }
-          onClick={() => console.log("Hii")}
         >
           <div
             className={
@@ -204,10 +220,11 @@ const Section1 = () => {
             >
               60 Minute Call Back Guaranteed
             </p>
-            <div
+            <form
               className={
-                "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
+                "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px] z-[1]"
               }
+              onSubmit={formSubmit}
             >
               <div
                 className={
@@ -225,8 +242,11 @@ const Section1 = () => {
                   </label>
                   <input
                     id={"name"}
-                    className={`sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`text-white sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     placeholder={"Enter Your Name"}
+                    value={formData.name}
+                    onChange={onChange}
+                    required
                   />
                 </div>
                 <div className={"flex flex-col gap-4"}>
@@ -240,8 +260,11 @@ const Section1 = () => {
                   </label>
                   <input
                     id={"company"}
-                    className={`sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`text-white sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     placeholder={"Enter Your Company Name"}
+                    value={formData.company}
+                    onChange={onChange}
+                    required
                   />
                 </div>
                 <div className={"flex flex-col gap-4"}>
@@ -255,8 +278,11 @@ const Section1 = () => {
                   </label>
                   <input
                     id={"email"}
-                    className={`sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`text-white sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     placeholder={"Enter Your Company Email"}
+                    value={formData.email}
+                    onChange={onChange}
+                    required
                   />
                 </div>
                 <div className={"flex flex-col gap-4"}>
@@ -270,8 +296,12 @@ const Section1 = () => {
                   </label>
                   <input
                     id={"phone"}
-                    className={`sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`text-white sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     placeholder={"Enter Your Phone Number"}
+                    value={formData.phone}
+                    onChange={onChange}
+                    type={"tel"}
+                    required
                   />
                 </div>
                 <div className={"flex flex-col gap-4"}>
@@ -286,15 +316,16 @@ const Section1 = () => {
                   <select
                     name="preference"
                     id="preference"
-                    className={`bg-no-repeat appearance-none sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`bg-no-repeat appearance-none sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     style={{
                       backgroundImage: `url(${DownArrow})`,
                       backgroundSize: "1rem",
                       backgroundPosition: "right 0.7rem center",
                     }}
+                    onChange={onChange}
                   >
-                    <option value="Phone Call">Phone Call</option>
-                    <option value="Phone Call 1">Phone Call 1</option>
+                    <option value="phone_call">Phone Call</option>
+                    <option value="phone_call_1">Phone Call 1</option>
                   </select>
                 </div>
                 <div className={"flex flex-col gap-4"}>
@@ -309,12 +340,13 @@ const Section1 = () => {
                   <select
                     name="employees"
                     id="employees"
-                    className={`bg-no-repeat appearance-none sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-[#0B0E16]`}
+                    className={`bg-no-repeat appearance-none sm:rounded-[14px] rounded-[6px] sm:py-3.5 py-2 px-4 outline-0 text-[10px] sm:text-base md:text-lg lg:text-xl border border-solid border-[#CBCCD23D] bg-transparent`}
                     style={{
                       backgroundImage: `url(${DownArrow})`,
                       backgroundSize: "1rem",
                       backgroundPosition: "right 0.7rem center",
                     }}
+                    onChange={onChange}
                   >
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -326,15 +358,15 @@ const Section1 = () => {
               <div className={"w-full flex justify-center items-center"}>
                 <button
                   className={
-                    "w-full max-w-[254px] h-10 sm:h-[68px] rounded-xl mt-10 text-base sm:text-xl bg-gradient-to-b from-[#602DF0] to-[#321681] flex justify-center items-center gap-4"
+                    "text-white w-full max-w-[254px] h-10 sm:h-[68px] rounded-xl mt-10 text-base sm:text-xl bg-gradient-to-b from-[#602DF0] to-[#321681] flex justify-center items-center gap-4"
                   }
-                  onClick={() => setShow(false)}
+                  type={"submit"}
                 >
                   Submit{" "}
                   <IoIosArrowForward color={"white"} className={"text-xl"} />
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       ) : null}
