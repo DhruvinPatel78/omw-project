@@ -9,17 +9,35 @@ import Container from "../../components/Container";
 import TextField from "../../components/TextField";
 
 const Section9 = () => {
-  const [paymentSelect, setPaymentSelect] = useState("");
-  const [paymentOptSelect, setPaymentOptSelect] = useState("");
+  const [paymentSelect, setPaymentSelect] = useState("fullPayment");
+  const [paymentOptSelect, setPaymentOptSelect] = useState("paymentCard");
+  const [paymentDetail, setPaymentDetail] = useState({
+    firstName: "",
+    lastName: "",
+    cardNumber: "",
+    expirationDate: "",
+    cvvCode: "",
+    companyName: "",
+    signerFirstName: "",
+    signerLastName: "",
+    signature: "",
+    date: "",
+  });
   const payment = (e) => {
     setPaymentSelect(e.target.value);
   };
   const paymentOption = (e) => {
     setPaymentOptSelect(e.target.value);
   };
+  const paymentChangeHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setPaymentDetail((pre) => ({ ...pre, [name]: value }));
+  };
+
   return (
     <Container className="w-full flex bg-[#0a0e14cc]">
-      <div
+      <form
         className={
           "w-full flex md:flex-row flex-col sm:gap-[30px] gap-[24px] sm:p-8 p-4 border-solid border-2 border-[#5f6e8580] rounded-2xl"
         }
@@ -38,11 +56,15 @@ const Section9 = () => {
               />
               <label
                 htmlFor="bankPay"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
+                className={`inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 ${
+                  paymentOptSelect === "bankPay"
+                    ? "border-primary"
+                    : "border-[#5f6e8580]"
+                } sm:rounded-[16px] rounded-[5px] cursor-pointer`}
               >
                 <div
                   className={
-                    "w-full flex md:flex-col flex-col-reverse justify-between items-center h-full gap-2"
+                    "w-full flex md:flex-col flex-col-reverse justify-between items-center h-full sm:gap-2 gap-0"
                   }
                 >
                   <div className={"flex justify-end w-full"}>
@@ -58,10 +80,10 @@ const Section9 = () => {
                   </div>
                   <div
                     className={
-                      "gap-4 flex flex-col justify-between md:items-center items-start w-full h-full"
+                      "sm:gap-4 gap-2 flex flex-col justify-between md:items-center items-start w-full h-full"
                     }
                   >
-                    <div className="w-full font-bold text-[13px] md:text-center text-start">
+                    <div className="w-full font-bold sm:text-[13px] text-[10px] md:text-center text-start">
                       Request Bank Wire or ACH Payment Option
                     </div>
                     <img
@@ -84,11 +106,15 @@ const Section9 = () => {
               />
               <label
                 htmlFor="paymentCard"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
+                className={`inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 ${
+                  paymentOptSelect === "paymentCard"
+                    ? "border-primary"
+                    : "border-[#5f6e8580]"
+                }  sm:rounded-[16px] rounded-[5px] cursor-pointer`}
               >
                 <div
                   className={
-                    "w-full flex md:flex-col flex-col-reverse justify-between items-center h-full gap-2"
+                    "w-full flex md:flex-col flex-col-reverse justify-between items-center h-full sm:gap-2 gap-0"
                   }
                 >
                   <div className={"flex justify-end w-full"}>
@@ -104,10 +130,10 @@ const Section9 = () => {
                   </div>
                   <div
                     className={
-                      "gap-4 flex flex-col justify-between md:items-center items-start w-full h-full"
+                      "sm:gap-4 gap-2 flex flex-col justify-between md:items-center items-start w-full h-full"
                     }
                   >
-                    <div className="w-full font-bold text-[13px] md:text-center text-start">
+                    <div className="w-full font-bold sm:text-[13px] text-[10px] md:text-center text-start">
                       Credit card
                     </div>
                     <img
@@ -143,16 +169,22 @@ const Section9 = () => {
             <TextField
               label={"First Name"}
               placeholder={"Enter Your Name"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"firstName"}
+              value={paymentDetail?.firstName}
+              onChange={paymentChangeHandler}
             />
             <TextField
               label={"Last Name"}
               placeholder={"Enter Your Name"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"lastName"}
+              value={paymentDetail?.lastName}
+              onChange={paymentChangeHandler}
             />
           </div>
           <span
@@ -170,30 +202,39 @@ const Section9 = () => {
             <TextField
               label={"Card Number"}
               placeholder={"4111 1111 1111 1111"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              value={paymentDetail.cardNumber}
+              name={"cardNumber"}
+              onChange={paymentChangeHandler}
             />
             <TextField
               label={"Expiration Date"}
               placeholder={"select Date"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
               type={"date"}
-            />{" "}
+              name={"expirationDate"}
+              value={paymentDetail.expirationDate}
+              onChange={paymentChangeHandler}
+            />
             <TextField
               label={"Security Code / CVV"}
               placeholder={"3 or 4 Digit Code"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"cvvCode"}
+              value={paymentDetail.cvvCode}
+              onChange={paymentChangeHandler}
             />
           </div>
           <div
             className={"w-full border-b-2 border-[#5F6E85] border-dashed "}
           />
-          <ul className="grid w-full gap-6 md:grid-cols-2">
+          <ul className="grid w-full sm:gap-[27px] gap-[14px] md:grid-cols-2">
             <li>
               <input
                 type="radio"
@@ -206,7 +247,11 @@ const Section9 = () => {
               />
               <label
                 htmlFor="monthlyPay"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
+                className={`inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 ${
+                  paymentSelect === "monthlyPay"
+                    ? "border-primary"
+                    : "border-[#5f6e8580]"
+                } sm:rounded-[14px] rounded-[6px] cursor-pointer`}
               >
                 <div className={"w-full"}>
                   <div className={"w-full flex justify-end"}>
@@ -220,13 +265,13 @@ const Section9 = () => {
                       className={"h-[20px]"}
                     />
                   </div>
-                  <div className={" gap-4 flex items-center px-2 pb-4"}>
+                  <div className={"gap-4 flex items-center px-2 sm:pb-4 pb-2"}>
                     <img src={cardPaymentW} className={"h-[40px]"} alt={""} />
                     <div className="flex flex-col gap-[5px]">
-                      <div className="w-full font-bold text-sm sm:text-base md:text-lg lg:text-xl">
+                      <div className="w-full font-bold text-xs sm:text-base md:text-lg lg:text-xl">
                         Pay Monthly
                       </div>
-                      <div className="w-full text-primary font-bold text-sm sm:text-base md:text-lg lg:text-xl">
+                      <div className="w-full text-primary font-bold text-xs sm:text-base md:text-lg lg:text-xl">
                         $300,000
                       </div>
                     </div>
@@ -245,7 +290,11 @@ const Section9 = () => {
               />
               <label
                 htmlFor="fullPayment"
-                className="inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 border-[#5f6e8580] sm:rounded-[16px] rounded-[5px] cursor-pointer peer-checked:border-primary peer-checked:border-2"
+                className={`inline-flex items-center justify-between w-full h-full p-[15px] bg-transparent border-2 ${
+                  paymentSelect === "fullPayment"
+                    ? "border-primary"
+                    : "border-[#5f6e8580]"
+                } sm:rounded-[14px] rounded-[6px] cursor-pointer`}
               >
                 <div className={"w-full"}>
                   <div className={"w-full flex justify-end"}>
@@ -259,14 +308,18 @@ const Section9 = () => {
                       alt={""}
                     />
                   </div>
-                  <div className={"gap-4 flex items-center px-2 pb-4"}>
+                  <div className={"gap-4 flex items-center px-2 sm:pb-4 pb-2"}>
                     <img src={cardPaymentW} className={"h-[40px]"} alt={""} />
                     <div className="flex flex-col gap-[5px]">
-                      <div className="w-full font-bold text-sm sm:text-base md:text-lg lg:text-xl">
+                      <div className="w-full font-bold text-xs sm:text-base md:text-lg lg:text-xl">
                         One Pay - Full Payment
                       </div>
-                      <div className="w-full text-primary font-bold text-sm sm:text-base md:text-lg lg:text-xl">
-                        $600,000 . <span>10% Discount</span>
+                      <div className="w-full text-primary font-bold text-xs sm:text-base md:text-lg lg:text-xl">
+                        $3,240,000{" "}
+                        <span className={"text-xl text-[#5F6E85] text-center"}>
+                          .
+                        </span>{" "}
+                        <span>10% Discount</span>
                       </div>
                     </div>
                   </div>
@@ -287,38 +340,53 @@ const Section9 = () => {
           <TextField
             label={"Company Name"}
             placeholder={"Enter your Company"}
-            required={true}
+            required
             border={false}
             className={"!bg-[#18212E]"}
+            name={"companyName"}
+            value={paymentDetail?.companyName}
+            onChange={paymentChangeHandler}
           />
           <div className={"grid grid-cols-2 md:gap-[36px] gap-[18px]"}>
             <TextField
               label={"Signer First Name"}
               placeholder={"Enter your First Name"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"signerFirstName"}
+              value={paymentDetail?.signerFirstName}
+              onChange={paymentChangeHandler}
             />
             <TextField
               label={"Signer Last Name"}
               placeholder={"Enter your Last Name"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"signerLastName"}
+              value={paymentDetail?.signerLastName}
+              onChange={paymentChangeHandler}
             />
             <TextField
               label={"Signature"}
               placeholder={"Signature"}
-              required={true}
+              required
               border={false}
               className={`appearance-none block !bg-[#18212E] text-center text-primary placeholder:text-[#78bbff78] focus:outline-none font-homemade-apple !py-0 sm:!leading-[56px] !leading-[32px]`}
+              name={"signature"}
+              value={paymentDetail?.signature}
+              onChange={paymentChangeHandler}
             />
             <TextField
               label={"Date"}
               placeholder={"Select Date"}
-              required={true}
+              required
               border={false}
               className={"!bg-[#18212E]"}
+              name={"date"}
+              value={paymentDetail?.date}
+              onChange={paymentChangeHandler}
             />
           </div>
           <div
@@ -335,13 +403,13 @@ const Section9 = () => {
           </div>
           <button
             className={
-              "w-full uppercase bg-primary p-3 text-xs md:text-sm  lg:text-[22px] rounded-md"
+              "w-full uppercase bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
             }
           >
             submit signature and payment
           </button>
         </div>
-      </div>
+      </form>
     </Container>
   );
 };

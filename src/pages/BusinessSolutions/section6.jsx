@@ -26,7 +26,7 @@ const Section6 = () => {
       <div
         className={`h-full w-full bg-no-repeat bg-left flex justify-center items-center bg-cover bg-none sm:bg-sectionBG`}
       >
-        <Container className="flex items-center justify-center bg-[#0A0E14CC]">
+        <Container className="flex items-center justify-center">
           <CardWithBorder
             className={
               "sm:py-[42px] py-[18px] px-4 flex flex-col gap-[19px] justify-center items-center"

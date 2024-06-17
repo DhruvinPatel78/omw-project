@@ -28,21 +28,38 @@ import LinkedIn from "../images/in.svg";
 import Instagram from "../images/instragram.svg";
 import Youtube from "../images/yutube.svg";
 
+export const detectDevice = () => {
+  if (
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i)
+  ) {
+    return "android";
+  } else if (
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/Mac/i)
+  ) {
+    return "ios";
+  } else {
+    return "computer";
+  }
+};
 export const tabDummyList = [
   {
     id: 1,
     title: "Mobile App",
-    key:"mobileApp"
+    key: "mobileApp",
   },
   {
     id: 2,
     title: "Business Solutions",
-    key:"businessSolutions"
+    key: "businessSolutions",
   },
   {
     id: 3,
     title: "Merch",
-    key:"merch"
+    key: "merch",
   },
 ];
 export const socialMediaDummyList = [

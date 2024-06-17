@@ -9,7 +9,7 @@ const Section4 = () => {
       }
       style={{ backgroundImage: `url(${Section4BG})` }}
     >
-      <Container className="flex items-center justify-center bg-[#0a0e14cc]">
+      <Container className="flex items-center justify-center">
         <CardWithBorder
           className={
             "sm:py-[90px] py-[20px] px-4 flex flex-col sm:gap-[50px] gap-[18px] justify-center items-center"

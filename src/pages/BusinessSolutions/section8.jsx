@@ -20,7 +20,7 @@ const Section8 = () => {
         }
         style={{ backgroundImage: `url(${BG})` }}
       >
-        <Container className="flex items-center justify-center bg-[#0a0e14cc]">
+        <Container className="flex items-center justify-center">
           <CardWithBorder
             className={
               "sm:py-12 py-6 px-4 flex flex-col gap-8 justify-center items-center"
