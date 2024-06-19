@@ -1,6 +1,10 @@
 const TabPage = ({ tabList, selectedTab, setSelectedTab, navigate }) => {
   return (
-    <div className={"flex flex-row justify-center sm:self-auto self-center sm:w-auto w-full"}>
+    <div
+      className={
+        "flex flex-row justify-center sm:self-auto self-center sm:w-auto w-full"
+      }
+    >
       {tabList?.map((item, index) => {
         const lastIndex = tabList?.map((item, index) => index)[
           tabList.length - 1
@@ -20,8 +24,12 @@ const TabPage = ({ tabList, selectedTab, setSelectedTab, navigate }) => {
                }`}
             key={`tab_${index}`}
             onClick={() => {
-              setSelectedTab(item?.key);
-              navigate("", { state: { path: item?.key } });
+              if (item.key === "merch") {
+                window.location.href = "https://fc9921-2f.myshopify.com/";
+              } else {
+                setSelectedTab(item?.key);
+                navigate("", { state: { path: item?.key } });
+              }
             }}
           >
             {item.title}
