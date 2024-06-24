@@ -25,7 +25,7 @@ const TabPage = ({ tabList, selectedTab, setSelectedTab, navigate }) => {
             key={`tab_${index}`}
             onClick={() => {
               if (item.key === "merch") {
-                window.location.href = "https://fc9921-2f.myshopify.com/";
+                window.open("https://fc9921-2f.myshopify.com/", "_blank");
               } else {
                 setSelectedTab(item?.key);
                 navigate("", { state: { path: item?.key } });
