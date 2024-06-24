@@ -99,12 +99,13 @@ const Modal = ({ show, toggle }) => {
             />
             <DropDown
               label={"Contact Preference"}
-              placeholder={"Number Of Employees"}
+              // placeholder={"Number Of Employees"}
               className={"!bg-[#0B0E16]"}
               border={false}
               options={[
                 { value: "Phone Call", label: "Phone Call" },
-                { value: "Phone Call 1", label: "Phone Call" },
+                { value: "Text", label: "Text" },
+                { value: "Email", label: "Email" },
               ]}
               value={contactInfo.contactPreference}
               name={"contactPreference"}
@@ -117,11 +118,36 @@ const Modal = ({ show, toggle }) => {
               className={"!bg-[#0B0E16]"}
               border={false}
               options={[
-                { value: "1", label: "1" },
-                { value: "2", label: "2" },
-                { value: "3", label: "3" },
-                { value: "4", label: "4" },
-                { value: "5", label: "5" },
+                { value: "1-50", label: "1-50" },
+                { value: "51-100", label: "51-100" },
+                { value: "101-150", label: "101-150" },
+                { value: "151-200", label: "151-200" },
+                { value: "201-250", label: "201-250" },
+                { value: "251-300", label: "251-300" },
+                { value: "301-350", label: "301-350" },
+                { value: "351-400", label: "351-400" },
+                { value: "401-450", label: "401-450" },
+                { value: "451-500", label: "451-500" },
+                { value: "501-1000", label: "501-1000" },
+                { value: "1001-2000", label: "1001-2000" },
+                { value: "2001-3000", label: "2001-3000" },
+                { value: "3001-4000", label: "3001-4000" },
+                { value: "4001-5000", label: "4001-5000" },
+                { value: "5001-10000", label: "5001-10000" },
+                { value: "10001-15000", label: "10001-15000" },
+                { value: "20001-25000", label: "20001-25000" },
+                { value: "25001-30000", label: "25001-30000" },
+                { value: "30001-35000", label: "30001-35000" },
+                { value: "35001-40000", label: "35001-40000" },
+                { value: "40001-45000", label: "40001-45000" },
+                { value: "45001-50000", label: "45001-50000" },
+                { value: "50001-75000", label: "50001-75000" },
+                { value: "75001-100000", label: "75001-100000" },
+                { value: "100001-150000", label: "100001-150000" },
+                { value: "200001-300000", label: "200001-300000" },
+                { value: "300001-400000", label: "300001-400000" },
+                { value: "400001-500000", label: "400001-500000" },
+                { value: "500001-1000000", label: "500001-1000000" },
               ]}
               value={contactInfo.employees}
               name={"employees"}

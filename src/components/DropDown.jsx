@@ -36,9 +36,11 @@ const DropDown = ({
         onChange={onChange}
         required={required}
       >
-        <option value={""} className={"bg-white text-black hover:text-white"}>
-          {placeholder}
-        </option>
+        {placeholder && (
+          <option value={""} className={"bg-white text-black hover:text-white"}>
+            {placeholder}
+          </option>
+        )}
         {options?.map((item, index) => (
           <option
             value={item.value}
