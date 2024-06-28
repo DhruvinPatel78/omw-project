@@ -2,20 +2,37 @@ import { IoCloseOutline } from "react-icons/io5";
 import TextField from "./TextField";
 import DropDown from "./DropDown";
 import { useState } from "react";
-
+import axios from "axios";
+const initValue = {
+  name: "",
+  companyName: "",
+  companyEmail: "",
+  phoneNumber: "",
+  contactPreference: "",
+  employees: "",
+};
 const Modal = ({ show, toggle }) => {
-  const [contactInfo, setContactInfo] = useState({
-    name: "",
-    companyName: "",
-    companyEmail: "",
-    phoneNumber: "",
-    contactPreference: "",
-    employees: "",
-  });
+  const [contactInfo, setContactInfo] = useState(initValue);
   const contactChangeHandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setContactInfo((pre) => ({ ...pre, [name]: value }));
+  };
+  const formSubmit = async () => {
+    await axios
+      .post("https://be.devomw.com/omw/sales", contactInfo, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((data) => {
+        console.log("res", data);
+        toggle();
+        setContactInfo(initValue);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
   };
   return show ? (
     <div
@@ -46,11 +63,10 @@ const Modal = ({ show, toggle }) => {
         >
           60 Minute Call Back Guaranteed
         </p>
-        <form
+        <div
           className={
             "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
           }
-          onSubmit={toggle}
         >
           <div
             className={
@@ -160,11 +176,12 @@ const Modal = ({ show, toggle }) => {
               className={
                 "bg-[#0A84FF] w-full max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl mt-10 text-[12px] sm:text-[22px]"
               }
+              onClick={formSubmit}
             >
               SUBMIT
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   ) : null;
