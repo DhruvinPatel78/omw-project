@@ -131,9 +131,9 @@ const Modal = ({ show, toggle }) => {
               className={"!bg-[#0B0E16]"}
               border={false}
               options={[
-                { value: "Phone Call", label: "Phone Call" },
-                { value: "Text", label: "Text" },
-                { value: "Email", label: "Email" },
+                { value: "phone call", label: "Phone Call" },
+                { value: "text", label: "Text" },
+                { value: "email", label: "Email" },
               ]}
               value={contactInfo.contactPreference}
               name={"contactPreference"}
