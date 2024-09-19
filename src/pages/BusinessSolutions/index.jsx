@@ -32,8 +32,8 @@ const BusinessSolutions = () => {
       </div>
       <Section6 />
       <Section7 />
-      <Section8 />
-      <Section9 />
+      {/*<Section8 />*/}
+      {/*<Section9 />*/}
       {/*<Section10 />*/}
     </div>
   );

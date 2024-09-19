@@ -76,7 +76,7 @@ const Section8 = () => {
                 Monthly Pricing
               </span>
               <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-[42px] sm:text-6xl md:text-9xl lg:text-[140px] font-black">
-                $300,000
+                $450,000
               </span>
               <span
                 className={

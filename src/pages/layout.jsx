@@ -17,7 +17,6 @@ const Layout = ({ selectedTab, toggleTab, children }) => {
     }
   }, [location]);
 
-
   return (
     <div className="w-full overflow-hidden">
       <Modal show={show} toggle={() => setShow((prev) => !prev)} />
@@ -41,6 +40,16 @@ const Layout = ({ selectedTab, toggleTab, children }) => {
         )}
       </div>
       <div className={"border-b border-secondary"}></div>
+      <marquee
+        style={{ background: "#00b050" }}
+        className={"font-semibold text-sm sm:text-base md:text-lg lg:text-xl"}
+        loop={"true"}
+        scollAmount={"2"}
+        width={"100%"}
+      >
+        "OnMyWay 2.0 with Archie AI… Launching This Month! - (Here Is Your
+        Exclusive Preview)"
+      </marquee>
       {children}
       <Footer />
     </div>

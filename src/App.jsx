@@ -9,6 +9,7 @@ function App() {
       <Route path="/" element={<Dashboard />}>
         <Route path="/tab=mobileApp" element={<Dashboard />} />
         <Route path="/tab=businessSolutions" element={<Dashboard />} />
+        <Route path={"/tab=pricing"} element={<Dashboard />} />
       </Route>
       <Route path={"/mediaKit"} element={<MediaKit />} />
       <Route path={"/actionHero"} element={<ActionHero />} />

@@ -1,9 +1,9 @@
 import Container from "../../components/Container";
 import Section2BG from "../../images/MobileAPP/section2BG.png";
 import CardWithBorder from "../../components/CardWithBorder";
-import { detectDevice } from "../constant";
+import AppleLogo from "../../images/apple_logo.png";
+import PlayStore from "../../images/play_store.png";
 const Section2 = () => {
-  const device = detectDevice();
   return (
     <div
       className={
@@ -62,26 +62,56 @@ const Section2 = () => {
               "flex flex-col gap-[14px] sm:gap-[26px] w-full max-w-[720px] justify-center items-center"
             }
           >
-            <button
-              className={
-                "w-full uppercase bg-primary p-3 text-xs sm:text-lg md:text-xl lg:text-[22px] font-semibold rounded-md"
-              }
-              onClick={() => {
-                if (device === "android") {
-                  window.open(
-                    "https://play.google.com/store/apps/details?id=com.onmyway.mobi&hl=en",
-                    "_blank"
-                  );
-                } else if (device === "ios") {
+            <div className={"w-full flex sm:flex-row flex-col gap-4"}>
+              <button
+                className={
+                  "w-full bg-primary rounded-md flex flex-row items-center justify-center p-2 gap-2 !leading-8"
+                }
+                onClick={() => {
                   window.open(
                     "https://itunes.apple.com/us/app/onmyway-drives/id1436132657?ls=1&mt=8",
                     "_blank"
                   );
+                }}
+              >
+                <img
+                  src={AppleLogo}
+                  alt="Apple"
+                  className={"sm:w-[40px] w-[25px]"}
+                />
+                <span
+                  className={
+                    "text-sm sm:text-lg md:text-xl lg:text-[22px] font-semibold flex flex-col"
+                  }
+                >
+                  Available on the <span>App Store</span>
+                </span>
+              </button>
+              <button
+                className={
+                  "w-full bg-primary rounded-md flex flex-row items-center justify-center p-2 gap-2 !leading-8"
                 }
-              }}
-            >
-              Download OnMyWay mobile app now
-            </button>
+                onClick={() => {
+                  window.open(
+                    "https://play.google.com/store/apps/details?id=com.onmyway.mobi&hl=en",
+                    "_blank"
+                  );
+                }}
+              >
+                <img
+                  src={PlayStore}
+                  alt="Play Store"
+                  className={"sm:w-[40px] w-[25px]"}
+                />
+                <span
+                  className={
+                    "text-sm sm:text-lg md:text-xl lg:text-[22px] font-semibold flex flex-col"
+                  }
+                >
+                  Available on <span>Google Play</span>
+                </span>
+              </button>
+            </div>
             <span
               className={
                 "font-semibold text-sm sm:text-base md:text-lg lg:text-xl"

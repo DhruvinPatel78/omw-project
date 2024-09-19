@@ -43,7 +43,7 @@ const Section6 = () => {
                 $100 million in prizes and rewards to encourage safe driving.
               </span>
             </span>
-            <div className={"flex flex-col"}>
+            <div className={"flex flex-col gap-8"}>
               <span
                 className={
                   "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold"
@@ -51,9 +51,44 @@ const Section6 = () => {
               >
                 For as low as
               </span>
-              <span className="bg-cardBorder bg-clip-text text-transparent text-[80px] sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">
-                $10
-              </span>
+              <div className={"text-center flex flex-col gap-2"}>
+                <span
+                  className={
+                    "text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold"
+                  }
+                >
+                  OnMyWay Manages All Prizes and Rewards
+                </span>
+                <div className={"flex flex-wrap gap-2"}>
+                  <div className={"flex flex-row gap-4 items-center"}>
+                    <div
+                      className={"w-[10px] h-[10px] rounded-full bg-primary"}
+                    />
+                    <span
+                      className={
+                        "text-sm sm:text-base md:text-lg lg:text-xl font-semibold"
+                      }
+                    >
+                      They Are Included With Your Subscription{" "}
+                    </span>
+                  </div>
+                  <div className={"flex flex-row gap-4 items-center"}>
+                    <div
+                      className={"w-[10px] h-[10px] rounded-full bg-primary"}
+                    />
+                    <span
+                      className={
+                        "text-sm sm:text-base md:text-lg lg:text-xl font-semibold"
+                      }
+                    >
+                      No Additional Costs
+                    </span>
+                  </div>
+                </div>
+              </div>
+              {/*<span className="bg-cardBorder bg-clip-text text-transparent text-[80px] sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">*/}
+              {/*  $10*/}
+              {/*</span>*/}
               <span
                 className={
                   "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold mt-2"

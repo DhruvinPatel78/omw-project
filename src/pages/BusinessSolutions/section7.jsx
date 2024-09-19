@@ -3,8 +3,10 @@ import Iphone from "../../images/BusinsessSolution/s7Iphone.png";
 import TextField from "../../components/TextField";
 import DropDown from "../../components/DropDown";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Section7 = () => {
+  const navigate = useNavigate();
   const [priceDetails, setPriceDetails] = useState({
     name: "",
     companyName: "",
@@ -19,7 +21,9 @@ const Section7 = () => {
     const value = e.target.value;
     setPriceDetails((pre) => ({ ...pre, [name]: value }));
   };
-  const submitHandler = (value) => {};
+  const submitHandler = () => {
+    navigate("/tab=pricing", { state: priceDetails });
+  };
   return (
     <Container
       className={"flex flex-col lg:flex-row gap-6 sm:py-[80px] py-[30px]"}
@@ -41,7 +45,7 @@ const Section7 = () => {
           </span>{" "}
           Price Calculator
         </span>
-        <form className={"flex flex-col gap-6"} onSubmit={submitHandler}>
+        <div className={"flex flex-col gap-6"}>
           <div
             className={
               "grid grid-cols-1 sm:grid-cols-2 sm:gap-[30px] gap-[20px]  place-items-center justify-center"
@@ -94,7 +98,14 @@ const Section7 = () => {
             <DropDown
               label={"Employees"}
               placeholder={"Number Of Employees"}
-              options={[{ value: 1, label: "employees 1" }]}
+              options={[
+                { value: 5000, label: "0-5000" },
+                { value: 10000, label: "5001-10000" },
+                { value: 15000, label: "10001-15000" },
+                { value: 20000, label: "15001-20000" },
+                { value: 25000, label: "20001-25000" },
+                { value: 30000, label: "25001-30000" },
+              ]}
               name={"employees"}
               value={priceDetails.employees}
               onChange={priceChangeHandler}
@@ -105,10 +116,11 @@ const Section7 = () => {
             className={
               "w-full uppercase p-4 bg-primary font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] rounded-xl"
             }
+            onClick={submitHandler}
           >
             Get Pricing
           </button>
-        </form>
+        </div>
       </div>
     </Container>
   );
