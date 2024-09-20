@@ -1,7 +1,7 @@
 import Container from "../../components/Container";
 import B1Iphone from "../../images/BusinsessSolution/b1.png";
 import B2Iphone from "../../images/BusinsessSolution/b2.png";
-import B3Iphone from "../../images/BusinsessSolution/b3.png";
+import B3Iphone from "../../images/MobileAPP/section6Iphone.png";
 import B4Iphone from "../../images/BusinsessSolution/b4.png";
 import BGLeft from "../../images/BusinsessSolution/left.png";
 import BGRight from "../../images/BusinsessSolution/right.png";
@@ -33,9 +33,9 @@ const Section1 = () => {
             "grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 place-items-center sm:flex-nowrap flex-wrap sm:justify-normal justify-center"
           }
         >
-          <img src={B1Iphone} alt={"B1Iphone"} />
+          <img src={B1Iphone} alt={"B1Iphone"} className={"max-h-[432px]"} />
           <img src={B2Iphone} alt={"B2Iphone"} />
-          <img src={B3Iphone} alt={"B3Iphone"} />
+          <img src={B3Iphone} alt={"B3Iphone"} className={"max-h-[509px]"} />
           <img src={B4Iphone} alt={"B4Iphone"} />
         </Container>
       </div>

@@ -42,7 +42,7 @@ const Layout = ({ selectedTab, toggleTab, children }) => {
       <div className={"border-b border-secondary"}></div>
       <marquee
         style={{ background: "#00b050" }}
-        className={"font-semibold text-sm sm:text-base md:text-lg lg:text-xl"}
+        className={"font-semibold text-base sm:text-lg md:text-xl lg:text-2xl p-1"}
         loop={"true"}
         scollAmount={"2"}
         width={"100%"}

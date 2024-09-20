@@ -1,7 +1,7 @@
 import Container from "../../components/Container";
 import BG from "../../images/BusinsessSolution/b8BG.png";
 import CardWithBorder from "../../components/CardWithBorder";
-const Section8 = () => {
+const Section8 = ({ data }) => {
   return (
     <div className={"w-full flex flex-col gap-4 py-8"}>
       <Container
@@ -10,7 +10,7 @@ const Section8 = () => {
         }
       >
         <span className="bg-millionText bg-clip-text text-transparent">
-          Live Nation{" "}
+          {data?.companyName || "Live Nation"}{" "}
         </span>{" "}
         Pricing
       </Container>
@@ -44,7 +44,8 @@ const Section8 = () => {
                 }
               >
                 <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap">
-                  25001-30000{" "}
+                  {data?.employees - 5000 + 1 + "-" + data?.employees ||
+                    "25001-30000"}
                 </span>
                 <span className="bg-millionText bg-clip-text text-transparent">
                   Employees
@@ -76,14 +77,14 @@ const Section8 = () => {
                 Monthly Pricing
               </span>
               <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-[42px] sm:text-6xl md:text-9xl lg:text-[140px] font-black">
-                $450,000
+                ${data?.employees * 15 || "450,000"}
               </span>
               <span
                 className={
                   "font-bold text-[10px] sm:text-lg md:text-xl lg:text-[22px]"
                 }
               >
-                12 Month Term
+                {data?.term || "12"} Month Term
               </span>
             </div>
           </CardWithBorder>

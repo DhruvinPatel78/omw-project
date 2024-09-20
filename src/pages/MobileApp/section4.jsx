@@ -1,7 +1,29 @@
 import Container from "../../components/Container";
 import Section4BG from "../../images/MobileAPP/section4BG.png";
 import CardWithBorder from "../../components/CardWithBorder";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const Section4 = () => {
+  const [metricData, setMetricData] = useState(null);
+
+  const getMatrixData = async () => {
+    await axios
+      .get(
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/http://omw-api.devomw.com/omw/get_metric_data",
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then((res) => setMetricData(res?.data?.data))
+      .catch((e) => console.log("error", e));
+  };
+
+  useEffect(() => {
+    getMatrixData();
+  }, []);
+
   return (
     <div
       className={
@@ -24,7 +46,7 @@ const Section4 = () => {
             }
           >
             <span className="bg-cardBorder bg-clip-text text-transparent">
-              228
+              {metricData?.lives_saved || 0}{" "}
             </span>
             <span className="bg-millionText bg-clip-text text-transparent">
               Lives Saved
