@@ -27,6 +27,7 @@ const Modal = ({ show, toggle }) => {
       phone_number: contactInfo["phoneNumber"],
       contact_preference: contactInfo["contactPreference"],
     };
+    sendEmail();
     await axios
       .post(
         "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sales",
@@ -46,6 +47,38 @@ const Modal = ({ show, toggle }) => {
         console.log("error", e);
       });
   };
+
+  const sendEmail = async () => {
+    let htmlStr = `<div>
+                <h3>Name: <span>${contactInfo["name"]}</span></h3>
+                <h3>Company Name: <span>${contactInfo["companyName"]}</span></h3>
+                <h3>Email: <span>${contactInfo["companyEmail"]}</span></h3>
+                <h3>Phone: <span>${contactInfo["phoneNumber"]}</span></h3>
+                <h3>Contact Preference: <span>${contactInfo["contactPreference"]}</span></h3>
+                <h3>Employees: <span>${contactInfo["employees"]}</span></h3>
+                </div>`;
+    const payload = {
+      subject: "New Contact",
+      html: htmlStr,
+    };
+    await axios
+      .post(
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sendEmail",
+        payload,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then((data) => {
+        console.log("res", data);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  };
+
   return show ? (
     <div
       className={

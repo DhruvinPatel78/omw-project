@@ -2,8 +2,13 @@ import TextField from "../../components/TextField";
 import Container from "../../components/Container";
 import { useEffect, useState } from "react";
 import moment from "moment/moment";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SendInvoice = () => {
+  const navigate = useNavigate();
+  const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     member: [],
     term: "",
@@ -12,13 +17,21 @@ const SendInvoice = () => {
   });
 
   useEffect(() => {
+    if (msg) {
+      if (msg === "success") {
+        setTimeout(() => setMsg(""), 3000);
+        navigate("/");
+      }
+    }
+  }, [msg]);
+
+  useEffect(() => {
     const localData = JSON.parse(localStorage.getItem("calculatedData"), null);
     if (localData) {
       console.log(localData);
       setData((prev) => ({
         ...prev,
         member: [
-          ...prev.member,
           {
             name: localData.name,
             company: localData.companyName,
@@ -35,9 +48,79 @@ const SendInvoice = () => {
 
   console.log(data);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+  const onChangeHandler = (e, index) => {
+    const tempData = { ...data };
+    tempData.member[index][e.target.name] = e.target.value;
+    setData({ ...tempData });
   };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setMsg("");
+      let htmlStr = `<div>
+                <h3>Date: <span>${moment().format("DD/MM/yyyy")}</span></h3>
+                <h3>Term: <span>${data.term}</span></h3>
+                <h3>Employees: <span>${data.employees}</span></h3>
+                <h3>Amount: <span>${data.amount}</span></h3>
+                <br />`;
+      data.member.forEach((member, index) => {
+        htmlStr += `<ul>
+        <strong>Member ${index + 1}</strong>
+        <li>Name: ${member.name}</li>
+        <li>Company Name: ${member.company}</li>
+        <li>Email: ${member.companyEmail}</li>
+        <li>Phone: ${member.phone}</li>
+        <br />
+      </ul>`;
+      });
+      htmlStr += `</div>`;
+      const payload = {
+        subject: "New Invoice",
+        html: htmlStr,
+      };
+      await axios
+        .post(
+          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sendEmail",
+          payload,
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
+        .then((data) => {
+          console.log("res", data);
+          setMsg("success");
+        })
+        .catch((e) => {
+          console.log("error", e);
+          setMsg("Fail");
+        })
+        .finally(() => setLoading(false));
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+      setMsg("Fail");
+    }
+  };
+
+  const addMember = () => {
+    setData((prev) => ({
+      ...prev,
+      member: [
+        ...prev.member,
+        {
+          name: "",
+          company: "",
+          phone: "",
+          companyEmail: "",
+        },
+      ],
+    }));
+  };
+
   return (
     <Container className="w-full flex bg-[#0a0e14cc]">
       <form
@@ -54,113 +137,88 @@ const SendInvoice = () => {
           >
             Invoice Information
           </span>
-          <div
-            className={
-              "grid md:grid-cols-2 grid-cols-1 md:gap-[36px] gap-[18px]"
-            }
-          >
-            <TextField
-              label={"Your Name"}
-              placeholder={"Enter Your Name"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"name"}
-            />
-            <TextField
-              label={"Company Name"}
-              placeholder={"Enter Company Name"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"companyName"}
-            />
-            <TextField
-              label={"Phone Number"}
-              placeholder={"Enter Phone Number"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"phone"}
-            />
-            <TextField
-              label={"Email"}
-              placeholder={"Enter Email"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"email"}
-            />
+          {data.member.map((member, index) => (
+            <div className={"w-full"} key={index}>
+              <div
+                className={
+                  "grid md:grid-cols-2 grid-cols-1 md:gap-[36px] gap-[18px]"
+                }
+              >
+                <TextField
+                  label={"Your Name"}
+                  placeholder={"Enter Your Name"}
+                  required
+                  border={false}
+                  className={"!bg-[#18212E]"}
+                  name={"name"}
+                  value={member.name}
+                  onChange={(e) => onChangeHandler(e, index)}
+                />
+                <TextField
+                  label={"Company Name"}
+                  placeholder={"Enter Company Name"}
+                  required
+                  border={false}
+                  className={"!bg-[#18212E]"}
+                  name={"company"}
+                  value={member.company}
+                  onChange={(e) => onChangeHandler(e, index)}
+                />
+                <TextField
+                  label={"Phone Number"}
+                  placeholder={"Enter Phone Number"}
+                  required
+                  border={false}
+                  className={"!bg-[#18212E]"}
+                  name={"phone"}
+                  value={member.phone}
+                  onChange={(e) => onChangeHandler(e, index)}
+                />
+                <TextField
+                  label={"Email"}
+                  placeholder={"Enter Email"}
+                  required
+                  border={false}
+                  className={"!bg-[#18212E]"}
+                  name={"companyEmail"}
+                  value={member.companyEmail}
+                  onChange={(e) => onChangeHandler(e, index)}
+                />
+              </div>
+            </div>
+          ))}
+          <div className={"flex justify-center items-center"}>
+            <button
+              className={
+                "w-full sm:max-w-[300px] uppercase bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
+              }
+              onClick={addMember}
+            >
+              Add Member
+            </button>
           </div>
           <div
             className={"w-full border-b-2 border-[#5F6E85] border-dashed "}
           />
 
-          <span
-            className={
-              "font-semibold text-sm sm:text-base md:text-xl lg:text-[28px]"
-            }
-          >
-            Authorize Campaign
-          </span>
-          <div className={"flex justify-center items-center gap-10"}>
-            <TextField
-              label={"Company Name"}
-              placeholder={"Enter your Company"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"companyName"}
-            />
-            <TextField
-              label={"Date"}
-              placeholder={"Select Date"}
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"date"}
-              value={moment().format("YYYY-MM-DD")}
-              readonly
-              disabled={true}
-            />
-          </div>
-          <div className={"grid grid-cols-2 md:gap-[36px] gap-[18px]"}>
-            <TextField
-              label={"Signer First Name"}
-              placeholder={"Enter your First Name"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"signerFirstName"}
-            />
-            <TextField
-              label={"Signer Last Name"}
-              placeholder={"Enter your Last Name"}
-              required
-              border={false}
-              className={"!bg-[#18212E]"}
-              name={"signerLastName"}
-            />
-          </div>
-          <div
-            className={
-              "w-full flex md:flex-row flex-col gap-2 justify-center items-center font-semibold text-[10px] sm:text-base md:text-lg lg:text-xl"
-            }
-          >
-            <div>By signing above, I agree to our</div>
-            <div className={"text-primary"}>
-              <span className={"border-b border-solid border-primary"}>
-                Terms and Conditions
-              </span>
-            </div>
-          </div>
           <button
             className={
               "w-full uppercase bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
             }
             type={"submit"}
+            disabled={loading}
           >
-            submit signature and payment
+            {loading ? "Submitting..." : "submit invoice"}
           </button>
+          {msg ? (
+            <div className={"w-full justify-center items-center"}>
+              <p className={"text-center text-ls sm:text-2xl"}>
+                {msg === "success"
+                  ? "We will contact you soon"
+                  : "Try again after some time."}
+              </p>
+            </div>
+          ) : null}
         </div>
       </form>
     </Container>

@@ -3,7 +3,7 @@ import BusinessSolutions from "../BusinessSolutions";
 import Layout from "../layout";
 import { useEffect, useState } from "react";
 import Section8 from "../BusinessSolutions/section8";
-import Section9 from "../BusinessSolutions/section9";
+// import Section9 from "../BusinessSolutions/section9";
 import { useLocation } from "react-router-dom";
 import SendInvoice from "../BusinessSolutions/SendInvoice";
 
