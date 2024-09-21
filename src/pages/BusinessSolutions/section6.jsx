@@ -50,7 +50,10 @@ const Section6 = () => {
                     "font-extrabold text-[26px] sm:text-3xl md:text-6xl lg:text-70 flex flex-col text-primary my-4"
                   }
                 >
-                  <span className="bg-millionText bg-clip-text text-transparent">
+                  <span
+                    className="bg-millionText bg-clip-text text-transparent"
+                    style={{ lineHeight: "normal" }}
+                  >
                     OnMyWay Manages
                   </span>{" "}
                   All Prizes and Rewards
