@@ -44,8 +44,7 @@ const Section8 = ({ data }) => {
                 }
               >
                 <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap">
-                  {data?.employees - 5000 + 1 + "-" + data?.employees ||
-                    "25001-30000"}
+                  {data?.employees - 50 + 1 + "-" + data?.employees || "0"}
                 </span>
                 <span className="bg-millionText bg-clip-text text-transparent">
                   Employees
@@ -77,7 +76,7 @@ const Section8 = ({ data }) => {
                 Monthly Pricing
               </span>
               <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-[42px] sm:text-6xl md:text-9xl lg:text-[140px] font-black">
-                ${data?.employees * 15 || "450,000"}
+                ${data?.employees * 15 || "0"}
               </span>
               <span
                 className={

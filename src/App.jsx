@@ -13,6 +13,7 @@ function App() {
       </Route>
       <Route path={"/mediaKit"} element={<MediaKit />} />
       <Route path={"/actionHero"} element={<ActionHero />} />
+      <Route path={"/complete"} element={<h1>Completed</h1>} />
     </Routes>
   );
 }
