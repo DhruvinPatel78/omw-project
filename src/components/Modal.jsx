@@ -63,7 +63,7 @@ const Modal = ({ show, toggle }) => {
     };
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sendEmail",
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
         payload,
         {
           headers: {
@@ -82,12 +82,12 @@ const Modal = ({ show, toggle }) => {
   return show ? (
     <div
       className={
-        "fixed w-screen h-screen z-10 top-0 left-0 overflow-y-scroll bg-[#00000099] flex justify-center items-center"
+        "fixed w-screen h-screen z-10 top-0 left-0 bg-[#00000099] flex justify-center items-center "
       }
     >
       <div
         className={
-          "bg-[#242A2F] rounded-[30px] shadow-[0px_4px_64px_0px_#021426] p-4 sm:p-9 w-full max-w-[1000px] flex flex-col justify-center items-center"
+          "bg-[#242A2F] rounded-[30px] shadow-[0px_4px_64px_0px_#021426] p-4 sm:p-9 w-full max-w-[1000px] flex flex-col items-center max-h-screen overflow-y-auto"
         }
       >
         <div className={"flex w-full justify-end items-center"}>
@@ -160,7 +160,6 @@ const Modal = ({ show, toggle }) => {
             />
             <DropDown
               label={"Contact Preference"}
-              // placeholder={"Number Of Employees"}
               className={"!bg-[#0B0E16]"}
               border={false}
               options={[

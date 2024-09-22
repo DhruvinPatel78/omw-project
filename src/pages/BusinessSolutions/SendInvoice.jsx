@@ -1,6 +1,7 @@
 import TextField from "../../components/TextField";
 import Container from "../../components/Container";
 import { useEffect, useState } from "react";
+import { IoCloseOutline } from "react-icons/io5";
 import moment from "moment/moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -82,7 +83,7 @@ const SendInvoice = () => {
       };
       await axios
         .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sendEmail",
+          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
           payload,
           {
             headers: {
@@ -118,6 +119,13 @@ const SendInvoice = () => {
           companyEmail: "",
         },
       ],
+    }));
+  };
+
+  const removeMember = (index) => {
+    setData((prev) => ({
+      ...prev,
+      member: prev.member.filter((_, i) => i !== index),
     }));
   };
 
@@ -185,8 +193,19 @@ const SendInvoice = () => {
                   onChange={(e) => onChangeHandler(e, index)}
                 />
               </div>
+              {index && index > 0 ? (
+                <div className={"flex w-full justify-end items-center"}>
+                  <IoCloseOutline
+                    color="#fff"
+                    size={32}
+                    onClick={() => removeMember(index)}
+                    className={"cursor-pointer"}
+                  />
+                </div>
+              ) : null}
             </div>
           ))}
+
           <div className={"flex justify-center items-center"}>
             <button
               className={
