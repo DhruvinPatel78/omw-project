@@ -44,22 +44,28 @@ const Section6 = () => {
               </span>
             </span>
             <div className={"flex flex-col gap-8"}>
-              <span
-                className={
-                  "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold"
-                }
-              >
-                For as low as
-              </span>
               <div className={"text-center flex flex-col gap-2"}>
                 <span
                   className={
-                    "text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold"
+                    "font-extrabold text-[26px] sm:text-3xl md:text-6xl lg:text-70 flex flex-col text-primary my-4"
                   }
                 >
-                  OnMyWay Manages All Prizes and Rewards
+                  <span
+                    className="bg-millionText bg-clip-text text-transparent"
+                    style={{ lineHeight: "normal" }}
+                  >
+                    OnMyWay Manages
+                  </span>{" "}
+                  All Prizes and Rewards
                 </span>
-                <div className={"flex flex-wrap gap-2"}>
+                {/*<span*/}
+                {/*    className={*/}
+                {/*      "text-lg sm:text-3xl md:text-4xl lg:text-5xl font-bold my-10"*/}
+                {/*    }*/}
+                {/*>*/}
+                {/*     */}
+                {/*  </span>*/}
+                <div className={"flex flex-wrap gap-2 justify-center"}>
                   <div className={"flex flex-row gap-4 items-center"}>
                     <div
                       className={"w-[10px] h-[10px] rounded-full bg-primary"}
@@ -89,17 +95,10 @@ const Section6 = () => {
               {/*<span className="bg-cardBorder bg-clip-text text-transparent text-[80px] sm:text-8xl md:text-9xl lg:text-[215px] font-black leading-[100%]">*/}
               {/*  $10*/}
               {/*</span>*/}
-              <span
-                className={
-                  "text-xs sm:text-lg md:text-xl lg:text-[22px] text-center font-bold mt-2"
-                }
-              >
-                per employee, per month
-              </span>
             </div>
             <span
               className={
-                "text-[10px] sm:text-base md:text-lg lg:text-xl max-w-[740px] font-semibold text-center"
+                "text-[10px] sm:text-base md:text-lg lg:text-xl max-w-[740px] font-semibold text-center mt-4"
               }
             >
               Every employee receives personalized account with Archie Voice AI,{" "}

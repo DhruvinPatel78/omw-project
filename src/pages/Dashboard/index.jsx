@@ -1,22 +1,31 @@
 import MobileApp from "../MobileApp";
 import BusinessSolutions from "../BusinessSolutions";
 import Layout from "../layout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Section8 from "../BusinessSolutions/section8";
-import Section9 from "../BusinessSolutions/section9";
+// import Section9 from "../BusinessSolutions/section9";
 import { useLocation } from "react-router-dom";
+import SendInvoice from "../BusinessSolutions/SendInvoice";
 
 const Dashboard = () => {
   const [selectedTab, setSelectedTab] = useState("mobileApp");
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setData(JSON.parse(localStorage.getItem("calculatedData")));
+  }, []);
+
   const location = useLocation();
+  console.log(location.state);
   return (
     <Layout selectedTab={selectedTab} toggleTab={setSelectedTab}>
       {selectedTab === "mobileApp" && <MobileApp />}
       {selectedTab === "businessSolutions" && <BusinessSolutions />}
       {selectedTab === "pricing" && (
         <div className={"flex flex-col gap-4"}>
-          <Section8 data={location?.state} />
-          <Section9 />
+          <Section8 data={data} />
+          {/*<Section9 data={data} />*/}
+          <SendInvoice data={data} />
         </div>
       )}
     </Layout>
