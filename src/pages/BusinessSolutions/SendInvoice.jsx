@@ -83,7 +83,7 @@ const SendInvoice = () => {
       };
       await axios
         .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
+          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendEmail",
           payload,
           {
             headers: {
@@ -143,7 +143,7 @@ const SendInvoice = () => {
               "text-[14px] sm:text-2xl md:text-3xl lg:text-[34px] font-bold"
             }
           >
-            Invoice Information
+            Send Payment Link and Invoice Options
           </span>
           {data.member.map((member, index) => (
             <div className={"w-full"} key={index}>
@@ -213,7 +213,7 @@ const SendInvoice = () => {
               }
               onClick={addMember}
             >
-              Add Member
+              Add Team Member
             </button>
           </div>
           <div
@@ -227,7 +227,7 @@ const SendInvoice = () => {
             type={"submit"}
             disabled={loading}
           >
-            {loading ? "Submitting..." : "submit invoice"}
+            {loading ? "Submitting..." : "Submit Request For Invoice"}
           </button>
           {msg ? (
             <div className={"w-full justify-center items-center"}>
