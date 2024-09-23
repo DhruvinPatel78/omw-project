@@ -8,6 +8,8 @@ const TextField = ({
   onChange,
   value,
   name,
+  error,
+  onBlur,
   rest,
 }) => {
   return (
@@ -30,8 +32,10 @@ const TextField = ({
         required={required}
         onChange={onChange}
         name={name}
+        onBlur={onBlur}
         {...rest}
       />
+      {error && <span className="text-red-500">{error}</span>}
     </div>
   );
 };

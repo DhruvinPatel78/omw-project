@@ -9,6 +9,8 @@ const DropDown = ({
   options = [],
   onChange,
   name,
+  onBlur,
+  error,
   value,
 }) => {
   return (
@@ -35,6 +37,7 @@ const DropDown = ({
         name={name}
         onChange={onChange}
         required={required}
+        onBlur={onBlur}
       >
         {placeholder && (
           <option value={""} className={"bg-white text-black hover:text-white"}>
@@ -51,6 +54,7 @@ const DropDown = ({
           </option>
         ))}
       </select>
+      {error && <span className="text-red-500">{error}</span>}
     </div>
   );
 };

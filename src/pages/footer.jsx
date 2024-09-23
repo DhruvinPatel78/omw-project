@@ -9,32 +9,22 @@ import TextArea from "../components/TextArea";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import axios from "axios";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 const Footer = () => {
   const navigate = useNavigate();
   const [userSupportOpen, setUserSupportOpen] = useState(false);
   const [openContact, setOpenContact] = useState(false);
-  const [userSupportDetail, setUserSupportDetail] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    comment: "",
-  });
 
   const HandleRemovePopUp = () => setUserSupportOpen(false);
-  const userSupportChangeHandler = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setUserSupportDetail((pre) => ({ ...pre, [name]: value }));
-  };
-  const sendEmail = async () => {
+  const sendEmail = async (values) => {
     let htmlStr = `<div>
-                <h3>First Name: <span>${userSupportDetail["firstName"]}</span></h3>
-                <h3>Last Name: <span>${userSupportDetail["lastName"]}</span></h3>
-                <h3>Email: <span>${userSupportDetail["email"]}</span></h3>
-                <h3>Phone: <span>${userSupportDetail["phone"]}</span></h3>
-                <h3>Comment: <span>${userSupportDetail["comment"]}</span></h3>
+                <h3>First Name: <span>${values["firstName"]}</span></h3>
+                <h3>Last Name: <span>${values["lastName"]}</span></h3>
+                <h3>Email: <span>${values["email"]}</span></h3>
+                <h3>Phone: <span>${values["phone"]}</span></h3>
+                <h3>Comment: <span>${values["comment"]}</span></h3>
                 </div>`;
     const payload = {
       subject: "User Support",
@@ -43,7 +33,7 @@ const Footer = () => {
     };
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendEmail",
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
         payload,
         {
           headers: {
@@ -59,6 +49,21 @@ const Footer = () => {
       })
       .finally(() => HandleRemovePopUp());
   };
+  const UserSupportSchema = Yup.object().shape({
+    email: Yup.string()
+      .matches(
+        "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+        "Invalid email address format"
+      )
+      .required("Email is required"),
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
+    phone: Yup.string()
+      .matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$", "Phone number must be correct")
+      .required("Phone is required"),
+    comment: Yup.string().required("Comment is required"),
+  });
+
   return (
     <div className={"w-full"}>
       <Container>
@@ -184,81 +189,125 @@ const Footer = () => {
         <p className={"text-2xl sm:text-[70px] font-extrabold"}>
           User <span className={"text-[#0A84FF]"}>Support</span>
         </p>
-        <div
-          className={
-            "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
-          }
+        <Formik
+          initialValues={{
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            comment: "",
+          }}
+          validationSchema={UserSupportSchema}
+          onSubmit={(values, { resetForm }) => {
+            sendEmail(values).then(() => resetForm());
+          }}
         >
-          <div
-            className={
-              "grid grid-cols-1 sm:grid-cols-2 gap-x-[68px] gap-y-5 sm:gap-y-[45px]"
-            }
-          >
-            <TextField
-              label={"First Name"}
-              placeholder={"Enter Your First Name"}
-              className={"!bg-[#0B0E16]"}
-              border={false}
-              value={userSupportDetail?.firstName}
-              name={"firstName"}
-              onChange={userSupportChangeHandler}
-              required
-            />
-            <TextField
-              label={"Last Name"}
-              placeholder={"Enter Your Last Name"}
-              className={"!bg-[#0B0E16]"}
-              border={false}
-              value={userSupportDetail?.lastName}
-              name={"lastName"}
-              onChange={userSupportChangeHandler}
-              required
-            />
-            <TextField
-              label={"Email"}
-              placeholder={"Enter Your Email"}
-              className={"!bg-[#0B0E16]"}
-              border={false}
-              value={userSupportDetail.email}
-              name={"email"}
-              onChange={userSupportChangeHandler}
-              required
-            />
-            <TextField
-              label={"Phone Number"}
-              placeholder={"Enter Your Phone Number"}
-              className={"!bg-[#0B0E16]"}
-              border={false}
-              value={userSupportDetail.phone}
-              name={"phone"}
-              onChange={userSupportChangeHandler}
-              required
-            />
-            <div className={"col-span-1 sm:col-span-2"}>
-              <TextArea
-                label={"Comment / Request"}
-                placeholder={"Enter Your Comment"}
-                className={"!bg-[#0B0E16] max-h-[80px]"}
-                border={false}
-                value={userSupportDetail.comment}
-                name={"comment"}
-                type={"textArea"}
-                onChange={userSupportChangeHandler}
-                required
-              />
-            </div>
-          </div>
-          <div className={"w-full flex justify-center items-center"}>
-            <button
+          {({
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            handleSubmit,
+            errors,
+            touched,
+          }) => (
+            <div
               className={
-                "bg-[#0A84FF] w-full max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl mt-10 text-[12px] sm:text-[22px]"
+                "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
               }
-              onClick={sendEmail}
             >
-              SUBMIT
-            </button>
-          </div>
-        </div>
+              <form
+                onSubmit={handleSubmit}
+                className={
+                  "grid grid-cols-1 sm:grid-cols-2 gap-x-[68px] gap-y-5 sm:gap-y-[45px]"
+                }
+              >
+                <TextField
+                  label={"First Name"}
+                  placeholder={"Enter Your First Name"}
+                  className={"!bg-[#0B0E16]"}
+                  border={false}
+                  value={values?.firstName}
+                  name={"firstName"}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  error={
+                    touched?.firstName && errors.firstName && errors?.firstName
+                  }
+                />
+                <TextField
+                  label={"Last Name"}
+                  placeholder={"Enter Your Last Name"}
+                  className={"!bg-[#0B0E16]"}
+                  border={false}
+                  value={values?.lastName}
+                  name={"lastName"}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  error={
+                    touched?.lastName && errors.lastName && errors.lastName
+                  }
+                />
+                <TextField
+                  label={"Email"}
+                  placeholder={"Enter Your Email"}
+                  className={"!bg-[#0B0E16]"}
+                  border={false}
+                  value={values.email}
+                  name={"email"}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  error={touched?.email && errors.email && errors.email}
+                />
+                <TextField
+                  label={"Phone Number"}
+                  placeholder={"Enter Your Phone Number"}
+                  className={"!bg-[#0B0E16]"}
+                  border={false}
+                  value={values.phone}
+                  name={"phone"}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                  error={touched?.phone && errors.phone && errors.phone}
+                />
+                <div className={"col-span-1 sm:col-span-2"}>
+                  <TextArea
+                    label={"Comment / Request"}
+                    placeholder={"Enter Your Comment"}
+                    className={"!bg-[#0B0E16] max-h-[80px]"}
+                    border={false}
+                    value={values.comment}
+                    name={"comment"}
+                    type={"textArea"}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    error={touched?.comment && errors.comment && errors.comment}
+                  />
+                </div>
+                <div
+                  className={
+                    "col-span-1 sm:col-span-2 w-full flex justify-center items-center"
+                  }
+                >
+                  <button
+                    className={`bg-[#0A84FF] w-full max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px] ${
+                      isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
+                    }`}
+                    type={"submit"}
+                    disabled={isSubmitting}
+                  >
+                    SUBMIT
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+        </Formik>
       </PopUp>
       <Modal
         show={openContact}

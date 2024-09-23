@@ -20,7 +20,6 @@ const Dashboard = () => {
       {selectedTab === "pricing" && (
         <div className={"flex flex-col gap-4"}>
           <Section8 data={data} />
-          {/*<Section9 data={data} />*/}
           <SendInvoice data={data} />
         </div>
       )}
