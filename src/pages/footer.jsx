@@ -39,7 +39,7 @@ const Footer = () => {
     const payload = {
       subject: "User Support",
       html: htmlStr,
-      to: ["patel.dhruvinpatel@gmail.com"],
+      to: ["We.are@onmyway.com"],
     };
     await axios
       .post(
