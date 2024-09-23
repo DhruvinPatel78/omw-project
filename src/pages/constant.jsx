@@ -112,7 +112,7 @@ export const resourceDummyList = [
   },
   {
     id: 4,
-    title: "Support",
+    title: "User Support",
     href: "/",
   },
 ];

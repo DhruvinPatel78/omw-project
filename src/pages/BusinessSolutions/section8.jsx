@@ -44,7 +44,8 @@ const Section8 = ({ data }) => {
                 }
               >
                 <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap">
-                  {data?.employees - 50 + 1 + "-" + data?.employees || "0"}
+                  {(data && data?.employees - 50 + 1 + "-" + data?.employees) ||
+                    "0"}
                 </span>
                 <span className="bg-millionText bg-clip-text text-transparent">
                   Employees

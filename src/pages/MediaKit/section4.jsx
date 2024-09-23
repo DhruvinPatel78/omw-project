@@ -26,7 +26,7 @@ const Section4 = () => {
             Can't Find What You Need? Contact Us At
           </span>
           <span className="bg-cardBorder bg-clip-text text-transparent text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-semibold">
-            Press@Onmyway.Com
+            We.Are@OnMyWay.com
           </span>
         </div>
         <div className={"flex flex-row sm:gap-[49px] gap-[23px]"}>
