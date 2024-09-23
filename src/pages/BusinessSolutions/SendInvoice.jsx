@@ -83,7 +83,7 @@ const SendInvoice = () => {
       };
       await axios
         .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendEmail",
+          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
           payload,
           {
             headers: {
@@ -209,7 +209,7 @@ const SendInvoice = () => {
           <div className={"flex justify-center items-center"}>
             <button
               className={
-                "w-full sm:max-w-[300px] uppercase bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
+                "w-full sm:max-w-[300px] bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
               }
               onClick={addMember}
             >
