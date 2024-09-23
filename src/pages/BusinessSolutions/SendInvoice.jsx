@@ -222,7 +222,7 @@ const SendInvoice = () => {
 
           <button
             className={
-              "w-full uppercase bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
+              "w-full  bg-primary sm:p-[19px] p-[10px] text-[11px] md:text-sm  lg:text-[22px] sm:rounded-[12px] rounded-[6px]"
             }
             type={"submit"}
             disabled={loading}
