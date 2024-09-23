@@ -7,6 +7,8 @@ const TextArea = ({
   onChange,
   value,
   name,
+  error,
+  onBlur,
   rest,
 }) => {
   return (
@@ -28,9 +30,11 @@ const TextArea = ({
         required={required}
         onChange={onChange}
         name={name}
+        onBlur={onBlur}
         {...rest}
         rows={2}
       />
+      {error && <span className="text-red-500">{error}</span>}
     </div>
   );
 };

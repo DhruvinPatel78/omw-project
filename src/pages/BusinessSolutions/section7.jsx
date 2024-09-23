@@ -2,31 +2,31 @@ import Container from "../../components/Container";
 import Iphone from "../../images/BusinsessSolution/s7Iphone.png";
 import TextField from "../../components/TextField";
 import DropDown from "../../components/DropDown";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
 const Section7 = () => {
-  const [priceDetails, setPriceDetails] = useState({
-    name: "",
-    companyName: "",
-    companyEmail: "",
-    phoneNumber: "",
-    term: "",
-    employees: "",
-  });
-
   useEffect(() => {
     localStorage.removeItem("calculatedData");
   }, []);
-
-  const priceChangeHandler = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setPriceDetails((pre) => ({ ...pre, [name]: value }));
-  };
-  const submitHandler = (e) => {
-    e.preventDefault();
-
-    localStorage.setItem("calculatedData", JSON.stringify(priceDetails));
+  const PriceSchema = Yup.object().shape({
+    companyEmail: Yup.string()
+      .matches(
+        "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$",
+        "Invalid email address format"
+      )
+      .required("Email is required"),
+    name: Yup.string().required("Name is required"),
+    companyName: Yup.string().required("Company Name is required"),
+    phoneNumber: Yup.string()
+      .matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$", "Phone number must be correct")
+      .required("Phone is required"),
+    term: Yup.string().required("Term is required"),
+    employees: Yup.string().required("Employees is required"),
+  });
+  const submitHandler = (values) => {
+    localStorage.setItem("calculatedData", JSON.stringify(values));
 
     window.open("/tab=pricing", "_blank");
   };
@@ -52,9 +52,33 @@ const Section7 = () => {
           </span>{" "}
           Price Calculator
         </span>
-        <div className={"flex flex-col gap-6"}>
-          <form onSubmit={submitHandler}>
-            <div
+        <Formik
+          initialValues={{
+            name: "",
+            companyName: "",
+            companyEmail: "",
+            phoneNumber: "",
+            term: "",
+            employees: "",
+          }}
+          validationSchema={PriceSchema}
+          onSubmit={(values, { resetForm }) => {
+            submitHandler(values);
+            resetForm();
+          }}
+        >
+          {({
+            isSubmitting,
+            handleChange,
+            handleBlur,
+            values,
+            handleSubmit,
+            errors,
+            touched,
+            setFieldTouched,
+          }) => (
+            <form
+              onSubmit={handleSubmit}
               className={
                 "grid grid-cols-1 sm:grid-cols-2 sm:gap-[30px] gap-[20px]  place-items-center justify-center"
               }
@@ -63,24 +87,38 @@ const Section7 = () => {
                 label={"Your Name"}
                 placeholder={"Enter your name"}
                 name={"name"}
-                value={priceDetails.name}
-                onChange={priceChangeHandler}
+                value={values?.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched?.name && errors.name && errors?.name}
                 required
               />
               <TextField
                 label={"Company Name"}
                 placeholder={"Enter Your Common Name"}
                 name={"companyName"}
-                value={priceDetails.companyName}
-                onChange={priceChangeHandler}
+                value={values?.companyName}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={
+                  touched?.companyName &&
+                  errors.companyName &&
+                  errors?.companyName
+                }
                 required
               />
               <TextField
                 label={"Company Email"}
                 placeholder={"Enter Your Company Email"}
                 name={"companyEmail"}
-                value={priceDetails.companyEmail}
-                onChange={priceChangeHandler}
+                value={values?.companyEmail}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={
+                  touched?.companyEmail &&
+                  errors.companyEmail &&
+                  errors?.companyEmail
+                }
                 required
                 type={"email"}
               />
@@ -88,8 +126,14 @@ const Section7 = () => {
                 label={"Phone Number"}
                 placeholder={"Enter Your Phone Number"}
                 name={"phoneNumber"}
-                value={priceDetails.phoneNumber}
-                onChange={priceChangeHandler}
+                value={values?.phoneNumber}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={
+                  touched?.phoneNumber &&
+                  errors.phoneNumber &&
+                  errors?.phoneNumber
+                }
                 required
                 type={"tel"}
               />
@@ -103,8 +147,10 @@ const Section7 = () => {
                   { value: 48, label: "48 Months" },
                 ]}
                 name={"term"}
-                value={priceDetails.term}
-                onChange={priceChangeHandler}
+                value={values?.term}
+                onChange={handleChange}
+                onBlur={() => setFieldTouched("term", true)}
+                error={touched?.term && errors.term && errors?.term}
                 required
               />
               <DropDown
@@ -143,21 +189,26 @@ const Section7 = () => {
                   { value: 1000000, label: "500001-1000000" },
                 ]}
                 name={"employees"}
-                value={priceDetails.employees}
-                onChange={priceChangeHandler}
+                value={values?.employees}
+                onChange={handleChange}
+                onBlur={() => setFieldTouched("employees", true)}
+                error={
+                  touched?.employees && errors.employees && errors?.employees
+                }
                 required
               />
-            </div>
-            <button
-              className={
-                "w-full uppercase p-4 bg-primary font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] rounded-xl mt-10"
-              }
-              type={"submit"}
-            >
-              Get Pricing
-            </button>
-          </form>
-        </div>
+              <button
+                className={
+                  "col-span-1 sm:col-span-2 w-full uppercase p-4 bg-primary font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] rounded-xl mt-10"
+                }
+                type={"submit"}
+                disabled={isSubmitting}
+              >
+                Get Pricing
+              </button>
+            </form>
+          )}
+        </Formik>
       </div>
     </Container>
   );
