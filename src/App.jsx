@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import MediaKit from "./pages/MediaKit";
 import Privacy from "./pages/Privacy";
+import ContactUs from "./pages/contactUs";
 import AccountDeletion from "./pages/AccountDeletion";
 import Terms from "./pages/Terms";
 import ActionHero from "./pages/ActionHero";
@@ -14,6 +15,7 @@ function App() {
         <Route path="/tab=businessSolutions" element={<Dashboard />} />
         <Route path={"/tab=pricing"} element={<Dashboard />} />
       </Route>
+      <Route path={"/contactUs"} element={<ContactUs />} />
       <Route path={"/privacy"} element={<Privacy />} />
       <Route path={"/terms"} element={<Terms />} />
       <Route path={"/account/deletion"} element={<AccountDeletion />} />
