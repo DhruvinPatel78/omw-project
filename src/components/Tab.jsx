@@ -27,8 +27,12 @@ const TabPage = ({ tabList, selectedTab, setSelectedTab, navigate }) => {
               if (item.key === "merch") {
                 window.open("https://fc9921-2f.myshopify.com/", "_blank");
               } else {
-                setSelectedTab(item?.key);
-                navigate("", { state: { path: item?.key } });
+                if(setSelectedTab){
+                  setSelectedTab(item?.key);
+                  navigate("", { state: { path: item?.key } });
+                }else {
+                  navigate(`/tab=${item?.key}`);
+                }
               }
             }}
           >
