@@ -6,22 +6,21 @@ import Privacy from "./pages/Privacy";
 import ContactUs from "./pages/contactUs";
 import AccountDeletion from "./pages/AccountDeletion";
 import Terms from "./pages/Terms";
-import ActionHero from "./pages/ActionHero";
+import BusinessSolutions from "./pages/BusinessSolutions";
+import PricingPage from "./pages/Pricing";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />}>
-        <Route path="/tab=mobileApp" element={<Dashboard />} />
-        <Route path="/tab=businessSolutions" element={<Dashboard />} />
-        <Route path={"/tab=pricing"} element={<Dashboard />} />
-      </Route>
+      <Route path="/" element={<Dashboard />} />
+      <Route path={"/pricing"} element={<PricingPage />} />
+      <Route path={"/business"} element={<BusinessSolutions />} />
       <Route path={"/contactUs"} element={<ContactUs />} />
       <Route path={"/privacy"} element={<Privacy />} />
       <Route path={"/terms"} element={<Terms />} />
       <Route path={"/account/deletion"} element={<AccountDeletion />} />
       <Route path={"/mediaKit"} element={<MediaKit />} />
-      <Route path={"/actionHero"} element={<ActionHero />} />
-      <Route path={"/complete"} element={<h1>Completed</h1>} />
+      {/*<Route path={"/actionHero"} element={<ActionHero />} />*/}
+      {/*<Route path={"/complete"} element={<h1>Completed</h1>} />*/}
     </Routes>
   );
 }
