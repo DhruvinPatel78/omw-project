@@ -80,7 +80,7 @@ const SendInvoice = () => {
       };
       await axios
         .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
+          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sendMail",
           payload,
           {
             headers: {
