@@ -29,7 +29,6 @@ const SendInvoice = () => {
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem("calculatedData"), null);
     if (localData) {
-      console.log(localData);
       setData((prev) => ({
         ...prev,
         member: [
@@ -46,8 +45,6 @@ const SendInvoice = () => {
       }));
     }
   }, []);
-
-  console.log(data);
 
   const onChangeHandler = (e, index) => {
     const tempData = { ...data };

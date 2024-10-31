@@ -52,8 +52,6 @@ const Section9 = ({ data }) => {
   const amount = data?.employees * 15;
   const discountedAmount = amount * data?.term;
 
-  console.log(paymentSelect);
-
   const submitHandler = async (e) => {
     e.preventDefault();
 

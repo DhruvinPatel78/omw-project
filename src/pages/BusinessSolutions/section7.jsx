@@ -7,9 +7,6 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 
 const Section7 = () => {
-  useEffect(() => {
-    localStorage.removeItem("calculatedData");
-  }, []);
   const PriceSchema = Yup.object().shape({
     companyEmail: Yup.string()
       .matches(
@@ -28,7 +25,7 @@ const Section7 = () => {
   const submitHandler = (values) => {
     localStorage.setItem("calculatedData", JSON.stringify(values));
 
-    window.open("/tab=pricing", "_blank");
+    window.open("/pricing", "_blank");
   };
 
   return (
@@ -41,7 +38,7 @@ const Section7 = () => {
         }
         style={{ backgroundImage: `url(${Iphone})` }}
       ></div>
-      <div className={"flex flex-col gap-6 justify-center"}>
+      <div className={"flex flex-col gap-6 justify-center"} id="priceForm">
         <span
           className={
             "font-extrabold text-[26px] sm:text-3xl md:text-6xl lg:text-70 flex flex-col text-primary"

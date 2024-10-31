@@ -50,12 +50,20 @@ export const tabDummyList = [
     id: 1,
     title: "Mobile App",
     key: "mobileApp",
+    path: '/'
   },
   {
     id: 2,
     title: "Business Solutions",
-    key: "businessSolutions",
+    key: "business",
+    path: '/business'
   },
+  // {
+  //   id: 3,
+  //   title: "Price",
+  //   key: "business",
+  //   path: '/business#price'
+  // },
   {
     id: 3,
     title: "Merch",

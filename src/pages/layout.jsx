@@ -4,17 +4,24 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../components/Modal";
 
-const Layout = ({ selectedTab, toggleTab, children }) => {
+const Layout = ({ children }) => {
+  const [selectedTab, toggleTab] = useState(null);
   const location = useLocation();
   const [show, setShow] = useState(false);
+
   useEffect(() => {
-    if (location.pathname.split("=")[1]) {
-      toggleTab(location.pathname.split("=")[1]);
-    } else {
-      if (location.state) {
-        toggleTab(location.state?.path);
-      }
+    if (location.pathname === "/") {
+        toggleTab('mobileApp')
+    } else if (location.pathname === "/business") {
+        toggleTab('business')
     }
+    // if (location.pathname.split("=")[1]) {
+    //   toggleTab(location.pathname.split("=")[1]);
+    // } else {
+    //   if (location.state) {
+    //     toggleTab(location.state?.path);
+    //   }
+    // }
   }, [location]);
 
   return (
@@ -42,7 +49,9 @@ const Layout = ({ selectedTab, toggleTab, children }) => {
       <div className={"border-b border-secondary"}></div>
       <marquee
         style={{ background: "#00b050" }}
-        className={"font-semibold text-base sm:text-lg md:text-xl lg:text-2xl p-1"}
+        className={
+          "font-semibold text-base sm:text-lg md:text-xl lg:text-2xl p-1"
+        }
         loop={"true"}
         scollAmount={"2"}
         width={"100%"}
