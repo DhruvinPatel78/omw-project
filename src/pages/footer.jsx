@@ -166,7 +166,7 @@ const Footer = () => {
             {" "}
             |{" "}
             <a
-              href={"https://onmyway.com/terms.html"}
+              href={"/terms"}
               className={
                 "border-b border-transparent hover:border-b hover:border-white"
               }

@@ -8,6 +8,7 @@ import AccountDeletion from "./pages/AccountDeletion";
 import Terms from "./pages/Terms";
 import BusinessSolutions from "./pages/BusinessSolutions";
 import PricingPage from "./pages/Pricing";
+import TermAndCondition from "./pages/TermAndCondition";
 function App() {
   return (
     <Routes>
@@ -19,6 +20,7 @@ function App() {
       <Route path={"/terms"} element={<Terms />} />
       <Route path={"/account/deletion"} element={<AccountDeletion />} />
       <Route path={"/mediaKit"} element={<MediaKit />} />
+      <Route path={"/termsandconditions/:id"} element={<TermAndCondition />} />
       {/*<Route path={"/actionHero"} element={<ActionHero />} />*/}
       {/*<Route path={"/complete"} element={<h1>Completed</h1>} />*/}
     </Routes>
