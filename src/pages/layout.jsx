@@ -47,18 +47,18 @@ const Layout = ({ children }) => {
         )}
       </div>
       <div className={"border-b border-secondary"}></div>
-      <marquee
-        style={{ background: "#00b050" }}
-        className={
-          "font-semibold text-base sm:text-lg md:text-xl lg:text-2xl p-1"
-        }
-        loop={"true"}
-        scollAmount={"2"}
-        width={"100%"}
-      >
-        "OnMyWay 2.0 with Archie AI… Launching This Month! - (Here Is Your
-        Exclusive Preview)"
-      </marquee>
+      {/*<marquee*/}
+      {/*  style={{ background: "#00b050" }}*/}
+      {/*  className={*/}
+      {/*    "font-semibold text-base sm:text-lg md:text-xl lg:text-2xl p-1"*/}
+      {/*  }*/}
+      {/*  loop={"true"}*/}
+      {/*  scollAmount={"2"}*/}
+      {/*  width={"100%"}*/}
+      {/*>*/}
+      {/*  "OnMyWay 2.0 with Archie AI… Launching This Month! - (Here Is Your*/}
+      {/*  Exclusive Preview)"*/}
+      {/*</marquee>*/}
       {children}
       <Footer />
     </div>
