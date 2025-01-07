@@ -10,8 +10,8 @@ const Section5 = () => {
         }
       >
         Rewards, Not Punishment
-        <span className="bg-millionText bg-clip-text text-transparent">
-          - Create Positive Outcomes
+        <span className="bg-millionText bg-clip-text text-transparent pl-4">
+           Create Positive Outcomes
         </span>
       </Container>
       <Section2 />

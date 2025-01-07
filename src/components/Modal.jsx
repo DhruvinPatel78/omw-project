@@ -19,7 +19,7 @@ const Modal = ({ show, toggle }) => {
     sendEmail(values);
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sales",
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sales",
         data,
         {
           headers: {
