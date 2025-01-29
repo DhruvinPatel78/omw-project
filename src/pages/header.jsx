@@ -38,7 +38,7 @@ const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
       </Container>
       <button
         className={
-          "hidden md:flex w-[200px] h-10 sm:h-[50px] uppercase bg-primary font-semibold text-xs sm:text-sm justify-center items-center absolute right-0 top-0"
+          "hidden md:flex w-[200px] h-10 sm:h-[82px] uppercase bg-primary font-semibold text-xs sm:text-sm justify-center items-center absolute right-0 top-0"
         }
         onClick={() => navigate("/business#price")}
       >
