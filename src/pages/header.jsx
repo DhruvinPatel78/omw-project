@@ -8,26 +8,14 @@ const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
   return (
     <>
       <Container
-        className={`flex md:flex-row flex-col justify-center items-center relative md:gap-0 gap-4`}
+        className={`flex lg:flex-row flex-col justify-between items-center relative lg:gap-0 gap-4`}
       >
-        <div
-          className={`md:block flex justify-start items-center flex-row md:w-[auto] w-full gap-2`}
-        >
-          <img
-            src={logo}
-            className={`md:absolute relative md:left-4 left-0 md:bottom-[20px] bottom-0 cursor-pointer`}
-            alt="omw-project"
-            onClick={() => navigate("/")}
-          />
-          <button
-            className={
-              "md:hidden flex bg-primary p-4 uppercase font-semibold text-xs sm:text-sm absolute right-0 top-0"
-            }
-            onClick={() => navigate("/business#price")}
-          >
-            Company Price
-          </button>
-        </div>
+        <img
+          src={logo}
+          className={`cursor-pointer w-[200px] order-first`}
+          alt="omw-project"
+          onClick={() => navigate("/")}
+        />
 
         <Tab
           tabList={tabDummyList}
@@ -35,15 +23,15 @@ const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
           setSelectedTab={setSelectedTab}
           navigate={navigate}
         />
+        <button
+          className={
+            "flex bg-primary py-2 px-4 lg:py-3 lg:px-6 uppercase font-semibold text-xs sm:text-sm rounded-full order-2 lg:order-2"
+          }
+          onClick={() => navigate("/business#price")}
+        >
+          Company Price
+        </button>
       </Container>
-      <button
-        className={
-          "hidden md:flex w-[200px] h-10 sm:h-[82px] uppercase bg-primary font-semibold text-xs sm:text-sm justify-center items-center absolute right-0 top-0"
-        }
-        onClick={() => navigate("/business#price")}
-      >
-        Company Price
-      </button>
     </>
   );
 };
