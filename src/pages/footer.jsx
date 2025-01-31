@@ -173,7 +173,15 @@ const Footer = () => {
             >
               Terms of Use
             </a>{" "}
-            | Privacy Policy
+            |{" "}
+            <a
+              href={"/privacy"}
+              className={
+                "border-b border-transparent hover:border-b hover:border-white"
+              }
+            >
+              Privacy Policy
+            </a>
           </span>
         </span>
       </Container>
