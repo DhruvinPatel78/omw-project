@@ -25,11 +25,11 @@ const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
         />
         <button
           className={
-            "flex bg-primary py-2 px-4 lg:py-3 lg:px-6 uppercase font-semibold text-xs sm:text-sm rounded-full order-2 lg:order-2"
+            "flex bg-primary py-2 px-4 lg:py-3 lg:px-6 font-semibold text-xs sm:text-sm rounded-full order-2 lg:order-2"
           }
           onClick={() => navigate("/business#price")}
         >
-          Company Price
+          Company Pricing
         </button>
       </Container>
     </>
