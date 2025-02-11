@@ -54,6 +54,18 @@ const Privacy = () => {
               "font-bold text-xs sm:text-base md:text-xl lg:text-[28px]"
             }
           >
+            SMS Consent & Privacy Policy Notice
+          </div>
+          <div>
+            By providing your phone number and opting in, you consent to receive SMS messages from OnMyWay. These messages may include updates, promotions, and alerts. You can opt out at any time by replying "STOP" to any message. We do not share your phone number with third parties without your consent.
+          </div>
+        </div>
+        <div>
+          <div
+            className={
+              "font-bold text-xs sm:text-base md:text-xl lg:text-[28px]"
+            }
+          >
             Collection of Information / Information You Provide to Us
           </div>
           <div>
