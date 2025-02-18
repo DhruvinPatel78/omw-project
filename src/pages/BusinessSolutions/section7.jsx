@@ -201,7 +201,7 @@ const Section7 = () => {
                 type={"submit"}
                 disabled={isSubmitting}
               >
-                Get Pricing
+                View Pricing Instantly
               </button>
             </form>
           )}
