@@ -68,7 +68,7 @@ const SendInvoice = () => {
 
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/bussiness_employee",
+        "https://prod-api.onmyway.com/omw/bussiness_employee",
         {
           employees: allEmployees,
         },
@@ -111,7 +111,7 @@ const SendInvoice = () => {
       };
       await axios
         .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sendMail",
+          "https://prod-api.onmyway.com/omw/sendMail",
           payload,
           {
             headers: {

@@ -19,7 +19,7 @@ const Modal = ({ show, toggle, setOpenThankyou = null }) => {
     await sendEmail(values);
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sales",
+        "https://prod-api.onmyway.com/omw/sales",
         data,
         {
           headers: {
@@ -51,7 +51,7 @@ const Modal = ({ show, toggle, setOpenThankyou = null }) => {
     };
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sendMail",
+        "https://prod-api.onmyway.com/omw/sendMail",
         payload,
         {
           headers: {

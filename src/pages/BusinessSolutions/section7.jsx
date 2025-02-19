@@ -25,7 +25,7 @@ const Section7 = () => {
   const submitHandler = async (values) => {
     await axios
       .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/bussiness_price",
+        "https://prod-api.onmyway.com/omw/bussiness_price",
         {
           name: values.name,
           company_name: values.companyName,

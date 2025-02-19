@@ -9,7 +9,7 @@ const Section4 = () => {
   const getMatrixData = async () => {
     await axios
       .get(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/http://prod-api.onmyway.com/omw/get_metric_data",
+        "http://prod-api.onmyway.com/omw/get_metric_data",
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
