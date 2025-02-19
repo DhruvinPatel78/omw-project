@@ -2,9 +2,9 @@ import Container from "../../components/Container";
 import Iphone from "../../images/BusinsessSolution/s7Iphone.png";
 import TextField from "../../components/TextField";
 import DropDown from "../../components/DropDown";
-import { useEffect } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 const Section7 = () => {
   const PriceSchema = Yup.object().shape({
@@ -22,10 +22,32 @@ const Section7 = () => {
     term: Yup.string().required("Term is required"),
     employees: Yup.string().required("Employees is required"),
   });
-  const submitHandler = (values) => {
-    localStorage.setItem("calculatedData", JSON.stringify(values));
-
-    window.open("/pricing", "_blank");
+  const submitHandler = async (values) => {
+    await axios
+      .post(
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/bussiness_price",
+        {
+          name: values.name,
+          company_name: values.companyName,
+          company_email: values.companyEmail,
+          phone_number: values.phoneNumber,
+          term: values.term,
+          employees: values.employees,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then((data) => {
+        console.log("res", data);
+        localStorage.setItem("calculatedData", JSON.stringify(values));
+        window.open("/pricing", "_blank");
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
   };
 
   return (

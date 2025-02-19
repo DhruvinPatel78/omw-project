@@ -54,6 +54,37 @@ const SendInvoice = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    const allEmployees = [];
+    data.member.forEach((member, index) => {
+      const employee = {
+        name: member.name,
+        company_name: member.company,
+        phone_number: member.phone,
+        email: member.companyEmail,
+      };
+      allEmployees.push(employee);
+    });
+
+    await axios
+      .post(
+        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/bussiness_employee",
+        {
+          employees: allEmployees,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+      .then((data) => {
+        console.log("res", data);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+
     try {
       setLoading(true);
       setMsg("");
