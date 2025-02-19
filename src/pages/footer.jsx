@@ -33,23 +33,17 @@ const Footer = () => {
       to: ["We.are@onmyway.com"],
     };
     await axios
-      .post(
-        "https://prod-api.onmyway.com/omw/sendMail",
-        payload,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      .post("https://prod-api.onmyway.com/omw/sendMail", payload, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
       .then((data) => {
         console.log("res", data);
-        setOpenThankyou(true)
       })
       .catch((e) => {
         console.log("error", e);
-      })
-      .finally(() => HandleRemovePopUp());
+      });
   };
   const UserSupportSchema = Yup.object().shape({
     email: Yup.string()
@@ -208,8 +202,33 @@ const Footer = () => {
             comment: "",
           }}
           validationSchema={UserSupportSchema}
-          onSubmit={(values, { resetForm }) => {
+          onSubmit={async (values, { resetForm }) => {
             sendEmail(values).then(() => resetForm());
+            await axios
+              .post(
+                "https://prod-api.onmyway.com/omw/user_support",
+                {
+                  first_name: values["firstName"],
+                  last_name: values["lastName"],
+                  email: values["email"],
+                  phone_number: values["phone"],
+                  comment: values["comment"],
+                },
+                {
+                  headers: {
+                    "Access-Control-Allow-Origin": "*",
+                  },
+                }
+              )
+              .then((data) => {
+                console.log("res")
+                setOpenThankyou(true);
+              })
+              .catch((e) => {
+                console.log("error", e);
+              });
+            resetForm();
+            HandleRemovePopUp();
           }}
         >
           {({
@@ -338,7 +357,13 @@ const Footer = () => {
           />
         </div>
         <div className={"flex flex-col items-center gap-5"}>
-          <p className={"text-2xl sm:text-3xl font-extrabold bg-cardBorder bg-clip-text text-transparent whitespace-nowrap"}>Thank You</p>
+          <p
+            className={
+              "text-2xl sm:text-3xl font-extrabold bg-cardBorder bg-clip-text text-transparent whitespace-nowrap"
+            }
+          >
+            Thank You
+          </p>
           <p>We Will Contact you Shortly.</p>
         </div>
       </PopUp>
