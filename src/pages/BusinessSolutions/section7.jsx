@@ -30,7 +30,6 @@ const Section7 = () => {
                 <h3>Employees: <span>${values.employees}</span></h3>
                 <h3>Amount: <span>${values.employees * 15}</span></h3>
                 <br />`;
-    [0].member.forEach((member, index) => {
       htmlStr += `<ul>
         <li>Name: ${values.name}</li>
         <li>Company Name: ${values.companyName}</li>
@@ -38,7 +37,6 @@ const Section7 = () => {
         <li>Phone: ${values.phoneNumber}</li>
         <br />
       </ul>`;
-    });
     htmlStr += `</div>`;
     const payload = {
       subject: "View Pricing",
