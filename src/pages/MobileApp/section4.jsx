@@ -9,7 +9,7 @@ const Section4 = () => {
   const getMatrixData = async () => {
     await axios
       .get(
-        "http://prod-api.onmyway.com/omw/get_metric_data",
+        "https://prod-api.onmyway.com/omw/get_metric_data",
         {
           headers: {
             "Access-Control-Allow-Origin": "*",
