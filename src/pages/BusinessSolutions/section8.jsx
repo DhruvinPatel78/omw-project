@@ -44,7 +44,11 @@ const Section8 = ({ data }) => {
                 }
               >
                 <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap">
-                  {(new Intl.NumberFormat("en-US").format(data && data?.employees - 50 + 1 ) + "-" + new Intl.NumberFormat("en-US").format(data?.employees)) ||
+                  {new Intl.NumberFormat("en-US").format(
+                    data && data?.employees - 50 + 1
+                  ) +
+                    " - " +
+                    new Intl.NumberFormat("en-US").format(data?.employees) ||
                     "0"}
                 </span>
                 <span className="bg-millionText bg-clip-text text-transparent">
@@ -77,7 +81,9 @@ const Section8 = ({ data }) => {
                 Monthly Pricing
               </span>
               <span className="bg-cardBorder bg-clip-text text-transparent whitespace-nowrap text-[42px] sm:text-6xl md:text-9xl lg:text-[140px] font-black">
-                ${new Intl.NumberFormat("en-US").format(data?.employees * 15) || "0"}
+                $
+                {new Intl.NumberFormat("en-US").format(data?.employees * 15) ||
+                  "0"}
               </span>
               <span
                 className={
