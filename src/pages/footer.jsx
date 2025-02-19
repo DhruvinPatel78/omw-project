@@ -16,6 +16,7 @@ const Footer = () => {
   const navigate = useNavigate();
   const [userSupportOpen, setUserSupportOpen] = useState(false);
   const [openContact, setOpenContact] = useState(false);
+  const [openThankyou, setOpenThankyou] = useState(false);
 
   const HandleRemovePopUp = () => setUserSupportOpen(false);
   const sendEmail = async (values) => {
@@ -43,6 +44,7 @@ const Footer = () => {
       )
       .then((data) => {
         console.log("res", data);
+        setOpenThankyou(true)
       })
       .catch((e) => {
         console.log("error", e);
@@ -320,7 +322,26 @@ const Footer = () => {
       <Modal
         show={openContact}
         toggle={() => setOpenContact((prev) => !prev)}
+        setOpenThankyou={setOpenThankyou}
       />
+      <PopUp
+        open={openThankyou}
+        close={() => setOpenThankyou((prev) => !prev)}
+        containerClass={"max-w-[90%] sm:max-w-[500px]"}
+      >
+        <div className={"flex w-full justify-end items-center"}>
+          <IoCloseOutline
+            color="#fff"
+            size={24}
+            onClick={() => setOpenThankyou((prev) => !prev)}
+            className={"cursor-pointer"}
+          />
+        </div>
+        <div className={"flex flex-col items-center gap-5"}>
+          <p className={"text-2xl sm:text-3xl font-extrabold bg-cardBorder bg-clip-text text-transparent whitespace-nowrap"}>Thank You</p>
+          <p>We Will Contact you Shortly.</p>
+        </div>
+      </PopUp>
     </div>
   );
 };

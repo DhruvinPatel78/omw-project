@@ -6,7 +6,7 @@ import PopUp from "./PopUp";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-const Modal = ({ show, toggle }) => {
+const Modal = ({ show, toggle, setOpenThankyou = null }) => {
   const formSubmit = async (values) => {
     const data = {
       name: values["name"],
@@ -16,7 +16,7 @@ const Modal = ({ show, toggle }) => {
       phone_number: values["phoneNumber"],
       contact_preference: values["contactPreference"],
     };
-    sendEmail(values);
+    await sendEmail(values);
     await axios
       .post(
         "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://prod-api.onmyway.com/omw/sales",
@@ -112,7 +112,17 @@ const Modal = ({ show, toggle }) => {
         }}
         validationSchema={ContactSelSchema}
         onSubmit={(values, { resetForm }) => {
-          formSubmit(values).then(() => resetForm());
+          formSubmit(values).then(() => {
+              toggle();
+              if (setOpenThankyou) {
+                  setOpenThankyou(true);
+              }
+              resetForm()
+          }).finally(() => {
+              if (setOpenThankyou) {
+                  setOpenThankyou(true);
+              }
+          });
         }}
       >
         {({
