@@ -30,7 +30,7 @@ const Section7 = () => {
                 <h3>Employees: <span>${values.employees}</span></h3>
                 <h3>Amount: <span>${values.employees * 15}</span></h3>
                 <br />`;
-      htmlStr += `<ul>
+    htmlStr += `<ul>
         <li>Name: ${values.name}</li>
         <li>Company Name: ${values.companyName}</li>
         <li>Email: ${values.companyEmail}</li>
@@ -64,6 +64,7 @@ const Section7 = () => {
           phone_number: values.phoneNumber,
           term: values.term,
           employees: values.employees,
+          amount: values.employees * 15,
         },
         {
           headers: {
