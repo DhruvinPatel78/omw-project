@@ -5,7 +5,6 @@ import DropDown from "../../components/DropDown";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import moment from "moment";
 
 const Section7 = () => {
   const PriceSchema = Yup.object().shape({
@@ -24,36 +23,6 @@ const Section7 = () => {
     employees: Yup.string().required("Employees is required"),
   });
   const submitHandler = async (values) => {
-    let htmlStr = `<div>
-                <h3>Date: <span>${moment().format("DD/MM/yyyy")}</span></h3>
-                <h3>Term: <span>${values.term}</span></h3>
-                <h3>Employees: <span>${values.employees}</span></h3>
-                <h3>Amount: <span>${values.employees * 15}</span></h3>
-                <br />`;
-    htmlStr += `<ul>
-        <li>Name: ${values.name}</li>
-        <li>Company Name: ${values.companyName}</li>
-        <li>Email: ${values.companyEmail}</li>
-        <li>Phone: ${values.phoneNumber}</li>
-        <br />
-      </ul>`;
-    htmlStr += `</div>`;
-    const payload = {
-      subject: "View Pricing",
-      html: htmlStr,
-    };
-    await axios
-      .post("https://prod-api.onmyway.com/omw/sendMail", payload, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
-      .then((data) => {
-        console.log("res", data);
-      })
-      .catch((e) => {
-        console.log("error", e);
-      });
     await axios
       .post(
         "https://prod-api.onmyway.com/omw/bussiness_price",

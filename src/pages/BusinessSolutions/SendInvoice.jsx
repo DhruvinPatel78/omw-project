@@ -6,7 +6,7 @@ import moment from "moment/moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const SendInvoice = () => {
+const SendInvoice = ({reviewData}) => {
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -45,6 +45,25 @@ const SendInvoice = () => {
       }));
     }
   }, []);
+
+  useEffect(() => {
+    if (reviewData) {
+      setData((prev) => ({
+        ...prev,
+        member: [
+          {
+            name: reviewData.name,
+            company: reviewData.companyName,
+            phone: reviewData.phoneNumber,
+            companyEmail: reviewData.companyEmail,
+          },
+        ],
+        term: `${reviewData.term} Months`,
+        employees: reviewData.employees,
+        amount: reviewData.amount || (reviewData.employees * 15),
+      }));
+    }
+  }, [reviewData]);
 
   const onChangeHandler = (e, index) => {
     const tempData = { ...data };

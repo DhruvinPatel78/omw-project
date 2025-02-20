@@ -14,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path={"/pricing"} element={<PricingPage />} />
+      <Route path={"/pricing/:id"} element={<PricingPage />} />
       <Route path={"/business"} element={<BusinessSolutions />} />
       <Route path={"/contactUs"} element={<ContactUs />} />
       <Route path={"/privacy"} element={<Privacy />} />
