@@ -2,6 +2,7 @@ import TextField from "../../components/TextField";
 import Container from "../../components/Container";
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
+import moment from "moment/moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -83,30 +84,58 @@ const SendInvoice = ({ reviewData }) => {
       };
       allEmployees.push(employee);
     });
+
     try {
       setLoading(true);
-
-      await axios
-        .post(
-          "https://prod-api.onmyway.com/omw/bussiness_employee",
-          {
-            employees: allEmployees,
+      setMsg("");
+      await axios.post(
+        "https://prod-api.onmyway.com/omw/bussiness_employee",
+        {
+          employees: allEmployees,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
           },
-          {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        )
+        }
+      );
+      let htmlStr = `<div>
+                <h3>Date: <span>${moment().format("DD/MM/yyyy")}</span></h3>
+                <h3>Term: <span>${data.term}</span></h3>
+                <h3>Employees: <span>${data.employees}</span></h3>
+                <h3>Amount: <span>${data.amount}</span></h3>
+                <br />`;
+      data.member.forEach((member, index) => {
+        htmlStr += `<ul>
+        <strong>Member ${index + 1}</strong>
+        <li>Name: ${member.name}</li>
+        <li>Company Name: ${member.company}</li>
+        <li>Email: ${member.companyEmail}</li>
+        <li>Phone: ${member.phone}</li>
+        <br />
+      </ul>`;
+      });
+      htmlStr += `</div>`;
+      const payload = {
+        subject: "New Invoice",
+        html: htmlStr,
+      };
+      await axios
+        .post("https://prod-api.onmyway.com/omw/sendMail", payload, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
         .then((data) => {
           console.log("res", data);
+          setMsg("success");
         })
         .catch((e) => {
           console.log("error", e);
+          setMsg("Fail");
         });
     } catch (error) {
-      console.log(error);
-      setMsg("Fail");
+      console.error(error);
     } finally {
       setLoading(false);
     }
