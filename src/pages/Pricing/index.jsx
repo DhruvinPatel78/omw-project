@@ -42,7 +42,7 @@ const PricingPage = () => {
       } else {
         navigate("/business#price");
       }
-    }
+    }  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

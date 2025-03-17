@@ -42,9 +42,7 @@ const AccountDeletion = () => {
           >
             Step 1:
           </div>
-          <div>
-            <img src={""} />
-          </div>
+          <div>{/*<img src={""} />*/}</div>
         </div>
 
         <div>
@@ -63,7 +61,7 @@ const AccountDeletion = () => {
             Step 1: Tap on user Profile
           </div>
           <div>
-            <img src={Step1} width={250} />
+            <img src={Step1} width={250} alt={"Step 1"} />
           </div>
         </div>
         <div>
@@ -75,7 +73,7 @@ const AccountDeletion = () => {
             Step 2: Scroll down
           </div>
           <div>
-            <img src={Step2} width={250} />
+            <img src={Step2} width={250} alt={"Step 2"} />
           </div>
         </div>
         <div>
@@ -87,7 +85,7 @@ const AccountDeletion = () => {
             Step 3: Click on delete my account on bottom right option
           </div>
           <div>
-          <img src={Step3} width={250} />
+            <img src={Step3} width={250} alt={"Step 3"} />
           </div>
         </div>
         <div>
@@ -99,7 +97,7 @@ const AccountDeletion = () => {
             Step 4: Click on Yes to delete it
           </div>
           <div>
-          <img src={Step4} width={250} />
+            <img src={Step4} width={250} alt={"Step 4"} />
           </div>
         </div>
       </Container>

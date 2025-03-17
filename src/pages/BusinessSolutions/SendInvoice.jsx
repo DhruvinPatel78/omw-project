@@ -2,11 +2,10 @@ import TextField from "../../components/TextField";
 import Container from "../../components/Container";
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
-import moment from "moment/moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const SendInvoice = ({reviewData}) => {
+const SendInvoice = ({ reviewData }) => {
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +22,7 @@ const SendInvoice = ({reviewData}) => {
         setTimeout(() => setMsg(""), 3000);
         navigate("/");
       }
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [msg]);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ const SendInvoice = ({reviewData}) => {
         ],
         term: `${reviewData.term} Months`,
         employees: reviewData.employees,
-        amount: reviewData.amount || (reviewData.employees * 15),
+        amount: reviewData.amount || reviewData.employees * 15,
       }));
     }
   }, [reviewData]);
@@ -84,54 +83,15 @@ const SendInvoice = ({reviewData}) => {
       };
       allEmployees.push(employee);
     });
-
-    await axios
-      .post(
-        "https://prod-api.onmyway.com/omw/bussiness_employee",
-        {
-          employees: allEmployees,
-        },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
-      .then((data) => {
-        console.log("res", data);
-      })
-      .catch((e) => {
-        console.log("error", e);
-      });
-
     try {
       setLoading(true);
-      setMsg("");
-      let htmlStr = `<div>
-                <h3>Date: <span>${moment().format("DD/MM/yyyy")}</span></h3>
-                <h3>Term: <span>${data.term}</span></h3>
-                <h3>Employees: <span>${data.employees}</span></h3>
-                <h3>Amount: <span>${data.amount}</span></h3>
-                <br />`;
-      data.member.forEach((member, index) => {
-        htmlStr += `<ul>
-        <strong>Member ${index + 1}</strong>
-        <li>Name: ${member.name}</li>
-        <li>Company Name: ${member.company}</li>
-        <li>Email: ${member.companyEmail}</li>
-        <li>Phone: ${member.phone}</li>
-        <br />
-      </ul>`;
-      });
-      htmlStr += `</div>`;
-      const payload = {
-        subject: "New Invoice",
-        html: htmlStr,
-      };
+
       await axios
         .post(
-          "https://prod-api.onmyway.com/omw/sendMail",
-          payload,
+          "https://prod-api.onmyway.com/omw/bussiness_employee",
+          {
+            employees: allEmployees,
+          },
           {
             headers: {
               "Access-Control-Allow-Origin": "*",
@@ -140,17 +100,15 @@ const SendInvoice = ({reviewData}) => {
         )
         .then((data) => {
           console.log("res", data);
-          setMsg("success");
         })
         .catch((e) => {
           console.log("error", e);
-          setMsg("Fail");
-        })
-        .finally(() => setLoading(false));
+        });
     } catch (error) {
       console.log(error);
-      setLoading(false);
       setMsg("Fail");
+    } finally {
+      setLoading(false);
     }
   };
 
