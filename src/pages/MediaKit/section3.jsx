@@ -27,13 +27,19 @@ const Section3 = () => {
               key={"Iphone" + index}
             >
               <img src={item.img} alt="Iphone1" />
-              <button
-                className={
-                  "bg-primary p-3 rounded-[12px] text-[10px] sm:text-base md:text-lg lg:text-xl font-semibold"
-                }
+              <a
+                href={item.img}
+                download={`OMW_mobile${index + 1}.png`}
+                className={"w-full"}
               >
-                Download
-              </button>
+                <button
+                  className={
+                    "bg-primary p-3 rounded-[12px] text-[10px] sm:text-base md:text-lg lg:text-xl font-semibold w-full"
+                  }
+                >
+                  Download
+                </button>
+              </a>
             </div>
           );
         })}

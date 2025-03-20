@@ -4,12 +4,12 @@ import Iphone3 from "../images/MobileAPP/section6Iphone.png";
 import Iphone4 from "../images/MediaKit/m4Iphone.png";
 import Iphone5 from "../images/MediaKit/m5Iphone.png";
 import Iphone6 from "../images/MediaKit/m6Iphone.png";
-import logo from "../images/MediaKit/logo1.svg";
-import logo2 from "../images/MediaKit/logo2.svg";
-import logo3 from "../images/MediaKit/logo3.svg";
-import logo4 from "../images/MediaKit/logo4.svg";
-import logo5 from "../images/MediaKit/logo5.svg";
-import logo6 from "../images/MediaKit/logo6.svg";
+import logo from "../images/MediaKit/logo1.png";
+import logo2 from "../images/MediaKit/logo2.png";
+import logo3 from "../images/MediaKit/logo3.png";
+import logo4 from "../images/MediaKit/logo4.png";
+import logo5 from "../images/MediaKit/logo5.png";
+import logo6 from "../images/MediaKit/logo6.png";
 import CashPrize from "../images/MobileAPP/cashPrizes.png";
 import LuxuryPrize from "../images/MobileAPP/luxuryPrize.png";
 import TuitionPrize from "../images/MobileAPP/tuitionPrize.png";
@@ -45,18 +45,19 @@ export const detectDevice = () => {
     return "computer";
   }
 };
+
 export const tabDummyList = [
   {
     id: 1,
     title: "Mobile App",
     key: "mobileApp",
-    path: '/'
+    path: "/",
   },
   {
     id: 2,
     title: "Business Solutions",
     key: "business",
-    path: '/business'
+    path: "/business",
   },
   // {
   //   id: 3,
@@ -70,6 +71,7 @@ export const tabDummyList = [
     key: "merch",
   },
 ];
+
 export const socialMediaDummyList = [
   {
     id: 1,
@@ -102,6 +104,7 @@ export const socialMediaDummyList = [
     href: "https://www.youtube.com/channel/UCTj-r7jknd9cYBliuJgBOIg?app=desktop",
   },
 ];
+
 export const resourceDummyList = [
   {
     id: 1,
@@ -124,6 +127,7 @@ export const resourceDummyList = [
     href: "/",
   },
 ];
+
 export const IphoneList = [
   {
     id: Math.random(),
@@ -150,6 +154,7 @@ export const IphoneList = [
     img: Iphone6,
   },
 ];
+
 export const logoList = [
   {
     id: 1,
@@ -176,6 +181,7 @@ export const logoList = [
     logo: logo6,
   },
 ];
+
 export const prizeList = [
   {
     title: "Cash Prizes",
@@ -203,6 +209,7 @@ export const prizeList = [
     id: 5,
   },
 ];
+
 export const mobileDummyList = [
   {
     id: Math.random(),
@@ -234,6 +241,7 @@ export const mobileDummyList = [
       "Enjoy unlimited miles, unlimited referrals, and unlimited lives saved.",
   },
 ];
+
 export const theoryList = [
   {
     id: 1,
@@ -295,6 +303,7 @@ export const theoryList = [
     isCenter: false,
   },
 ];
+
 export const businessDummyList = [
   {
     id: Math.random(),
@@ -333,6 +342,7 @@ export const businessDummyList = [
       "Companies using OnMyWay have reported significant sales enhancements.",
   },
 ];
+
 export const voiceList = [
   {
     id: 1,
