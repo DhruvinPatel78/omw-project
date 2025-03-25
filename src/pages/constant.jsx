@@ -119,7 +119,8 @@ export const resourceDummyList = [
   {
     id: 3,
     title: "OnMyWay Foundation 501(c)3",
-    href: "/",
+    href: "http://onmywaydrives.org/make-donation/",
+    external: true
   },
   {
     id: 4,

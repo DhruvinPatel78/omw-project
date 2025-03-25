@@ -113,7 +113,11 @@ const Footer = () => {
                       if (item?.title === "User Support") {
                         setUserSupportOpen(true);
                       } else {
-                        navigate(item?.href);
+                        if (item?.external) {
+                          window.location.href = item?.href;
+                        } else {
+                          navigate(item?.href);
+                        }
                       }
                     }}
                   >
@@ -354,12 +358,18 @@ const Footer = () => {
                 >
                   <button
                     className={`bg-[#0A84FF] w-full flex justify-center items-center max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px] ${
-                        loading ? "cursor-not-allowed" : "cursor-pointer"
+                      loading ? "cursor-not-allowed" : "cursor-pointer"
                     }`}
                     type={"submit"}
                     disabled={loading}
                   >
-                    {loading ? <AiOutlineLoading3Quarters className={'text-3xl animate-spin'} /> : "SUBMIT"}
+                    {loading ? (
+                      <AiOutlineLoading3Quarters
+                        className={"text-3xl animate-spin"}
+                      />
+                    ) : (
+                      "SUBMIT"
+                    )}
                   </button>
                 </div>
                 {isWhistleblower && (
