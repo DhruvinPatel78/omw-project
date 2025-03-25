@@ -114,7 +114,7 @@ const Footer = () => {
                         setUserSupportOpen(true);
                       } else {
                         if (item?.external) {
-                          window.location.href = item?.href;
+                          window.open(item?.href,'_blank');
                         } else {
                           navigate(item?.href);
                         }
