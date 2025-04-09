@@ -6,42 +6,33 @@ import { tabDummyList } from "./constant";
 const Header = ({ setSelectedTab, selectedTab, onContactClick }) => {
   const navigate = useNavigate();
   return (
-    <Container
-      className={`flex md:flex-row flex-col justify-center items-center relative md:gap-0 gap-4`}
-    >
-      <div
-        className={`md:block flex 
-        ${
-          selectedTab === "businessSolutions"
-            ? "justify-start"
-            : "justify-center items-center"
-        } flex-row md:w-[auto] w-full gap-2`}
+    <>
+      <Container
+        className={`flex lg:flex-row flex-col justify-between items-center relative lg:gap-0 gap-4`}
       >
         <img
           src={logo}
-          className={`md:absolute relative md:left-4 left-0 md:bottom-[20px] bottom-0 cursor-pointer`}
+          className={`cursor-pointer w-[200px] order-first`}
           alt="omw-project"
           onClick={() => navigate("/")}
         />
-        {selectedTab === "businessSolutions" && (
-          <button
-            className={
-              "md:hidden flex bg-primary p-4 uppercase font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] absolute right-0 top-0"
-            }
-            onClick={onContactClick}
-          >
-            Contact Sales
-          </button>
-        )}
-      </div>
 
-      <Tab
-        tabList={tabDummyList}
-        selectedTab={selectedTab}
-        setSelectedTab={setSelectedTab}
-        navigate={navigate}
-      />
-    </Container>
+        <Tab
+          tabList={tabDummyList}
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          navigate={navigate}
+        />
+        <button
+          className={
+            "flex bg-primary py-2 px-4 lg:py-3 lg:px-6 font-semibold text-xs sm:text-sm rounded-full order-2 lg:order-2"
+          }
+          onClick={() => navigate("/business#price")}
+        >
+          Company Pricing
+        </button>
+      </Container>
+    </>
   );
 };
 export default Header;

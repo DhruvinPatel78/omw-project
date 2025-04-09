@@ -11,44 +11,21 @@ import Modal from "../components/Modal";
 import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Footer = () => {
   const navigate = useNavigate();
   const [userSupportOpen, setUserSupportOpen] = useState(false);
   const [openContact, setOpenContact] = useState(false);
+  const [openThankyou, setOpenThankyou] = useState(false);
+  const [isWhistleblower, setIsWhistleblower] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const HandleRemovePopUp = () => setUserSupportOpen(false);
-  const sendEmail = async (values) => {
-    let htmlStr = `<div>
-                <h3>First Name: <span>${values["firstName"]}</span></h3>
-                <h3>Last Name: <span>${values["lastName"]}</span></h3>
-                <h3>Email: <span>${values["email"]}</span></h3>
-                <h3>Phone: <span>${values["phone"]}</span></h3>
-                <h3>Comment: <span>${values["comment"]}</span></h3>
-                </div>`;
-    const payload = {
-      subject: "User Support",
-      html: htmlStr,
-      to: ["We.are@onmyway.com"],
-    };
-    await axios
-      .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
-        payload,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
-      .then((data) => {
-        console.log("res", data);
-      })
-      .catch((e) => {
-        console.log("error", e);
-      })
-      .finally(() => HandleRemovePopUp());
+  const HandleRemovePopUp = () => {
+    setUserSupportOpen(false);
+    setIsWhistleblower(false);
   };
+
   const UserSupportSchema = Yup.object().shape({
     email: Yup.string()
       .matches(
@@ -57,7 +34,9 @@ const Footer = () => {
       )
       .required("Email is required"),
     firstName: Yup.string().required("First Name is required"),
-    lastName: Yup.string().required("Last Name is required"),
+    lastName: Yup.string().required(
+      isWhistleblower ? "Company Name is required." : "Last Name is required"
+    ),
     phone: Yup.string()
       .matches("^(\\+\\d{1,3}[- ]?)?\\d{10}$", "Phone number must be correct")
       .required("Phone is required"),
@@ -97,11 +76,25 @@ const Footer = () => {
             <span className={"sm:text-lg text-sm font-bold uppercase"}>
               Business Solutions
             </span>
-            <div className={"flex flex-row gap-4 items-center"}>
-              <div className={"w-[10px] h-[10px] rounded-full bg-primary"} />
-              <span className={"sm:text-sm text-xs font-medium"}>
-                Businesses / Organizations / Schools
-              </span>
+            <div className={"flex flex-col gap-2"}>
+              <div className={"flex flex-row gap-4 items-center"}>
+                <div className={"w-[10px] h-[10px] rounded-full bg-primary"} />
+                <span className={"sm:text-sm text-xs font-medium"}>
+                  Businesses / Organizations / Schools
+                </span>
+              </div>
+              <div className={"flex flex-row gap-4 items-center"}>
+                <div className={"w-[10px] h-[10px] rounded-full bg-primary"} />
+                <button
+                  className={"sm:text-sm text-xs font-medium"}
+                  onClick={async () => {
+                    await setIsWhistleblower(true);
+                    setUserSupportOpen(true);
+                  }}
+                >
+                  Whistleblower (Anonymous)
+                </button>
+              </div>
             </div>
           </div>
           <div className={"w-full h-full flex flex-col gap-[20px]"}>
@@ -120,7 +113,11 @@ const Footer = () => {
                       if (item?.title === "User Support") {
                         setUserSupportOpen(true);
                       } else {
-                        navigate(item?.href);
+                        if (item?.external) {
+                          window.open(item?.href,'_blank');
+                        } else {
+                          navigate(item?.href);
+                        }
                       }
                     }}
                   >
@@ -166,14 +163,22 @@ const Footer = () => {
             {" "}
             |{" "}
             <a
-              href={"https://onmyway.com/terms.html"}
+              href={"/terms"}
               className={
                 "border-b border-transparent hover:border-b hover:border-white"
               }
             >
               Terms of Use
             </a>{" "}
-            | Privacy Policy
+            |{" "}
+            <a
+              href={"/privacy"}
+              className={
+                "border-b border-transparent hover:border-b hover:border-white"
+              }
+            >
+              Privacy Policy
+            </a>
           </span>
         </span>
       </Container>
@@ -186,8 +191,15 @@ const Footer = () => {
             className={"cursor-pointer"}
           />
         </div>
-        <p className={"text-2xl sm:text-[70px] font-extrabold"}>
-          User <span className={"text-[#0A84FF]"}>Support</span>
+        <p
+          className={`text-2xl ${
+            isWhistleblower ? "sm:text-[50px]" : "sm:text-[70px]"
+          } font-extrabold`}
+        >
+          {isWhistleblower ? "Whistleblower" : "User"}{" "}
+          <span className={"text-[#0A84FF]"}>
+            {isWhistleblower ? "Submission" : "Support"}
+          </span>
         </p>
         <Formik
           initialValues={{
@@ -198,8 +210,48 @@ const Footer = () => {
             comment: "",
           }}
           validationSchema={UserSupportSchema}
-          onSubmit={(values, { resetForm }) => {
-            sendEmail(values).then(() => resetForm());
+          onSubmit={async (values, { resetForm }) => {
+            try {
+              setLoading(true);
+              const payload = {
+                first_name: values["firstName"],
+                email: values["email"],
+                phone_number: values["phone"],
+                comment: values["comment"],
+              };
+              if (isWhistleblower) {
+                payload.company_name = values["lastName"];
+              } else {
+                payload.last_name = values["lastName"];
+              }
+              await axios
+                .post(
+                  `https://prod-api.onmyway.com/omw/${
+                    isWhistleblower ? "whistler_blower_support" : "user_support"
+                  }`,
+                  {
+                    ...payload,
+                  },
+                  {
+                    headers: {
+                      "Access-Control-Allow-Origin": "*",
+                    },
+                  }
+                )
+                .then((data) => {
+                  console.log("res");
+                  setOpenThankyou(true);
+                })
+                .catch((e) => {
+                  console.log("error", e);
+                });
+              resetForm();
+              HandleRemovePopUp();
+            } catch (error) {
+              console.log("error", error);
+            } finally {
+              setLoading(false);
+            }
           }}
         >
           {({
@@ -213,13 +265,13 @@ const Footer = () => {
           }) => (
             <div
               className={
-                "mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
+                "mt-4 sm:mt-8 border-[#ffffff33] border border-solid w-full rounded-[18px] p-4 sm:p-[54px]"
               }
             >
               <form
                 onSubmit={handleSubmit}
                 className={
-                  "grid grid-cols-1 sm:grid-cols-2 gap-x-[68px] gap-y-5 sm:gap-y-[45px]"
+                  "grid grid-cols-1 sm:grid-cols-2 gap-x-[50px] gap-y-5 sm:gap-y-6"
                 }
               >
                 <TextField
@@ -235,10 +287,16 @@ const Footer = () => {
                   error={
                     touched?.firstName && errors.firstName && errors?.firstName
                   }
+                  readOnly={isSubmitting}
+                  disabled={loading}
                 />
                 <TextField
-                  label={"Last Name"}
-                  placeholder={"Enter Your Last Name"}
+                  label={isWhistleblower ? "Company Name" : "Last Name"}
+                  placeholder={
+                    isWhistleblower
+                      ? "Enter Your Company Name"
+                      : "Enter Your Last Name"
+                  }
                   className={"!bg-[#0B0E16]"}
                   border={false}
                   value={values?.lastName}
@@ -249,6 +307,7 @@ const Footer = () => {
                   error={
                     touched?.lastName && errors.lastName && errors.lastName
                   }
+                  disabled={loading}
                 />
                 <TextField
                   label={"Email"}
@@ -261,6 +320,7 @@ const Footer = () => {
                   onBlur={handleBlur}
                   required
                   error={touched?.email && errors.email && errors.email}
+                  disabled={loading}
                 />
                 <TextField
                   label={"Phone Number"}
@@ -273,6 +333,7 @@ const Footer = () => {
                   onBlur={handleBlur}
                   required
                   error={touched?.phone && errors.phone && errors.phone}
+                  disabled={loading}
                 />
                 <div className={"col-span-1 sm:col-span-2"}>
                   <TextArea
@@ -287,6 +348,7 @@ const Footer = () => {
                     onBlur={handleBlur}
                     required
                     error={touched?.comment && errors.comment && errors.comment}
+                    disabled={loading}
                   />
                 </div>
                 <div
@@ -295,15 +357,35 @@ const Footer = () => {
                   }
                 >
                   <button
-                    className={`bg-[#0A84FF] w-full max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px] ${
-                      isSubmitting ? "cursor-not-allowed" : "cursor-pointer"
+                    className={`bg-[#0A84FF] w-full flex justify-center items-center max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px] ${
+                      loading ? "cursor-not-allowed" : "cursor-pointer"
                     }`}
                     type={"submit"}
-                    disabled={isSubmitting}
+                    disabled={loading}
                   >
-                    SUBMIT
+                    {loading ? (
+                      <AiOutlineLoading3Quarters
+                        className={"text-3xl animate-spin"}
+                      />
+                    ) : (
+                      "SUBMIT"
+                    )}
                   </button>
                 </div>
+                {isWhistleblower && (
+                  <div
+                    className={
+                      "col-span-1 sm:col-span-2 w-full flex justify-center items-center"
+                    }
+                  >
+                    <p className={"text-xs sm:text-base"}>
+                      Disclaimer: We guarantee that you will stay anonymous. Our
+                      Policy Is to have our OSHA/SEC Taskforce Review
+                      Immediately. Then take action if needed. We will keep you
+                      updated, every step of the way! Thank You!
+                    </p>
+                  </div>
+                )}
               </form>
             </div>
           )}
@@ -311,8 +393,33 @@ const Footer = () => {
       </PopUp>
       <Modal
         show={openContact}
-        toggle={() => setOpenContact((prev) => !prev)}
+        toggle={() => setOpenContact(false)}
+        setOpenThankyou={setOpenThankyou}
       />
+      <PopUp
+        open={openThankyou}
+        close={() => setOpenThankyou((prev) => !prev)}
+        containerClass={"max-w-[90%] sm:max-w-[500px]"}
+      >
+        <div className={"flex w-full justify-end items-center"}>
+          <IoCloseOutline
+            color="#fff"
+            size={24}
+            onClick={() => setOpenThankyou((prev) => !prev)}
+            className={"cursor-pointer"}
+          />
+        </div>
+        <div className={"flex flex-col items-center gap-5"}>
+          <p
+            className={
+              "text-2xl sm:text-3xl font-extrabold bg-cardBorder bg-clip-text text-transparent whitespace-nowrap"
+            }
+          >
+            Thank You
+          </p>
+          <p>We Will Contact You Shortly.</p>
+        </div>
+      </PopUp>
     </div>
   );
 };

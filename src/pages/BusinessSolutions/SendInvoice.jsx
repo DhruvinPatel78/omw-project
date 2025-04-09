@@ -6,7 +6,7 @@ import moment from "moment/moment";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const SendInvoice = () => {
+const SendInvoice = ({ reviewData }) => {
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ const SendInvoice = () => {
         setTimeout(() => setMsg(""), 3000);
         navigate("/");
       }
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [msg]);
 
   useEffect(() => {
@@ -46,6 +46,25 @@ const SendInvoice = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (reviewData) {
+      setData((prev) => ({
+        ...prev,
+        member: [
+          {
+            name: reviewData.name,
+            company: reviewData.companyName,
+            phone: reviewData.phoneNumber,
+            companyEmail: reviewData.companyEmail,
+          },
+        ],
+        term: `${reviewData.term} Months`,
+        employees: reviewData.employees,
+        amount: reviewData.amount || reviewData.employees * 15,
+      }));
+    }
+  }, [reviewData]);
+
   const onChangeHandler = (e, index) => {
     const tempData = { ...data };
     tempData.member[index][e.target.name] = e.target.value;
@@ -54,9 +73,32 @@ const SendInvoice = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
+    const allEmployees = [];
+    data.member.forEach((member, index) => {
+      const employee = {
+        name: member.name,
+        company_name: member.company,
+        phone_number: member.phone,
+        email: member.companyEmail,
+      };
+      allEmployees.push(employee);
+    });
+
     try {
       setLoading(true);
       setMsg("");
+      await axios.post(
+        "https://prod-api.onmyway.com/omw/bussiness_employee",
+        {
+          employees: allEmployees,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
       let htmlStr = `<div>
                 <h3>Date: <span>${moment().format("DD/MM/yyyy")}</span></h3>
                 <h3>Term: <span>${data.term}</span></h3>
@@ -79,15 +121,11 @@ const SendInvoice = () => {
         html: htmlStr,
       };
       await axios
-        .post(
-          "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
-          payload,
-          {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        )
+        .post("https://prod-api.onmyway.com/omw/sendMail", payload, {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
         .then((data) => {
           console.log("res", data);
           setMsg("success");
@@ -95,12 +133,11 @@ const SendInvoice = () => {
         .catch((e) => {
           console.log("error", e);
           setMsg("Fail");
-        })
-        .finally(() => setLoading(false));
+        });
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    } finally {
       setLoading(false);
-      setMsg("Fail");
     }
   };
 

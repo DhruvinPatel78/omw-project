@@ -119,7 +119,7 @@ const Section6 = () => {
                 "text-[16px] sm:text-2xl md:text-3xl lg:text-[37px] font-bold text-white sm:text-left text-center"
               }
             >
-              <span className={"text-primary"}>Rewards, Not Punishment</span> -
+              <span className={"text-primary pr-4"}>Rewards, Not Punishment</span>
               Create Positive Outcomes
             </div>
           </CardWithBorder>

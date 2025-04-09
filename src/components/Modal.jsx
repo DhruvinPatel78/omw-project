@@ -5,8 +5,11 @@ import axios from "axios";
 import PopUp from "./PopUp";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import React, { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const Modal = ({ show, toggle }) => {
+const Modal = ({ show, toggle, setOpenThankyou = null }) => {
+  const [loading, setLoading] = useState(false);
   const formSubmit = async (values) => {
     const data = {
       name: values["name"],
@@ -16,17 +19,12 @@ const Modal = ({ show, toggle }) => {
       phone_number: values["phoneNumber"],
       contact_preference: values["contactPreference"],
     };
-    sendEmail(values);
     await axios
-      .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://be.devomw.com/omw/sales",
-        data,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      .post("https://prod-api.onmyway.com/omw/sales", data, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
       .then((data) => {
         console.log("res", data);
         toggle();
@@ -36,36 +34,6 @@ const Modal = ({ show, toggle }) => {
       });
   };
 
-  const sendEmail = async (values) => {
-    let htmlStr = `<div>
-                <h3>Name: <span>${values["name"]}</span></h3>
-                <h3>Company Name: <span>${values["companyName"]}</span></h3>
-                <h3>Email: <span>${values["companyEmail"]}</span></h3>
-                <h3>Phone: <span>${values["phoneNumber"]}</span></h3>
-                <h3>Contact Preference: <span>${values["contactPreference"]}</span></h3>
-                <h3>Employees: <span>${values["employees"]}</span></h3>
-                </div>`;
-    const payload = {
-      subject: "New Contact",
-      html: htmlStr,
-    };
-    await axios
-      .post(
-        "https://whispering-citadel-11540-0a9768b9a869.herokuapp.com/https://omw-api.devomw.com/omw/sendMail",
-        payload,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
-      .then((data) => {
-        console.log("res", data);
-      })
-      .catch((e) => {
-        console.log("error", e);
-      });
-  };
   const ContactSelSchema = Yup.object().shape({
     companyEmail: Yup.string()
       .matches(
@@ -111,12 +79,22 @@ const Modal = ({ show, toggle }) => {
           employees: "",
         }}
         validationSchema={ContactSelSchema}
-        onSubmit={(values, { resetForm }) => {
-          formSubmit(values).then(() => resetForm());
+        onSubmit={async (values, { resetForm }) => {
+          try {
+            setLoading(true);
+            await formSubmit(values);
+          } catch (error) {
+            console.log("error", error);
+          } finally {
+            setLoading(false);
+            toggle();
+            if (setOpenThankyou) {
+              setOpenThankyou(true);
+            }
+          }
         }}
       >
         {({
-          isSubmitting,
           handleChange,
           handleBlur,
           values,
@@ -133,7 +111,7 @@ const Modal = ({ show, toggle }) => {
             <form
               onSubmit={handleSubmit}
               className={
-                "grid grid-cols-1 sm:grid-cols-2 gap-x-[68px] gap-y-5 sm:gap-y-[45px]"
+                "grid grid-cols-1 sm:grid-cols-2 gap-x-[50px] gap-y-5 sm:gap-y-6"
               }
             >
               <TextField
@@ -147,6 +125,7 @@ const Modal = ({ show, toggle }) => {
                 onBlur={handleBlur}
                 error={touched?.name && errors.name && errors?.name}
                 required
+                disabled={loading}
               />
               <TextField
                 label={"Company Name"}
@@ -163,6 +142,7 @@ const Modal = ({ show, toggle }) => {
                   errors?.companyName
                 }
                 required
+                disabled={loading}
               />
               <TextField
                 label={"Company Email"}
@@ -179,6 +159,7 @@ const Modal = ({ show, toggle }) => {
                   errors?.companyEmail
                 }
                 required
+                disabled={loading}
               />
               <TextField
                 label={"Phone Number"}
@@ -195,6 +176,7 @@ const Modal = ({ show, toggle }) => {
                   errors?.phoneNumber
                 }
                 required
+                disabled={loading}
               />
               <DropDown
                 label={"Contact Preference"}
@@ -215,6 +197,7 @@ const Modal = ({ show, toggle }) => {
                   errors?.contactPreference
                 }
                 required
+                disabled={loading}
               />
               <DropDown
                 label={"Employees"}
@@ -261,6 +244,7 @@ const Modal = ({ show, toggle }) => {
                   touched?.employees && errors.employees && errors?.employees
                 }
                 required
+                disabled={loading}
               />
               <div
                 className={
@@ -268,12 +252,18 @@ const Modal = ({ show, toggle }) => {
                 }
               >
                 <button
-                  className={
-                    "bg-[#0A84FF] w-full max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px]"
-                  }
-                  disabled={isSubmitting}
+                  className={`bg-[#0A84FF] w-full flex justify-center items-center max-w-[390px] h-10 sm:h-[68px] rounded-[6px] sm:rounded-xl text-[12px] sm:text-[22px] ${
+                    loading ? "cursor-not-allowed" : "cursor-pointer"
+                  }`}
+                  disabled={loading}
                 >
-                  SUBMIT
+                  {loading ? (
+                    <AiOutlineLoading3Quarters
+                      className={"text-3xl animate-spin"}
+                    />
+                  ) : (
+                    "SUBMIT"
+                  )}
                 </button>
               </div>
             </form>

@@ -1,10 +1,6 @@
 const TabPage = ({ tabList, selectedTab, setSelectedTab, navigate }) => {
   return (
-    <div
-      className={
-        "flex flex-row justify-center sm:self-auto self-center sm:w-auto w-full"
-      }
-    >
+    <div className={"flex flex-row order-3 lg:order-2"}>
       {tabList?.map((item, index) => {
         const lastIndex = tabList?.map((item, index) => index)[
           tabList.length - 1

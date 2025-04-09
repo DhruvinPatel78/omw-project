@@ -2,11 +2,14 @@ import Container from "../../components/Container";
 import Iphone from "../../images/BusinsessSolution/s7Iphone.png";
 import TextField from "../../components/TextField";
 import DropDown from "../../components/DropDown";
-import { useEffect } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const Section7 = () => {
+  const [loading, setLoading] = useState(false);
   const PriceSchema = Yup.object().shape({
     companyEmail: Yup.string()
       .matches(
@@ -22,10 +25,40 @@ const Section7 = () => {
     term: Yup.string().required("Term is required"),
     employees: Yup.string().required("Employees is required"),
   });
-  const submitHandler = (values) => {
-    localStorage.setItem("calculatedData", JSON.stringify(values));
-
-    window.open("/pricing", "_blank");
+  const submitHandler = async (values) => {
+    try {
+      setLoading(true);
+      await axios
+        .post(
+          "https://prod-api.onmyway.com/omw/bussiness_price",
+          {
+            name: values.name,
+            company_name: values.companyName,
+            company_email: values.companyEmail,
+            phone_number: values.phoneNumber,
+            term: values.term,
+            employees: values.employees,
+            amount: values.employees * 15,
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
+        .then((data) => {
+          console.log("res", data);
+          localStorage.setItem("calculatedData", JSON.stringify(values));
+          window.open("/pricing", "_blank");
+        })
+        .catch((e) => {
+          console.log("error", e);
+        });
+    } catch (error) {
+      console.log("error", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,8 +92,8 @@ const Section7 = () => {
             employees: "",
           }}
           validationSchema={PriceSchema}
-          onSubmit={(values, { resetForm }) => {
-            submitHandler(values);
+          onSubmit={async (values, { resetForm }) => {
+            await submitHandler(values);
             resetForm();
           }}
         >
@@ -77,7 +110,7 @@ const Section7 = () => {
             <form
               onSubmit={handleSubmit}
               className={
-                "grid grid-cols-1 sm:grid-cols-2 sm:gap-[30px] gap-[20px]  place-items-center justify-center"
+                "grid grid-cols-1 sm:grid-cols-2 sm:gap-[30px] gap-[20px] place-items-center justify-center"
               }
             >
               <TextField
@@ -89,6 +122,7 @@ const Section7 = () => {
                 onBlur={handleBlur}
                 error={touched?.name && errors.name && errors?.name}
                 required
+                disabled={loading}
               />
               <TextField
                 label={"Company Name"}
@@ -103,6 +137,7 @@ const Section7 = () => {
                   errors?.companyName
                 }
                 required
+                disabled={loading}
               />
               <TextField
                 label={"Company Email"}
@@ -118,6 +153,7 @@ const Section7 = () => {
                 }
                 required
                 type={"email"}
+                disabled={loading}
               />
               <TextField
                 label={"Phone Number"}
@@ -133,6 +169,7 @@ const Section7 = () => {
                 }
                 required
                 type={"tel"}
+                disabled={loading}
               />
               <DropDown
                 label={"Term"}
@@ -149,6 +186,7 @@ const Section7 = () => {
                 onBlur={() => setFieldTouched("term", true)}
                 error={touched?.term && errors.term && errors?.term}
                 required
+                disabled={loading}
               />
               <DropDown
                 label={"Employees"}
@@ -193,15 +231,22 @@ const Section7 = () => {
                   touched?.employees && errors.employees && errors?.employees
                 }
                 required
+                disabled={loading}
               />
               <button
-                className={
-                  "col-span-1 sm:col-span-2 w-full uppercase p-4 bg-primary font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] rounded-xl mt-10"
-                }
+                className={`col-span-1 sm:col-span-2 w-full flex justify-center items-center uppercase p-4 bg-primary font-semibold text-xs sm:text-lg md:text-xl lg:text-[22px] rounded-xl mt-10 ${
+                  loading ? "cursor-not-allowed" : "cursor-pointer"
+                }`}
                 type={"submit"}
-                disabled={isSubmitting}
+                disabled={loading}
               >
-                View Pricing Instantly
+                {loading ? (
+                  <AiOutlineLoading3Quarters
+                    className={"text-3xl animate-spin"}
+                  />
+                ) : (
+                  "View Pricing Instantly"
+                )}
               </button>
             </form>
           )}
